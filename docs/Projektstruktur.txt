@@ -1,0 +1,38 @@
+WLAN-Manager
+│
+├── .idea
+├── .venv
+├── src
+│   ├── main.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── csv_export.py
+│   │   ├── exporter.py
+│   │   ├── importer.py
+│   │   ├── models.py
+│   │   ├── netsh.py
+│   │   ├── permissions.py
+│   │   ├── profiles.py
+│   │   └── wlan_manager.py
+│   ├── gui
+│   │   ├── __init__.py
+│   │   ├── dialogs.py
+│   │   ├── main_window.py
+│   │   └── widgets.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── config.py
+│   │   ├── logger.py
+│   │   └── version.py
+│   └── resources
+│       ├── icons
+│       └── styles
+├── docs
+├── tests
+├── build
+├── dist
+├── README.md
+├── CHANGELOG.md
+├── requirements.txt
+├── start_WLAN-Manager.cmd
+└── WLAN-Manager.spec
