@@ -244,11 +244,13 @@ def build_profile_xml(profile: EditableWifiProfile) -> str:
     connection_mode = "auto" if profile.autoconnect else "manual"
     non_broadcast = "true" if profile.hidden else "false"
 
-    return f"""<?xml version="1.0"?>
-<WLANProfile xmlns="{PROFILE_NS}">
+    ssid_hex = _ssid_hex(profile.ssid)
+
+    return f"""<WLANProfile xmlns="{PROFILE_NS}">
     <name>{_escape(profile.profile_name)}</name>
     <SSIDConfig>
         <SSID>
+            <hex>{ssid_hex}</hex>
             <name>{_escape(profile.ssid)}</name>
         </SSID>
         <nonBroadcast>{non_broadcast}</nonBroadcast>

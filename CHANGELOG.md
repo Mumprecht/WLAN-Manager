@@ -1,5 +1,17 @@
 # Änderungsprotokoll
 
+## 2.6.1 – 08.08.2026
+
+- Bugfix für das Erstellen neuer WLAN-Profile.
+- XML-Generierung für neue WLAN-Profile korrigiert.
+- Doppelte `<WLANProfile>`-Deklaration entfernt.
+- SSID wird zusätzlich als hexadezimaler Wert im WLAN-Profil gespeichert.
+- Dadurch können neu erstellte WPA2-Personal-Profile von Windows korrekt über `netsh wlan add profile` importiert werden.
+- Erstellung eines neuen `All User`-Profils mit WPA2-Personal erfolgreich getestet.
+- Keine Änderungen an Sicherung, Wiederherstellung, Löschen, QR-Code oder bestehender Profilbearbeitung.
+
+# Änderungsprotokoll
+
 ## 2.6.0 – 08.08.2026
 
 - WLAN-Profile können direkt im WLAN-Manager neu erstellt werden.
