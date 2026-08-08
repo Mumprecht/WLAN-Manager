@@ -1,5 +1,17 @@
 # Änderungsprotokoll
 
+## 2.6.2 – 08.08.2026
+
+- Lesbarkeit der WLAN-Profilliste verbessert.
+- Hover-Farbe der Tabellenzellen auf ein helles Blau angepasst.
+- Auswahlfarbe der Tabellenzellen auf ein helles Blau mit dunkler Schrift angepasst.
+- Tabellenzellen können jetzt einzeln oder mehrfach markiert werden.
+- Markierte Tabelleninhalte können mit `Ctrl+C` in die Zwischenablage kopiert werden.
+- Kopierte Mehrfachauswahl wird tabellarisch mit Tabulatoren und Zeilenumbrüchen ausgegeben.
+- Taskleisten-Icon unter Windows bleibt als offener Punkt bestehen.
+
+# Änderungsprotokoll
+
 ## 2.6.1 – 08.08.2026
 
 - Bugfix für das Erstellen neuer WLAN-Profile.

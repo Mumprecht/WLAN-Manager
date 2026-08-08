@@ -27,19 +27,21 @@ def main() -> int:
     app.setApplicationName(AppInfo.NAME)
     app.setApplicationVersion(AppInfo.VERSION)
 
-    app.setWindowIcon(
-        QIcon(
-            str(
-                resource_path(
-                    "icons/WLAN-Manager_Icon.ico"
-                )
+    icon = QIcon(
+        str(
+            resource_path(
+                "icons/WLAN-Manager_Icon.ico"
             )
         )
     )
 
+    app.setWindowIcon(icon)
+
     try:
         window = MainWindow()
+        window.setWindowIcon(icon)
         window.show()
+
         return app.exec()
 
     except Exception as exc:
