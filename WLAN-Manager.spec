@@ -17,6 +17,16 @@ a = Analysis(
             str(PROJECT_ROOT / "docs" / "Benutzerhandbuch.md"),
             "docs",
         ),
+        (
+            str(
+                PROJECT_ROOT
+                / "src"
+                / "resources"
+                / "icons"
+                / "WLAN-Manager_Icon.ico"
+            ),
+            "resources/icons",
+        ),
     ],
     hiddenimports=[],
     hookspath=[],
@@ -40,6 +50,13 @@ exe = EXE(
     upx=True,
     console=False,
     version=str(PROJECT_ROOT / "version_info.py"),
+    icon=str(
+        PROJECT_ROOT
+        / "src"
+        / "resources"
+        / "icons"
+        / "WLAN-Manager_Icon.ico"
+    ),
 )
 
 coll = COLLECT(

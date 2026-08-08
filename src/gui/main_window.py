@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (
 )
 
 from core.models import WlanProfile
+from core.profile_editor import EditableWifiProfile
 from core.wlan_manager import WlanManager
 from dialogs.backup_dialog import BackupDialog
 from dialogs.restore_dialog import RestoreDialog
@@ -27,6 +28,7 @@ from dialogs.delete_profiles_dialog import DeleteProfilesDialog
 from dialogs.qr_code_dialog import QrCodeDialog
 from dialogs.help_dialog import HelpDialog
 from dialogs.project_info_dialog import ProjectInfoDialog
+from dialogs.profile_edit_dialog import ProfileEditDialog
 from gui.dialogs import confirm
 from gui.widgets import ProfileTable
 from utils.logger import configure_logging
@@ -145,6 +147,28 @@ class MainWindow(QMainWindow):
             self.export_profiles_csv
         )
 
+        self.action_new_profile = QAction(
+            "Neues WLAN-Profil...",
+            self,
+        )
+        self.action_new_profile.setStatusTip(
+            "Ein neues WLAN-Profil erstellen"
+        )
+        self.action_new_profile.triggered.connect(
+            self.create_new_profile
+        )
+
+        self.action_edit_profile = QAction(
+            "WLAN-Profil bearbeiten...",
+            self,
+        )
+        self.action_edit_profile.setStatusTip(
+            "Das ausgewählte WLAN-Profil bearbeiten"
+        )
+        self.action_edit_profile.triggered.connect(
+            self.edit_selected_profile
+        )
+
         self.action_delete_profiles = QAction(
             "WLAN-Profile löschen...",
             self,
@@ -213,6 +237,9 @@ class MainWindow(QMainWindow):
         wlan_menu.addAction(self.action_show_passwords)
 
         profile_menu = self.menuBar().addMenu("&Profile")
+        profile_menu.addAction(self.action_new_profile)
+        profile_menu.addAction(self.action_edit_profile)
+        profile_menu.addSeparator()
         profile_menu.addAction(self.action_connect)
         profile_menu.addAction(self.action_qr_code)
         profile_menu.addSeparator()
@@ -590,6 +617,92 @@ class MainWindow(QMainWindow):
             preselected_ssid=profile.ssid
         )
 
+
+
+    def create_new_profile(self) -> None:
+        dialog = ProfileEditDialog(
+            title="Neues WLAN-Profil erstellen",
+            parent=self,
+        )
+
+        if dialog.exec() != dialog.DialogCode.Accepted:
+            return
+
+        profile = dialog.profile()
+
+        if any(
+            existing.ssid.casefold() == profile.profile_name.casefold()
+            for existing in self._profiles
+        ):
+            QMessageBox.warning(
+                self,
+                "Profil bereits vorhanden",
+                f"Ein WLAN-Profil mit dem Namen '{profile.profile_name}' "
+                "ist bereits vorhanden.\n\n"
+                "Bitte verwende für dieses Profil die Funktion "
+                "'WLAN-Profil bearbeiten...'.",
+            )
+            return
+
+        try:
+            self.manager.create_profile(profile)
+            QMessageBox.information(
+                self,
+                "WLAN-Profil gespeichert",
+                f"Das WLAN-Profil '{profile.profile_name}' wurde gespeichert.",
+            )
+            self.refresh_profiles()
+        except Exception as exc:
+            self._show_exception(
+                "WLAN-Profil konnte nicht gespeichert werden",
+                exc,
+            )
+
+    def edit_selected_profile(self) -> None:
+        selected = self._selected_profile()
+        if not selected:
+            return
+
+        try:
+            editable = self.manager.load_profile_for_edit(
+                selected.ssid
+            )
+        except Exception as exc:
+            self._show_exception(
+                "WLAN-Profil konnte nicht für die Bearbeitung geladen werden",
+                exc,
+            )
+            return
+
+        dialog = ProfileEditDialog(
+            title=f"WLAN-Profil bearbeiten – {selected.ssid}",
+            profile=editable,
+            parent=self,
+        )
+
+        if dialog.exec() != dialog.DialogCode.Accepted:
+            return
+
+        updated = dialog.profile()
+
+        try:
+            self.manager.replace_profile(
+                selected.ssid,
+                updated,
+            )
+            QMessageBox.information(
+                self,
+                "WLAN-Profil gespeichert",
+                f"Das WLAN-Profil '{updated.profile_name}' wurde aktualisiert.",
+            )
+            self.refresh_profiles()
+        except Exception as exc:
+            self._show_exception(
+                "WLAN-Profil konnte nicht aktualisiert werden",
+                exc,
+            )
+
+
     def backup_profiles(
         self,
         preselected_ssid: str | None = None,
@@ -888,6 +1001,8 @@ class MainWindow(QMainWindow):
         self.table.selectRow(index.row())
 
         menu = QMenu(self)
+        menu.addAction(self.action_edit_profile)
+        menu.addSeparator()
         menu.addAction(self.action_connect)
         menu.addAction(self.action_qr_code)
         menu.addSeparator()

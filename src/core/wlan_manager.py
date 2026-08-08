@@ -17,6 +17,12 @@ from core.importer import (
     import_selected_profiles,
 )
 from core.qr_code import wifi_qr_data
+from core.profile_editor import (
+    EditableWifiProfile,
+    install_profile,
+    replace_profile,
+    load_profile_for_edit,
+)
 from core.profiles import (
     delete_all_profiles,
     delete_selected_profiles,
@@ -109,6 +115,21 @@ class WlanManager:
     @staticmethod
     def export_csv(path: Path) -> int:
         return export_profiles_to_csv(path)
+
+    @staticmethod
+    def load_profile_for_edit(profile_name: str) -> EditableWifiProfile:
+        return load_profile_for_edit(profile_name)
+
+    @staticmethod
+    def create_profile(profile: EditableWifiProfile) -> None:
+        install_profile(profile)
+
+    @staticmethod
+    def replace_profile(
+        old_profile_name: str,
+        profile: EditableWifiProfile,
+    ) -> None:
+        replace_profile(old_profile_name, profile)
 
     @staticmethod
     def qr_data(profile) -> str:

@@ -1,3 +1,33 @@
+# Änderungsprotokoll
+
+## 2.6.0 – 08.08.2026
+
+- WLAN-Profile können direkt im WLAN-Manager neu erstellt werden.
+- Bestehende WLAN-Profile können direkt im WLAN-Manager bearbeitet werden.
+- Neue Profile können wahlweise für alle Benutzer oder nur den aktuellen Benutzer angelegt werden.
+- Profilname, SSID, Passwort, automatische Verbindung und die Einstellung für versteckte SSIDs können bearbeitet werden.
+- Unterscheidung zwischen `All User`- und `Current User`-Profilen ergänzt.
+- Beim Bearbeiten eines vorhandenen Profils bleibt dessen ursprünglicher Gültigkeitsbereich erhalten.
+- Durch Gruppenrichtlinien verwaltete WLAN-Profile werden als schreibgeschützt behandelt.
+- Bestehende Profile werden für die Bearbeitung als WLAN-XML exportiert und auf dieser Grundlage aktualisiert.
+- Vorhandene komplexe WPA2-/WPA3-Sicherheitskonfigurationen bleiben beim Bearbeiten erhalten.
+- Passwortlogik für bestehende geschützte WLAN-Profile verbessert.
+- Ein leeres Passwortfeld beim Bearbeiten bedeutet: vorhandenes Passwort unverändert lassen.
+- Ein bestehendes Passwort wird nur ersetzt, wenn tatsächlich ein neues Passwort eingegeben wird.
+- Profile können auch bearbeitet werden, wenn Windows das vorhandene Passwort nicht im Klartext bereitstellt.
+- Offene WLANs können weiterhin ohne Passwort angelegt und bearbeitet werden.
+- Für neue geschützte WLAN-Profile ist ein gültiger WLAN-Schlüssel erforderlich.
+- Unterstützt werden Passphrasen mit 8 bis 63 druckbaren ASCII-Zeichen sowie 64-stellige hexadezimale PSK.
+- Neues eigenes WLAN-Manager-Programmsymbol eingeführt.
+- Neues Icon wird im Hauptfenster und in der Windows-Taskleiste verwendet.
+- Neues Icon wird in Onedir- und OneFile-EXE eingebettet.
+- Windows-ICO enthält die Größen 16, 24, 32, 48, 64, 128 und 256 Pixel.
+- Ressourcenpfade für Entwicklungsumgebung und PyInstaller-Build erweitert.
+- `resource_path()` für den Zugriff auf Programmressourcen ergänzt.
+- `tools/create_icon.py` zur reproduzierbaren Erzeugung der Windows-ICO-Datei ergänzt.
+- Pillow als Entwicklungsabhängigkeit in `requirements-dev.txt` aufgenommen.
+- Profilbearbeitung, Passwortbeibehaltung und neues Programmsymbol erfolgreich getestet.
+- Bestehende Sicherungs-, Wiederherstellungs-, Lösch-, QR-Code- und Hilfefunktionen bleiben erhalten.
 
 # Änderungsprotokoll
 

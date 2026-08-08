@@ -33,3 +33,14 @@ def log_dir() -> Path:
 def bundled_document(relative_path: str) -> Path:
     """Pfad zu einer mit PyInstaller gebündelten Datei."""
     return project_root() / relative_path
+
+
+def resource_path(relative_path: str) -> Path:
+    """Pfad zu einer Programmressource in Entwicklung und PyInstaller."""
+
+    if getattr(sys, "frozen", False):
+        # PyInstaller-Bundle
+        return project_root() / "resources" / relative_path
+
+    # Entwicklungsumgebung
+    return project_root() / "src" / "resources" / relative_path

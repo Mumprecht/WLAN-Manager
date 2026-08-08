@@ -1,4 +1,4 @@
-# WLAN-Manager Windows – Version 2.5.2
+# WLAN-Manager Windows – Version 2.6.0
 
 Zielprojekt:
 
@@ -193,3 +193,26 @@ Die Logdatei befindet sich nun unter:
 ```
 
 Sie wird nicht mehr im Build- oder dist-Verzeichnis erzeugt.
+
+
+## WLAN-Profile erstellen und bearbeiten
+
+Ab Version 2.6.0 können gespeicherte WLAN-Profile nicht nur angezeigt,
+gesichert, wiederhergestellt und gelöscht, sondern auch erstellt und bearbeitet
+werden.
+
+Menü:
+
+```text
+Profile > Neues WLAN-Profil...
+Profile > WLAN-Profil bearbeiten...
+```
+
+Unterstützt werden:
+
+- WPA2-Personal
+- WPA3-Personal
+- WPA-Personal
+- offene WLANs
+
+Enterprise-WLANs werden im Editor derzeit nicht unterstützt.

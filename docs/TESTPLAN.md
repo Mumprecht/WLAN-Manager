@@ -103,3 +103,32 @@ Dieser Testplan ist vor jeder Freigabe einer neuen Version vollständig durchzug
 - [ ] Version in Projektinformationen stimmt
 - [ ] Logverzeichnis wird korrekt angezeigt
 - [ ] Über WLAN-Manager zeigt Version 2.5.2
+
+
+## 13. Profile erstellen und bearbeiten
+- [ ] Neues WPA2-Personal-Profil erstellen
+- [ ] Neues WPA3-Personal-Profil erstellen
+- [ ] Neues offenes WLAN-Profil erstellen
+- [ ] Passwortvalidierung prüfen
+- [ ] Passwort ein-/ausblenden
+- [ ] Auto-Connect prüfen
+- [ ] Versteckte SSID prüfen
+- [ ] Bestehendes Profil bearbeiten
+- [ ] Passwort eines bestehenden Profils ändern
+- [ ] Profilname ändern
+- [ ] SSID ändern
+- [ ] Profil nach Bearbeitung verbinden
+- [ ] QR-Code nach Bearbeitung prüfen
+- [ ] Backup nach Bearbeitung prüfen
+
+
+### Zusatztests Passwortbearbeitung
+- [ ] Bestehendes Profil laden und Passwort unverändert speichern
+- [ ] Passwortfeld bei bestehendem Profil leeren und nur Auto-Connect ändern
+- [ ] Profil funktioniert danach weiterhin mit dem bisherigen Passwort
+- [ ] Neues gültiges Passwort eingeben und Verbindung testen
+- [ ] 8-Zeichen-Passphrase akzeptieren
+- [ ] 63-Zeichen-Passphrase akzeptieren
+- [ ] 64-stelligen Hex-PSK akzeptieren
+- [ ] ungültige zu kurze Passphrase ablehnen
+- [ ] offenes WLAN ohne Passwort speichern

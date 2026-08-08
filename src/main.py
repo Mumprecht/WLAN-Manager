@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import sys
 
+from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
 from core.permissions import ensure_elevated
 from gui.main_window import MainWindow
+from utils.paths import resource_path
 from utils.version import AppInfo
 
 
@@ -21,13 +23,25 @@ def main() -> int:
         return 0
 
     app = QApplication(sys.argv)
+
     app.setApplicationName(AppInfo.NAME)
     app.setApplicationVersion(AppInfo.VERSION)
+
+    app.setWindowIcon(
+        QIcon(
+            str(
+                resource_path(
+                    "icons/WLAN-Manager_Icon.ico"
+                )
+            )
+        )
+    )
 
     try:
         window = MainWindow()
         window.show()
         return app.exec()
+
     except Exception as exc:
         QMessageBox.critical(
             None,

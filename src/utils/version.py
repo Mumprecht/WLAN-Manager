@@ -8,10 +8,8 @@ class AppInfo:
     """Liest die Projektinformationen aus der Datei VERSION."""
 
     if getattr(sys, "frozen", False):
-        # PyInstaller: Datendateien liegen im Bundle-Verzeichnis.
         PROJECT_ROOT = Path(sys._MEIPASS)
     else:
-        # Entwicklung aus dem Quellcode.
         PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
     VERSION_FILE = PROJECT_ROOT / "VERSION"
@@ -19,10 +17,7 @@ class AppInfo:
     _data: dict[str, str] = {}
 
     if VERSION_FILE.exists():
-        for line in VERSION_FILE.read_text(
-            encoding="utf-8"
-        ).splitlines():
-
+        for line in VERSION_FILE.read_text(encoding="utf-8").splitlines():
             line = line.strip()
 
             if not line or line.startswith("#"):
@@ -36,10 +31,7 @@ class AppInfo:
     VERSION = _data.get("Version", "Unbekannt")
     AUTHOR = _data.get("Author", "Urs Mumprecht")
     COMPANY = _data.get("Company", "Mumprecht Software")
-    COPYRIGHT = _data.get(
-        "Copyright",
-        "2026 Urs Mumprecht",
-    )
+    COPYRIGHT = _data.get("Copyright", "2026 Urs Mumprecht")
 
     @classmethod
     def title(cls) -> str:

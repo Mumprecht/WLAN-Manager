@@ -184,3 +184,79 @@ Hilfe > Über WLAN-Manager
 ```
 
 werden Programmname, Version, Firma, Copyright und Autor angezeigt.
+
+
+## WLAN-Profil erstellen
+
+Über:
+
+```text
+Profile > Neues WLAN-Profil...
+```
+
+kann ein neues WLAN-Profil angelegt werden.
+
+Erforderliche Angaben:
+
+- Profilname
+- SSID
+- Sicherheitstyp
+- Passwort bei geschützten WLANs
+
+Zusätzliche Optionen:
+
+- automatisch verbinden
+- Verbindung mit versteckter SSID erlauben
+
+## WLAN-Profil bearbeiten
+
+Ein bestehendes Profil auswählen und:
+
+```text
+Profile > WLAN-Profil bearbeiten...
+```
+
+oder den entsprechenden Eintrag im Rechtsklick-Menü verwenden.
+
+Dabei können Profilname, SSID, Sicherheit, Passwort und Verbindungsoptionen
+angepasst werden.
+
+
+### Gültigkeitsbereich und Bearbeitung vorhandener Profile
+
+Bei einem neuen Profil kann gewählt werden:
+
+- Alle Benutzer
+- Nur aktueller Benutzer
+
+Beim Bearbeiten eines vorhandenen Profils übernimmt der WLAN-Manager den
+vorhandenen Gültigkeitsbereich automatisch. Die vorhandene Windows-
+Sicherheitskonfiguration wird ebenfalls beibehalten. Dadurch bleiben auch
+komplexere WPA2/WPA3-Profile erhalten; im Editor werden bei bestehenden
+Profilen nur Profilname, SSID, Passwort, Auto-Connect und die Einstellung für
+versteckte SSIDs geändert.
+
+Durch Gruppenrichtlinien verwaltete WLAN-Profile sind schreibgeschützt und
+können nicht bearbeitet werden.
+
+
+### Passwort beim Bearbeiten
+
+Bei einem neuen geschützten WLAN muss ein gültiger WLAN-Schlüssel angegeben
+werden.
+
+Bei einem bestehenden geschützten Profil gilt:
+
+- Wird das vorhandene Passwort angezeigt, kann es geändert werden.
+- Wird das Passwortfeld vollständig geleert, bleibt das bisherige Passwort
+  unverändert.
+- Konnte Windows das Passwort nicht im Klartext liefern, bleibt das Feld leer.
+  Auch dann bedeutet ein leeres Feld: vorhandenes Passwort beibehalten.
+- Erst wenn ein neues Passwort eingegeben wird, ersetzt der WLAN-Manager den
+  bisherigen Schlüssel.
+
+Für neu gesetzte Personal-WLAN-Schlüssel akzeptiert der WLAN-Manager
+Passphrasen mit 8 bis 63 druckbaren ASCII-Zeichen oder einen 64-stelligen
+hexadezimalen PSK.
+
+Bei offenen WLANs wird kein Passwort gespeichert.
