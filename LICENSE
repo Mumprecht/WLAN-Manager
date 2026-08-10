@@ -1,8 +1,116 @@
-Copyright (c) 2026 Urs Mumprecht
+WLAN-Manager Non-Commercial License
+Version 1.0, 2026
 
+Copyright (c) 2026 Urs Mumprecht / Mumprecht Software
 All rights reserved.
 
-This software is proprietary and confidential.
-No part of this software may be copied, modified,
-distributed or published without written permission
-from the author.
+1. Grant of License
+
+Subject to the terms of this license, the copyright holder grants you a
+limited, non-exclusive, non-transferable, revocable license to use the
+WLAN-Manager software free of charge for private and other non-commercial
+purposes.
+
+Non-commercial use includes personal use and use by non-profit organizations,
+associations, clubs, and similar organizations, provided that the software is
+not used for commercial gain or as part of a commercial service.
+
+2. Commercial Use
+
+Commercial use of the software is not permitted without prior written
+permission from the copyright holder.
+
+Commercial use includes, but is not limited to:
+
+- use of the software in connection with a commercial product or service;
+- use for direct or indirect financial gain;
+- selling, licensing, renting, or otherwise commercially exploiting the
+  software;
+- providing the software to customers as part of a paid service or product.
+
+For permission to use the software commercially, please contact the copyright
+holder.
+
+3. Modification
+
+You may not modify, adapt, translate, reverse engineer, decompile,
+disassemble, create derivative works from, or otherwise alter the software or
+its source code without prior written permission from the copyright holder,
+except where such restrictions are prohibited by applicable law.
+
+4. Redistribution
+
+You may not copy, redistribute, republish, sublicense, sell, rent, lease, host,
+mirror, or otherwise make the software, its executable files, or its source
+code available to third parties without prior written permission from the
+copyright holder.
+
+Users who wish to obtain the software should obtain it from the official
+distribution source provided by the copyright holder.
+
+5. Ownership
+
+The software is licensed, not sold.
+
+All rights, title, and interest in and to the software, including its source
+code, executable files, documentation, name, graphics, and other associated
+materials, remain with the copyright holder.
+
+No ownership rights are transferred under this license.
+
+6. Copyright and License Notices
+
+You may not remove, obscure, or alter any copyright, authorship, trademark,
+license, or other proprietary notices contained in or accompanying the
+software.
+
+7. No Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+THE COPYRIGHT HOLDER DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE,
+UNINTERRUPTED, SECURE, OR SUITABLE FOR ANY PARTICULAR PURPOSE.
+
+8. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COPYRIGHT HOLDER SHALL
+NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR
+OTHER DAMAGES ARISING FROM THE USE OF, OR INABILITY TO USE, THE SOFTWARE,
+INCLUDING BUT NOT LIMITED TO LOSS OF DATA, LOSS OF PROFITS, BUSINESS
+INTERRUPTION, OR DAMAGE TO COMPUTER SYSTEMS OR NETWORK CONFIGURATIONS.
+
+9. Termination
+
+This license terminates automatically if you violate any of its terms.
+
+Upon termination, you must cease using the software and delete all copies in
+your possession or control, unless otherwise permitted in writing by the
+copyright holder.
+
+10. Additional Permissions
+
+Any use not expressly permitted by this license requires prior written
+permission from the copyright holder.
+
+Written permission may grant additional rights or exceptions for a specific
+person, organization, project, or purpose without changing this license for
+other users.
+
+11. Governing Law
+
+This license is governed by the laws of Switzerland, without regard to
+conflict-of-law principles.
+
+Unless mandatory law provides otherwise, the place of jurisdiction shall be
+the competent courts at the domicile of the copyright holder in Switzerland.
+
+12. Entire License
+
+This license constitutes the terms under which the software is made available
+for non-commercial use. If any provision is found to be invalid or
+unenforceable, the remaining provisions shall remain in effect.
+
+By using the software, you acknowledge that you have read, understood, and
+agreed to the terms of this license.

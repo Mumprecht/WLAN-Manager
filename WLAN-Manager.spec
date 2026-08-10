@@ -13,6 +13,7 @@ a = Analysis(
     binaries=[],
     datas=[
         (str(PROJECT_ROOT / "VERSION"), "."),
+        (str(PROJECT_ROOT / "LICENSE"), "."),
         (
             str(PROJECT_ROOT / "docs" / "Benutzerhandbuch.md"),
             "docs",

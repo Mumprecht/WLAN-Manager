@@ -17,7 +17,9 @@ class AppInfo:
     _data: dict[str, str] = {}
 
     if VERSION_FILE.exists():
-        for line in VERSION_FILE.read_text(encoding="utf-8").splitlines():
+        for line in VERSION_FILE.read_text(
+            encoding="utf-8"
+        ).splitlines():
             line = line.strip()
 
             if not line or line.startswith("#"):
@@ -31,7 +33,13 @@ class AppInfo:
     VERSION = _data.get("Version", "Unbekannt")
     AUTHOR = _data.get("Author", "Urs Mumprecht")
     COMPANY = _data.get("Company", "Mumprecht Software")
-    COPYRIGHT = _data.get("Copyright", "2026 Urs Mumprecht")
+    COPYRIGHT = _data.get(
+        "Copyright",
+        "2026 Urs Mumprecht",
+    )
+
+    LICENSE_NAME = "WLAN-Manager Non-Commercial License"
+    LICENSE_VERSION = "1.0"
 
     @classmethod
     def title(cls) -> str:
@@ -44,9 +52,13 @@ class AppInfo:
         return (
             f"{cls.NAME}\n"
             f"Version {cls.VERSION}\n\n"
-            f"{cls.COPYRIGHT}\n"
-            f"{cls.COMPANY}\n\n"
-            f"Autor: {cls.AUTHOR}"
+            f"{cls.COMPANY}\n"
+            f"Copyright © {cls.COPYRIGHT}\n"
+            f"Autor: {cls.AUTHOR}\n\n"
+            f"License:\n"
+            f"{cls.LICENSE_NAME}, Version "
+            f"{cls.LICENSE_VERSION}\n\n"
+            "Free for private and non-commercial use."
         )
 
     @classmethod

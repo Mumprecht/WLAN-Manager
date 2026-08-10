@@ -1,5 +1,18 @@
 # Änderungsprotokoll
 
+## 2.6.5 – 10.08.2026
+
+### Neu
+
+- WLAN-Manager Non-Commercial License, Version 1.0 eingeführt.
+- Lizenzinformationen im Dialog „Über WLAN-Manager“ ergänzt.
+- Lizenzdatei wird in die PyInstaller-Distribution aufgenommen.
+
+### Geändert
+
+- README auf den aktuellen Funktionsumfang überarbeitet und um Lizenzinformationen ergänzt.
+- Benutzerhandbuch um Lizenz- und Copyright-Informationen erweitert.
+
 ## 2.6.4 – 10.08.2026
 
 ### Neu

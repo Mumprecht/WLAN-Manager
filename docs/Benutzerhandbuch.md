@@ -150,6 +150,23 @@ Ctrl+I
 - `Ctrl+Q` Beenden
 - `F1` Über WLAN-Manager
 
+## Lizenz und Copyright
+
+Copyright © 2026 Urs Mumprecht / Mumprecht Software.
+
+Der WLAN-Manager ist proprietäre Software und darf für private und andere
+nicht-kommerzielle Zwecke kostenlos verwendet werden.
+
+Kommerzielle Nutzung, Änderungen, Weiterverteilung, Wiederveröffentlichung
+oder die Erstellung abgeleiteter Werke sind ohne vorherige schriftliche
+Genehmigung des Urheberrechtsinhabers nicht gestattet.
+
+Es gilt die:
+
+**WLAN-Manager Non-Commercial License, Version 1.0**
+
+Die vollständigen Lizenzbedingungen befinden sich in der Datei `LICENSE`.
+
 ## Sicherheit
 
 Backup-XML-Dateien mit Klartextschlüsseln sowie CSV-Dateien mit Passwörtern sind vertraulich zu behandeln.
