@@ -10,6 +10,10 @@ from core.netsh import (
     require_success,
     run_netsh,
 )
+from core.wlan_native import (
+    NativeWifiError,
+    delete_profile as delete_profile_native,
+)
 
 
 def get_profile_names() -> list[str]:
@@ -117,23 +121,24 @@ def get_all_profile_details() -> list[WlanProfile]:
 
 
 def delete_profile(ssid: str) -> None:
-    result = run_netsh(["wlan", "delete", "profile", f"name={ssid}"])
-    require_success(
-        result,
-        f"Das WLAN-Profil '{ssid}' konnte nicht gelöscht werden.",
-    )
+    """Löscht genau ein WLAN-Profil case-sensitiv."""
+    try:
+        delete_profile_native(ssid)
+    except NativeWifiError as exc:
+        raise NetshError(str(exc)) from exc
 
 
 def delete_all_profiles() -> tuple[list[str], list[tuple[str, str]]]:
+    """Löscht alle WLAN-Profile einzeln und case-sensitiv."""
     successful: list[str] = []
     failed: list[tuple[str, str]] = []
 
     for ssid in get_profile_names():
-        result = run_netsh(["wlan", "delete", "profile", f"name={ssid}"])
-        if result.returncode == 0:
+        try:
+            delete_profile_native(ssid)
             successful.append(ssid)
-        else:
-            failed.append((ssid, result.combined.strip()))
+        except NativeWifiError as exc:
+            failed.append((ssid, str(exc)))
 
     return successful, failed
 
@@ -215,20 +220,15 @@ def connect_profile(ssid: str) -> None:
 def delete_selected_profiles(
     ssids: list[str],
 ) -> tuple[list[str], list[tuple[str, str]]]:
-    """Löscht genau die ausgewählten WLAN-Profile."""
+    """Löscht genau die ausgewählten WLAN-Profile case-sensitiv."""
     successful: list[str] = []
     failed: list[tuple[str, str]] = []
 
     for ssid in ssids:
-        result = run_netsh(
-            ["wlan", "delete", "profile", f"name={ssid}"]
-        )
-
-        if result.returncode == 0:
+        try:
+            delete_profile_native(ssid)
             successful.append(ssid)
-        else:
-            failed.append(
-                (ssid, result.combined.strip())
-            )
+        except NativeWifiError as exc:
+            failed.append((ssid, str(exc)))
 
     return successful, failed

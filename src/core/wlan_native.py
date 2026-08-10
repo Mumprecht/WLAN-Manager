@@ -88,6 +88,15 @@ _wlanapi.WlanGetProfile.argtypes = [
 ]
 _wlanapi.WlanGetProfile.restype = wintypes.DWORD
 
+
+_wlanapi.WlanDeleteProfile.argtypes = [
+    wintypes.HANDLE,
+    ctypes.POINTER(GUID),
+    wintypes.LPCWSTR,
+    ctypes.c_void_p,
+]
+_wlanapi.WlanDeleteProfile.restype = wintypes.DWORD
+
 _wlanapi.WlanFreeMemory.argtypes = [
     ctypes.c_void_p,
 ]
@@ -256,3 +265,70 @@ def get_profile_xml(
             client_handle,
             None,
         )
+
+
+def delete_profile(profile_name: str) -> None:
+    """Löscht ein WLAN-Profil case-sensitiv über WlanDeleteProfile."""
+    negotiated_version = wintypes.DWORD()
+    client_handle = wintypes.HANDLE()
+
+    result = _wlanapi.WlanOpenHandle(
+        WLAN_API_VERSION_2_0,
+        None,
+        ctypes.byref(negotiated_version),
+        ctypes.byref(client_handle),
+    )
+    if result != ERROR_SUCCESS:
+        raise NativeWifiError(
+            result,
+            "Die Windows WLAN-API konnte nicht geöffnet werden.",
+        )
+
+    try:
+        interface_guids = _enumerate_interface_guids(client_handle)
+        if not interface_guids:
+            raise NativeWifiError(
+                ERROR_NOT_FOUND,
+                "Es wurde keine WLAN-Schnittstelle gefunden.",
+            )
+
+        deleted = False
+        access_denied = False
+
+        for interface_guid in interface_guids:
+            result = _wlanapi.WlanDeleteProfile(
+                client_handle,
+                ctypes.byref(interface_guid),
+                profile_name,
+                None,
+            )
+
+            if result == ERROR_SUCCESS:
+                deleted = True
+            elif result == ERROR_NOT_FOUND:
+                continue
+            elif result == ERROR_ACCESS_DENIED:
+                access_denied = True
+            else:
+                raise NativeWifiError(
+                    result,
+                    f"Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.",
+                )
+
+        if deleted:
+            return
+
+        if access_denied:
+            raise NativeWifiError(
+                ERROR_ACCESS_DENIED,
+                f"Das WLAN-Profil '{profile_name}' konnte wegen fehlender "
+                "Berechtigung nicht gelöscht werden.",
+            )
+
+        raise NativeWifiError(
+            ERROR_NOT_FOUND,
+            f"Das WLAN-Profil '{profile_name}' wurde auf keiner "
+            "WLAN-Schnittstelle gefunden.",
+        )
+    finally:
+        _wlanapi.WlanCloseHandle(client_handle, None)

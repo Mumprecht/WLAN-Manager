@@ -1,5 +1,13 @@
 # Änderungsprotokoll
 
+## 2.6.7 – 10.08.2026
+
+### Behoben
+
+- Löschen von WLAN-Profilen auf die native Windows WLAN API umgestellt.
+- WLAN-Profilnamen werden beim Löschen nun case-sensitiv behandelt.
+- Profile, die sich nur durch Groß-/Kleinschreibung unterscheiden, werden beim Löschen nicht mehr gemeinsam entfernt.
+
 ## 2.6.6 – 10.08.2026
 
 ### Verbessert
