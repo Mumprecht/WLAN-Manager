@@ -16,6 +16,28 @@ Nach dem Start werden alle gespeicherten WLAN-Profile automatisch angezeigt.
 
 Mit `F5` kann die Liste aktualisiert werden.
 
+## Inhalte aus der Profilliste kopieren
+
+Der Inhalt einer Tabellenzelle kann in die Zwischenablage kopiert werden.
+
+Dazu mit der rechten Maustaste auf die gewünschte Zelle klicken und im
+Kontextmenü auswählen:
+
+```text
+Kopieren    Ctrl+C
+```
+
+Alternativ kann die gewünschte Zelle ausgewählt und mit:
+
+```text
+Ctrl+C
+```
+
+kopiert werden.
+
+Damit können beispielsweise der WLAN-Profilname, die Authentifizierung oder
+der in der Tabelle angezeigte Passwortinhalt kopiert werden.
+
 ## WLAN-Passwörter anzeigen
 
 Menü:
@@ -117,6 +139,7 @@ Ctrl+I
 ## Tastenkürzel
 
 - `F5` Aktualisieren
+- `Ctrl+C` Inhalt der ausgewählten Tabellenzelle kopieren
 - `Ctrl+S` Sichern
 - `Ctrl+R` Wiederherstellen
 - `Entf` Löschen
@@ -130,7 +153,6 @@ Ctrl+I
 ## Sicherheit
 
 Backup-XML-Dateien mit Klartextschlüsseln sowie CSV-Dateien mit Passwörtern sind vertraulich zu behandeln.
-
 
 ## WLAN-QR-Code
 
@@ -156,7 +178,6 @@ kopiert werden. Smartphones und Tablets können den Code verwenden, um die
 WLAN-Zugangsdaten zu übernehmen.
 
 Enterprise-WLAN-Profile werden derzeit nicht unterstützt.
-
 
 ## Hilfe
 
@@ -184,7 +205,6 @@ Hilfe > Über WLAN-Manager
 ```
 
 werden Programmname, Version, Firma, Copyright und Autor angezeigt.
-
 
 ## WLAN-Profil erstellen
 
@@ -221,7 +241,6 @@ oder den entsprechenden Eintrag im Rechtsklick-Menü verwenden.
 Dabei können Profilname, SSID, Sicherheit, Passwort und Verbindungsoptionen
 angepasst werden.
 
-
 ### Gültigkeitsbereich und Bearbeitung vorhandener Profile
 
 Bei einem neuen Profil kann gewählt werden:
@@ -238,7 +257,6 @@ versteckte SSIDs geändert.
 
 Durch Gruppenrichtlinien verwaltete WLAN-Profile sind schreibgeschützt und
 können nicht bearbeitet werden.
-
 
 ### Passwort beim Bearbeiten
 

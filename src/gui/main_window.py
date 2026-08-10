@@ -6,6 +6,7 @@ from pathlib import Path
 from PySide6.QtCore import QPoint, QSettings, Qt
 from PySide6.QtGui import QAction, QCloseEvent, QKeySequence
 from PySide6.QtWidgets import (
+    QApplication,
     QFileDialog,
     QLabel,
     QMainWindow,
@@ -998,10 +999,30 @@ class MainWindow(QMainWindow):
         if not index.isValid():
             return
 
-        self.table.selectRow(index.row())
+        # Die angeklickte Zelle wird zur aktuellen Zelle.
+        # Profilbezogene Aktionen verwenden weiterhin die Zeile dieser Zelle.
+        self.table.setCurrentCell(
+            index.row(),
+            index.column(),
+        )
 
         menu = QMenu(self)
         menu.addAction(self.action_edit_profile)
+
+        copy_action = menu.addAction("Kopieren")
+        copy_action.setShortcut(QKeySequence.StandardKey.Copy)
+        copy_action.setShortcutVisibleInContextMenu(True)
+
+        def copy_cell() -> None:
+            item = self.table.item(
+                index.row(),
+                index.column(),
+            )
+            if item is not None:
+                QApplication.clipboard().setText(item.text())
+
+        copy_action.triggered.connect(copy_cell)
+
         menu.addSeparator()
         menu.addAction(self.action_connect)
         menu.addAction(self.action_qr_code)

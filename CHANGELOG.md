@@ -1,5 +1,13 @@
 # Änderungsprotokoll
 
+## 2.6.4 – 10.08.2026
+
+### Neu
+- Kontextmenü der WLAN-Profilliste um die Funktion „Kopieren“ erweitert.
+- Der Inhalt der mit der rechten Maustaste ausgewählten Tabellenzelle kann direkt über das Kontextmenü in die Zwischenablage kopiert werden.
+- Im Kontextmenü wird der Tastaturbefehl `Ctrl+C` für die Kopierfunktion angezeigt.
+
+
 ## 2.6.3 – 10.08.2026
 
 ### Behoben
