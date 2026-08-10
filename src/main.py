@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 
+from PySide6.QtCore import QTimer
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
@@ -9,6 +10,7 @@ from core.permissions import ensure_elevated
 from gui.main_window import MainWindow
 from utils.paths import resource_path
 from utils.version import AppInfo
+from utils.windows_icon import set_native_window_icon
 
 
 def main() -> int:
@@ -27,20 +29,43 @@ def main() -> int:
     app.setApplicationName(AppInfo.NAME)
     app.setApplicationVersion(AppInfo.VERSION)
 
-    icon = QIcon(
-        str(
-            resource_path(
-                "icons/WLAN-Manager_Icon.ico"
-            )
-        )
+    icon_path = resource_path(
+        "icons/WLAN-Manager_Icon.ico"
     )
+
+    icon = QIcon(str(icon_path))
 
     app.setWindowIcon(icon)
 
     try:
         window = MainWindow()
+
+        # Qt-Icon setzen.
         window.setWindowIcon(icon)
+
+        # Fenster zuerst vollständig erzeugen und anzeigen.
         window.show()
+
+        # Native Windows-Icons erst setzen, wenn das Fenster
+        # bereits im Windows-Fenstersystem vorhanden ist.
+        QTimer.singleShot(
+            0,
+            lambda: set_native_window_icon(
+                int(window.winId()),
+                icon_path,
+            ),
+        )
+
+        # Sicherheitshalber nach kurzer Verzögerung nochmals setzen.
+        # Zu diesem Zeitpunkt hat Windows auch den Taskleisten-
+        # Eintrag vollständig aufgebaut.
+        QTimer.singleShot(
+            500,
+            lambda: set_native_window_icon(
+                int(window.winId()),
+                icon_path,
+            ),
+        )
 
         return app.exec()
 

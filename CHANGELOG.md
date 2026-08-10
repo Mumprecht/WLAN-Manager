@@ -1,5 +1,16 @@
 # Änderungsprotokoll
 
+## 2.6.3 – 10.08.2026
+
+### Behoben
+- Darstellung des WLAN-Manager-Icons in der Windows-Taskleiste korrigiert.
+- Das Taskleisten-Icon wird nach dem Programmstart nun zuverlässig angezeigt.
+- Native Windows-Fenstericons werden nach dem Erzeugen des Hauptfensters nochmals gesetzt, um die korrekte Darstellung in der Taskleiste und bei Alt+Tab sicherzustellen.
+
+### Geändert
+- WLAN-Manager-Icon für eine bessere Darstellung in der Windows-Taskleiste optimiert.
+
+
 ## 2.6.2 – 08.08.2026
 
 - Lesbarkeit der WLAN-Profilliste verbessert.
@@ -10,7 +21,6 @@
 - Kopierte Mehrfachauswahl wird tabellarisch mit Tabulatoren und Zeilenumbrüchen ausgegeben.
 - Taskleisten-Icon unter Windows bleibt als offener Punkt bestehen.
 
-# Änderungsprotokoll
 
 ## 2.6.1 – 08.08.2026
 
@@ -22,7 +32,6 @@
 - Erstellung eines neuen `All User`-Profils mit WPA2-Personal erfolgreich getestet.
 - Keine Änderungen an Sicherung, Wiederherstellung, Löschen, QR-Code oder bestehender Profilbearbeitung.
 
-# Änderungsprotokoll
 
 ## 2.6.0 – 08.08.2026
 
@@ -53,7 +62,6 @@
 - Profilbearbeitung, Passwortbeibehaltung und neues Programmsymbol erfolgreich getestet.
 - Bestehende Sicherungs-, Wiederherstellungs-, Lösch-, QR-Code- und Hilfefunktionen bleiben erhalten.
 
-# Änderungsprotokoll
 
 ## 2.5.2 – 07.08.2026
 
@@ -70,8 +78,6 @@
 - Keine Änderungen an WLAN-, Backup-, Restore-, Lösch- oder QR-Code-Funktionen.
 
 
-# Änderungsprotokoll
-
 ## 2.5.1 – 07.08.2026
 
 - Build-Prozess automatisiert.
@@ -83,8 +89,6 @@
 - Build-Ausgabe zeigt Programmname, Versionsnummer und resultierenden EXE-Pfad.
 - Keine Änderungen an der WLAN-Funktionalität gegenüber Version 2.5.0.
 
-
-# Änderungsprotokoll
 
 ## 2.5.0 – 07.08.2026
 
@@ -101,8 +105,6 @@
 - Automatische Tests für grundlegende QR-Code-Daten ergänzt.
 
 
-# Änderungsprotokoll
-
 ## 2.4.1 – 07.08.2026
 
 - Maintenance Release ohne neue WLAN-Funktionen.
@@ -116,8 +118,6 @@
 - Release-Prozess dokumentiert.
 - Versionsnummer zentral auf 2.4.1 angehoben.
 
-
-# Änderungsprotokoll
 
 ## 2.4.0 – 07.08.2026
 
@@ -142,8 +142,6 @@
 - Bestehende QSettings für zuletzt verwendete Sicherungs- und Wiederherstellungsordner bleiben erhalten.
 
 
-# Änderungsprotokoll
-
 ## 2.3.0 – 07.08.2026
 
 - Profilverwaltung beim Löschen vereinheitlicht.
@@ -157,8 +155,6 @@
 - Bedienlogik von Sichern, Wiederherstellen und Löschen ist damit konsistenter.
 
 
-# Änderungsprotokoll
-
 ## 2.2.1 – 07.08.2026
 
 - Konfliktbehandlung beim Nachsichern in bereits bestehende Backup-Ordner ergänzt.
@@ -169,8 +165,6 @@
 - Zusammenfassung zeigt zusätzlich die Anzahl übersprungener Profile.
 - Damit können geänderte WLAN-Profile gezielt in bestehende Backup-Ordner nachgesichert werden.
 
-
-# Änderungsprotokoll
 
 ## 2.2.0 – 07.08.2026
 
@@ -189,8 +183,6 @@
 - Neue wiederverwendbare Komponenten `ProfileSelectionWidget` und `FolderSelector`.
 - Dialoge und Widgets wurden aus der bisherigen GUI-Struktur weiter modularisiert.
 
-
-# Änderungsprotokoll
 
 ## 2.1.0 – 07.08.2026
 
