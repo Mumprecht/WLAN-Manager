@@ -1,5 +1,16 @@
 # Änderungsprotokoll
 
+## 2.6.6 – 10.08.2026
+
+### Verbessert
+
+- Gespeicherte Sicherungs- und Wiederherstellungspfade werden beim Öffnen
+  des jeweiligen Dialogs auf ihre Gültigkeit geprüft.
+- Existiert ein zuletzt verwendeter Ordner nicht mehr, verwendet der
+  WLAN-Manager automatisch den Standardordner.
+- Ungültige gespeicherte Pfade werden in den Programmeinstellungen durch
+  den gültigen Standardpfad ersetzt.
+
 ## 2.6.5 – 10.08.2026
 
 ### Neu

@@ -28,7 +28,6 @@ from dialogs.overwrite_dialog import OverwriteDialog
 from dialogs.delete_profiles_dialog import DeleteProfilesDialog
 from dialogs.qr_code_dialog import QrCodeDialog
 from dialogs.help_dialog import HelpDialog
-from dialogs.license_dialog import LicenseDialog
 from dialogs.project_info_dialog import ProjectInfoDialog
 from dialogs.profile_edit_dialog import ProfileEditDialog
 from gui.dialogs import confirm
@@ -203,12 +202,6 @@ class MainWindow(QMainWindow):
         )
         self.action_help.triggered.connect(self.show_help)
 
-        self.action_license = QAction("Lizenz", self)
-        self.action_license.setStatusTip(
-            "Lizenzbedingungen des WLAN-Managers anzeigen"
-        )
-        self.action_license.triggered.connect(self.show_license)
-
         self.action_project_info = QAction(
             "Projektinformationen",
             self,
@@ -255,7 +248,6 @@ class MainWindow(QMainWindow):
 
         help_menu = self.menuBar().addMenu("&Hilfe")
         help_menu.addAction(self.action_help)
-        help_menu.addAction(self.action_license)
         help_menu.addAction(self.action_project_info)
         help_menu.addSeparator()
         help_menu.addAction(self.action_about)
@@ -640,7 +632,7 @@ class MainWindow(QMainWindow):
         profile = dialog.profile()
 
         if any(
-            existing.ssid.casefold() == profile.profile_name.casefold()
+            existing.ssid == profile.profile_name
             for existing in self._profiles
         ):
             QMessageBox.warning(
@@ -1081,13 +1073,6 @@ class MainWindow(QMainWindow):
 
     def show_help(self) -> None:
         dialog = HelpDialog(self)
-        dialog.exec()
-
-    def show_license(self) -> None:
-        dialog = LicenseDialog(
-            license_path=AppInfo.PROJECT_ROOT / "LICENSE",
-            parent=self,
-        )
         dialog.exec()
 
     def show_project_info(self) -> None:

@@ -55,13 +55,24 @@ class BackupDialog(QDialog):
             type=str,
         )
 
+        saved_path = Path(saved_folder)
+        if saved_path.exists() and saved_path.is_dir():
+            initial_folder = saved_path
+        else:
+            initial_folder = Path(default_base_folder)
+            self._settings.setValue(
+                self.SETTINGS_KEY_BASE_FOLDER,
+                str(initial_folder),
+            )
+            self._settings.sync()
+
         self.profile_selector = ProfileSelectionWidget(
             profiles,
             self,
         )
 
         self.folder_selector = FolderSelector(
-            Path(saved_folder),
+            initial_folder,
             self,
         )
 
@@ -196,7 +207,7 @@ class BackupDialog(QDialog):
             QMessageBox.warning(
                 self,
                 "Zielordner nicht gefunden",
-                f"Der Zielordner existiert nicht:\n\n{base}",
+                f"Der Zielordner existiert nicht:\\n\\n{base}",
             )
             return
 
@@ -215,8 +226,8 @@ class BackupDialog(QDialog):
                 QMessageBox.warning(
                     self,
                     "Ungültiger Ordnername",
-                    'Der Ordnername darf folgende Zeichen nicht enthalten:\n\n'
-                    r'\ / : * ? " < > |',
+                    'Der Ordnername darf folgende Zeichen nicht enthalten:\\n\\n'
+                    r'\\ / : * ? " < > |',
                 )
                 return
 

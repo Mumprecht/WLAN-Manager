@@ -50,8 +50,19 @@ class RestoreDialog(QDialog):
             type=str,
         )
 
+        saved_path = Path(saved_folder)
+        if saved_path.exists() and saved_path.is_dir():
+            initial_folder = saved_path
+        else:
+            initial_folder = Path(default_source_folder)
+            self._settings.setValue(
+                self.SETTINGS_KEY_SOURCE_FOLDER,
+                str(initial_folder),
+            )
+            self._settings.sync()
+
         self.folder_selector = FolderSelector(
-            Path(saved_folder),
+            initial_folder,
             self,
         )
 
@@ -228,7 +239,7 @@ class RestoreDialog(QDialog):
             QMessageBox.warning(
                 self,
                 "Quellordner nicht gefunden",
-                f"Der Quellordner existiert nicht:\n\n{folder}",
+                f"Der Quellordner existiert nicht:\\n\\n{folder}",
             )
             return
 
