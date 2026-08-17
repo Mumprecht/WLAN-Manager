@@ -12,12 +12,83 @@ a = Analysis(
     pathex=[str(SRC_DIR)],
     binaries=[],
     datas=[
-        (str(PROJECT_ROOT / "VERSION"), "."),
-        (str(PROJECT_ROOT / "LICENSE"), "."),
+        # Programm- und Lizenzinformationen
         (
-            str(PROJECT_ROOT / "docs" / "Benutzerhandbuch.md"),
+            str(PROJECT_ROOT / "VERSION"),
+            ".",
+        ),
+        (
+            str(PROJECT_ROOT / "LICENSE"),
+            ".",
+        ),
+
+        # Benutzerhandbücher
+        (
+            str(
+                PROJECT_ROOT
+                / "docs"
+                / "Benutzerhandbuch.md"
+            ),
             "docs",
         ),
+        (
+            str(
+                PROJECT_ROOT
+                / "docs"
+                / "Benutzerhandbuch_en.md"
+            ),
+            "docs",
+        ),
+        (
+            str(
+                PROJECT_ROOT
+                / "docs"
+                / "Benutzerhandbuch_fr.md"
+            ),
+            "docs",
+        ),
+        (
+            str(
+                PROJECT_ROOT
+                / "docs"
+                / "Benutzerhandbuch_it.md"
+            ),
+            "docs",
+        ),
+
+        # Übersetzungsdateien
+        (
+            str(
+                PROJECT_ROOT
+                / "src"
+                / "resources"
+                / "translations"
+                / "wlan_manager_en.qm"
+            ),
+            "resources/translations",
+        ),
+        (
+            str(
+                PROJECT_ROOT
+                / "src"
+                / "resources"
+                / "translations"
+                / "wlan_manager_fr.qm"
+            ),
+            "resources/translations",
+        ),
+        (
+            str(
+                PROJECT_ROOT
+                / "src"
+                / "resources"
+                / "translations"
+                / "wlan_manager_it.qm"
+            ),
+            "resources/translations",
+        ),
+
+        # Programmsymbol
         (
             str(
                 PROJECT_ROOT
@@ -51,7 +122,9 @@ exe = EXE(
     strip=False,
     upx=True,
     console=False,
-    version=str(PROJECT_ROOT / "version_info.py"),
+    version=str(
+        PROJECT_ROOT / "version_info.py"
+    ),
     icon=str(
         PROJECT_ROOT
         / "src"
