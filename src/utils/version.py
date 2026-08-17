@@ -3,6 +3,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+from PySide6.QtCore import QCoreApplication
+
 
 class AppInfo:
     """Liest die Projektinformationen aus der Datei VERSION."""
@@ -51,14 +53,21 @@ class AppInfo:
         """Text für den Dialog 'Über WLAN-Manager'."""
         return (
             f"{cls.NAME}\n"
-            f"Version {cls.VERSION}\n\n"
-            f"{cls.COMPANY}\n"
-            f"Copyright © {cls.COPYRIGHT}\n"
-            f"Autor: {cls.AUTHOR}\n\n"
-            f"License:\n"
-            f"{cls.LICENSE_NAME}, Version "
-            f"{cls.LICENSE_VERSION}\n\n"
-            "Free for private and non-commercial use."
+            + QCoreApplication.translate("AppInfo", "Version {version}").format(version=cls.VERSION)
+            + f"\n\n{cls.COMPANY}\n"
+            + QCoreApplication.translate("AppInfo", "Copyright © {copyright}").format(
+                copyright=cls.COPYRIGHT
+            )
+            + "\n"
+            + QCoreApplication.translate("AppInfo", "Autor: {author}").format(author=cls.AUTHOR)
+            + "\n\n"
+            + QCoreApplication.translate("AppInfo", "Lizenz:")
+            + f"\n{cls.LICENSE_NAME}, "
+            + QCoreApplication.translate("AppInfo", "Version {version}").format(
+                version=cls.LICENSE_VERSION
+            )
+            + "\n\n"
+            + QCoreApplication.translate("AppInfo", "Kostenlos für private und nicht-kommerzielle Nutzung.")
         )
 
     @classmethod

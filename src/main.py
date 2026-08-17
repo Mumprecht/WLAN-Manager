@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import sys
 
-from PySide6.QtCore import QTimer, QTranslator
+from PySide6.QtCore import QCoreApplication, QTimer, QTranslator
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
@@ -82,8 +82,14 @@ def main() -> int:
     except Exception as exc:
         QMessageBox.critical(
             None,
-            "Schwerer Fehler",
-            f"Das Programm konnte nicht gestartet werden.\n\n{exc}",
+            QCoreApplication.translate(
+                "Main",
+                "Schwerer Fehler",
+            ),
+            QCoreApplication.translate(
+                "Main",
+                "Das Programm konnte nicht gestartet werden.\n\n{error}",
+            ).format(error=exc),
         )
         return 1
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from PySide6.QtCore import QT_TRANSLATE_NOOP
 from PySide6.QtWidgets import (
     QCheckBox,
     QComboBox,
@@ -18,15 +19,15 @@ from core.profile_editor import EditableWifiProfile, validate_personal_key
 
 class ProfileEditDialog(QDialog):
     SECURITY_OPTIONS = (
-        ("WPA2-Personal", "wpa2-personal"),
-        ("WPA3-Personal", "wpa3-personal"),
-        ("WPA-Personal", "wpa-personal"),
-        ("Offenes WLAN", "open"),
+        (QT_TRANSLATE_NOOP("ProfileEditDialog", "WPA2-Personal"), "wpa2-personal"),
+        (QT_TRANSLATE_NOOP("ProfileEditDialog", "WPA3-Personal"), "wpa3-personal"),
+        (QT_TRANSLATE_NOOP("ProfileEditDialog", "WPA-Personal"), "wpa-personal"),
+        (QT_TRANSLATE_NOOP("ProfileEditDialog", "Offenes WLAN"), "open"),
     )
 
     SCOPE_OPTIONS = (
-        ("Alle Benutzer", "all"),
-        ("Nur aktueller Benutzer", "current"),
+        (QT_TRANSLATE_NOOP("ProfileEditDialog", "Alle Benutzer"), "all"),
+        (QT_TRANSLATE_NOOP("ProfileEditDialog", "Nur aktueller Benutzer"), "current"),
     )
 
     def __init__(
@@ -50,11 +51,11 @@ class ProfileEditDialog(QDialog):
 
         self.security_combo = QComboBox(self)
         for label, value in self.SECURITY_OPTIONS:
-            self.security_combo.addItem(label, value)
+            self.security_combo.addItem(self.tr(label), value)
 
         self.scope_combo = QComboBox(self)
         for label, value in self.SCOPE_OPTIONS:
-            self.scope_combo.addItem(label, value)
+            self.scope_combo.addItem(self.tr(label), value)
 
         self.password_edit = QLineEdit(self)
         self.password_edit.setEchoMode(QLineEdit.EchoMode.Password)
@@ -62,10 +63,10 @@ class ProfileEditDialog(QDialog):
         self.password_note = QLabel(self)
         self.password_note.setWordWrap(True)
 
-        self.show_password_checkbox = QCheckBox("Passwort anzeigen", self)
-        self.autoconnect_checkbox = QCheckBox("Automatisch verbinden", self)
+        self.show_password_checkbox = QCheckBox(self.tr("Passwort anzeigen"), self)
+        self.autoconnect_checkbox = QCheckBox(self.tr("Automatisch verbinden"), self)
         self.hidden_checkbox = QCheckBox(
-            "Verbinden, auch wenn die SSID nicht ausgestrahlt wird",
+            self.tr("Verbinden, auch wenn die SSID nicht ausgestrahlt wird"),
             self,
         )
         self.security_note = QLabel(self)
@@ -81,14 +82,14 @@ class ProfileEditDialog(QDialog):
         )
 
         form = QFormLayout()
-        form.addRow("Profilname:", self.profile_name_edit)
-        form.addRow("SSID:", self.ssid_edit)
-        form.addRow("Sicherheit:", self.security_combo)
+        form.addRow(self.tr("Profilname:"), self.profile_name_edit)
+        form.addRow(self.tr("SSID:"), self.ssid_edit)
+        form.addRow(self.tr("Sicherheit:"), self.security_combo)
         form.addRow("", self.security_note)
-        form.addRow("Passwort:", self.password_edit)
+        form.addRow(self.tr("Passwort:"), self.password_edit)
         form.addRow("", self.password_note)
         form.addRow("", self.show_password_checkbox)
-        form.addRow("Gültigkeit:", self.scope_combo)
+        form.addRow(self.tr("Gültigkeit:"), self.scope_combo)
         form.addRow("", self.autoconnect_checkbox)
         form.addRow("", self.hidden_checkbox)
 
@@ -99,7 +100,7 @@ class ProfileEditDialog(QDialog):
         )
         self.buttons.button(
             QDialogButtonBox.StandardButton.Save
-        ).setText("Speichern")
+        ).setText(self.tr("Speichern"))
 
         self.buttons.accepted.connect(self._validate_and_accept)
         self.buttons.rejected.connect(self.reject)
@@ -113,8 +114,10 @@ class ProfileEditDialog(QDialog):
             self._load_profile(profile)
         else:
             self.password_note.setText(
-                "Für ein neues geschütztes WLAN ist ein Passwort erforderlich: "
-                "8 bis 63 druckbare ASCII-Zeichen oder 64 hexadezimale Zeichen."
+                self.tr(
+                    "Für ein neues geschütztes WLAN ist ein Passwort erforderlich: "
+                    "8 bis 63 druckbare ASCII-Zeichen oder 64 hexadezimale Zeichen."
+                )
             )
 
         self._update_password_state()
@@ -127,28 +130,34 @@ class ProfileEditDialog(QDialog):
         if self._is_edit_mode and not profile.is_open:
             if profile.password:
                 self.password_note.setText(
-                    "Das vorhandene Passwort wurde aus Windows gelesen. "
-                    "Lässt du das Feld leer, bleibt das bestehende Passwort unverändert."
+                    self.tr(
+                        "Das vorhandene Passwort wurde aus Windows gelesen. "
+                        "Lässt du das Feld leer, bleibt das bestehende Passwort unverändert."
+                    )
                 )
             else:
                 self.password_note.setText(
-                    "Das vorhandene Passwort konnte nicht im Klartext gelesen werden. "
-                    "Feld leer lassen = bestehendes Passwort unverändert lassen. "
-                    "Nur für eine Passwortänderung ein neues Passwort eingeben."
+                    self.tr(
+                        "Das vorhandene Passwort konnte nicht im Klartext gelesen werden. "
+                        "Feld leer lassen = bestehendes Passwort unverändert lassen. "
+                        "Nur für eine Passwortänderung ein neues Passwort eingeben."
+                    )
                 )
 
         self.autoconnect_checkbox.setChecked(profile.autoconnect)
         self.hidden_checkbox.setChecked(profile.hidden)
 
         if self._is_edit_mode:
-            label = profile.security_description or "Bestehende Windows-Konfiguration"
+            label = profile.security_description or self.tr("Bestehende Windows-Konfiguration")
             self.security_combo.clear()
             self.security_combo.addItem(label, "existing")
             self.security_combo.setEnabled(False)
             self.security_note.setText(
-                "Beim Bearbeiten bleibt die vorhandene Windows-Sicherheitskonfiguration "
-                "unverändert; nur das Passwort und die allgemeinen Profileinstellungen "
-                "werden angepasst."
+                self.tr(
+                    "Beim Bearbeiten bleibt die vorhandene Windows-Sicherheitskonfiguration "
+                    "unverändert; nur das Passwort und die allgemeinen Profileinstellungen "
+                    "werden angepasst."
+                )
             )
         else:
             self.security_note.clear()
@@ -185,12 +194,14 @@ class ProfileEditDialog(QDialog):
             self.password_edit.clear()
             self.show_password_checkbox.setChecked(False)
             self.password_note.setText(
-                "Offenes WLAN: Es wird kein Passwort gespeichert."
+                self.tr("Offenes WLAN: Es wird kein Passwort gespeichert.")
             )
         elif not self._is_edit_mode:
             self.password_note.setText(
-                "Für ein neues geschütztes WLAN ist ein Passwort erforderlich: "
-                "8 bis 63 druckbare ASCII-Zeichen oder 64 hexadezimale Zeichen."
+                self.tr(
+                    "Für ein neues geschütztes WLAN ist ein Passwort erforderlich: "
+                    "8 bis 63 druckbare ASCII-Zeichen oder 64 hexadezimale Zeichen."
+                )
             )
 
     def _validate_and_accept(self) -> None:
@@ -201,24 +212,24 @@ class ProfileEditDialog(QDialog):
         if not profile_name:
             QMessageBox.warning(
                 self,
-                "Profilname fehlt",
-                "Bitte einen Profilnamen eingeben.",
+                self.tr("Profilname fehlt"),
+                self.tr("Bitte einen Profilnamen eingeben."),
             )
             return
 
         if not ssid:
             QMessageBox.warning(
                 self,
-                "SSID fehlt",
-                "Bitte die SSID des WLANs eingeben.",
+                self.tr("SSID fehlt"),
+                self.tr("Bitte die SSID des WLANs eingeben."),
             )
             return
 
         if len(ssid.encode("utf-8")) > 32:
             QMessageBox.warning(
                 self,
-                "SSID zu lang",
-                "Eine WLAN-SSID darf maximal 32 Byte lang sein.",
+                self.tr("SSID zu lang"),
+                self.tr("Eine WLAN-SSID darf maximal 32 Byte lang sein."),
             )
             return
 
@@ -238,7 +249,7 @@ class ProfileEditDialog(QDialog):
                 except ValueError as exc:
                     QMessageBox.warning(
                         self,
-                        "Ungültiges Passwort",
+                        self.tr("Ungültiges Passwort"),
                         str(exc),
                     )
                     return

@@ -40,7 +40,7 @@ class BackupDialog(QDialog):
     ) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("WLAN-Profile sichern")
+        self.setWindowTitle(self.tr("WLAN-Profile sichern"))
         self.setModal(True)
         self.resize(820, 650)
 
@@ -77,14 +77,14 @@ class BackupDialog(QDialog):
         )
 
         self.create_subfolder_checkbox = QCheckBox(
-            "Neuen Backup-Unterordner mit Datum/Uhrzeit erzeugen",
+            self.tr("Neuen Backup-Unterordner mit Datum/Uhrzeit erzeugen"),
             self,
         )
         self.create_subfolder_checkbox.setChecked(True)
 
         self.folder_name_edit = QLineEdit(self)
         self.include_passwords_checkbox = QCheckBox(
-            "WLAN-Passwörter mitsichern",
+            self.tr("WLAN-Passwörter mitsichern"),
             self,
         )
         self.include_passwords_checkbox.setChecked(True)
@@ -96,11 +96,11 @@ class BackupDialog(QDialog):
         )
 
         form = QFormLayout()
-        form.addRow("Zielordner:", self.folder_selector)
+        form.addRow(self.tr("Zielordner:"), self.folder_selector)
         form.addRow("", self.create_subfolder_checkbox)
-        form.addRow("Unterordner:", self.folder_name_edit)
+        form.addRow(self.tr("Unterordner:"), self.folder_name_edit)
         form.addRow("", self.include_passwords_checkbox)
-        form.addRow("Vollständiger Zielpfad:", self.preview_label)
+        form.addRow(self.tr("Vollständiger Zielpfad:"), self.preview_label)
 
         self.buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Save
@@ -109,10 +109,10 @@ class BackupDialog(QDialog):
         )
         self.buttons.button(
             QDialogButtonBox.StandardButton.Save
-        ).setText("Sichern")
+        ).setText(self.tr("Sichern"))
 
         root = QVBoxLayout(self)
-        root.addWidget(QLabel("Zu sichernde WLAN-Profile:", self))
+        root.addWidget(QLabel(self.tr("Zu sichernde WLAN-Profile:"), self))
         root.addWidget(self.profile_selector, 1)
         root.addLayout(form)
         root.addWidget(self.buttons)
@@ -170,7 +170,7 @@ class BackupDialog(QDialog):
 
         if not base_text:
             self.preview_label.setText(
-                "<kein Zielordner ausgewählt>"
+                self.tr("<kein Zielordner ausgewählt>")
             )
             return
 
@@ -188,8 +188,8 @@ class BackupDialog(QDialog):
         if not self.profile_selector.selected_profiles():
             QMessageBox.warning(
                 self,
-                "Keine Profile ausgewählt",
-                "Bitte mindestens ein WLAN-Profil auswählen.",
+                self.tr("Keine Profile ausgewählt"),
+                self.tr("Bitte mindestens ein WLAN-Profil auswählen."),
             )
             return
 
@@ -198,16 +198,18 @@ class BackupDialog(QDialog):
         if not str(base).strip():
             QMessageBox.warning(
                 self,
-                "Zielordner fehlt",
-                "Bitte einen Zielordner auswählen.",
+                self.tr("Zielordner fehlt"),
+                self.tr("Bitte einen Zielordner auswählen."),
             )
             return
 
         if not base.exists() or not base.is_dir():
             QMessageBox.warning(
                 self,
-                "Zielordner nicht gefunden",
-                f"Der Zielordner existiert nicht:\\n\\n{base}",
+                self.tr("Zielordner nicht gefunden"),
+                self.tr(
+                    "Der Zielordner existiert nicht:\\n\\n{folder}"
+                ).format(folder=base),
             )
             return
 
@@ -217,26 +219,27 @@ class BackupDialog(QDialog):
             if not name:
                 QMessageBox.warning(
                     self,
-                    "Unterordner fehlt",
-                    "Bitte einen Namen für den Backup-Unterordner eingeben.",
+                    self.tr("Unterordner fehlt"),
+                    self.tr("Bitte einen Namen für den Backup-Unterordner eingeben."),
                 )
                 return
 
             if name in {".", ".."} or INVALID_FOLDER_CHARS.search(name):
                 QMessageBox.warning(
                     self,
-                    "Ungültiger Ordnername",
-                    'Der Ordnername darf folgende Zeichen nicht enthalten:\\n\\n'
-                    r'\\ / : * ? " < > |',
+                    self.tr("Ungültiger Ordnername"),
+                    self.tr(
+                        "Der Ordnername darf folgende Zeichen nicht enthalten:"
+                        "\\n\\n\\ / : * ? \" < > |"
+                    ),
                 )
                 return
 
             if name.endswith(" ") or name.endswith("."):
                 QMessageBox.warning(
                     self,
-                    "Ungültiger Ordnername",
-                    "Der Ordnername darf nicht mit einem Leerzeichen "
-                    "oder Punkt enden.",
+                    self.tr("Ungültiger Ordnername"),
+                    self.tr("Der Ordnername darf nicht mit einem Leerzeichen oder Punkt enden."),
                 )
                 return
 

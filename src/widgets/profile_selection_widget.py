@@ -31,11 +31,11 @@ class ProfileSelectionWidget(QWidget):
         self._profiles = list(profiles)
 
         self.search_edit = QLineEdit(self)
-        self.search_edit.setPlaceholderText("Profile suchen...")
+        self.search_edit.setPlaceholderText(self.tr("Profile suchen..."))
 
         self.table = QTableWidget(0, 3, self)
         self.table.setHorizontalHeaderLabels(
-            ["Auswahl", "WLAN-Profil", "Authentifizierung"]
+            [self.tr("Auswahl"), self.tr("WLAN-Profil"), self.tr("Authentifizierung")]
         )
         self.table.setSelectionBehavior(
             QAbstractItemView.SelectionBehavior.SelectRows
@@ -46,9 +46,9 @@ class ProfileSelectionWidget(QWidget):
         self.table.setSortingEnabled(False)
         self.table.horizontalHeader().setStretchLastSection(True)
 
-        self.select_all_button = QPushButton("Alle auswählen", self)
-        self.select_none_button = QPushButton("Keine auswählen", self)
-        self.invert_button = QPushButton("Invertieren", self)
+        self.select_all_button = QPushButton(self.tr("Alle auswählen"), self)
+        self.select_none_button = QPushButton(self.tr("Keine auswählen"), self)
+        self.invert_button = QPushButton(self.tr("Invertieren"), self)
 
         self.status_label = QLabel(self)
 
@@ -180,10 +180,18 @@ class ProfileSelectionWidget(QWidget):
 
         if visible == total:
             self.status_label.setText(
-                f"{selected} von {total} Profil(en) ausgewählt"
+                self.tr("{selected} von {total} Profil(en) ausgewählt").format(
+                    selected=selected,
+                    total=total,
+                )
             )
         else:
             self.status_label.setText(
-                f"{selected} von {total} Profil(en) ausgewählt · "
-                f"{visible} sichtbar"
+                self.tr(
+                    "{selected} von {total} Profil(en) ausgewählt · {visible} sichtbar"
+                ).format(
+                    selected=selected,
+                    total=total,
+                    visible=visible,
+                )
             )

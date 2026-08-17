@@ -1,5 +1,51 @@
 # Änderungsprotokoll
 
+## [2.7.0] - 2026-08-17
+
+### Hinzugefügt
+
+- Mehrsprachige Benutzeroberfläche eingeführt.
+- Unterstützung für folgende Sprachen:
+  - Deutsch
+  - Englisch
+  - Französisch
+  - Italienisch
+- Sprachumschaltung innerhalb des WLAN-Managers.
+- Qt-Übersetzungssystem mit `.ts`- und `.qm`-Dateien integriert.
+- Insgesamt 282 übersetzbare Programmtexte erfasst.
+- Englisches Benutzerhandbuch hinzugefügt.
+- Französisches Benutzerhandbuch hinzugefügt.
+- Italienisches Benutzerhandbuch hinzugefügt.
+- Automatische Auswahl des Benutzerhandbuchs entsprechend der eingestellten Programmsprache.
+
+### Geändert
+
+- Hauptfenster für die Mehrsprachigkeit überarbeitet.
+- Dialoge und Widgets für die Mehrsprachigkeit überarbeitet.
+- Backup- und Wiederherstellungsfunktionen internationalisiert.
+- Profilverwaltung und Profilbearbeitung internationalisiert.
+- QR-Code-Funktionen internationalisiert.
+- CSV-Export internationalisiert.
+- Benutzer-, Warn- und Fehlermeldungen der Core-Funktionen internationalisiert.
+- Projekt-, Lizenz- und Versionsinformationen internationalisiert.
+- Windows-spezifische Fehlermeldungen internationalisiert.
+- PyInstaller-Konfiguration um die Sprachdateien erweitert.
+- PyInstaller-Konfiguration um die englischen, französischen und italienischen Benutzerhandbücher erweitert.
+
+### Bereinigt
+
+- Nicht mehr verwendete Datei `src/gui/backup_dialog.py` entfernt.
+- Dialogstruktur vereinheitlicht; `BackupDialog` wird aus `src/dialogs/backup_dialog.py` verwendet.
+- Übersetzungsressourcen konsolidiert und für den Release-Build vorbereitet.
+
+### Dokumentation
+
+- `Benutzerhandbuch.md` bleibt das deutsche Standardhandbuch.
+- `Benutzerhandbuch_en.md` für Englisch hinzugefügt.
+- `Benutzerhandbuch_fr.md` für Französisch hinzugefügt.
+- `Benutzerhandbuch_it.md` für Italienisch hinzugefügt.
+- Benutzerhandbücher werden beim PyInstaller-Build in die Anwendung aufgenommen.
+
 ## 2.6.7 – 10.08.2026
 
 ### Behoben

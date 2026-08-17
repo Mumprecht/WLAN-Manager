@@ -3,7 +3,10 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+from PySide6.QtCore import QCoreApplication
+
 from core.profiles import get_all_profile_details
+
 
 
 def export_profiles_to_csv(csv_path: Path) -> int:
@@ -16,7 +19,13 @@ def export_profiles_to_csv(csv_path: Path) -> int:
 
     with csv_path.open("w", newline="", encoding="utf-8-sig") as handle:
         writer = csv.writer(handle, delimiter=";")
-        writer.writerow(["SSID", "Authentifizierung", "Passwort"])
+        writer.writerow(
+            [
+                "SSID",
+                QCoreApplication.translate("CsvExport", "Authentifizierung"),
+                QCoreApplication.translate("CsvExport", "Passwort"),
+            ]
+        )
 
         for row in rows:
             writer.writerow(

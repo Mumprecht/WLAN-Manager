@@ -9,7 +9,7 @@ class ProfileTable(QTableWidget):
         super().__init__(0, 3, parent)
 
         self.setHorizontalHeaderLabels(
-            ["WLAN-Profil", "Authentifizierung", "Passwort"]
+            [self.tr("WLAN-Profil"), self.tr("Authentifizierung"), self.tr("Passwort")]
         )
 
         # Einzelne oder mehrere Zellen können markiert werden.

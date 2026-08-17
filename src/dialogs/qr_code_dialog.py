@@ -47,7 +47,9 @@ class QrCodeDialog(QDialog):
         self.default_folder = default_folder
         self._pixmap = QPixmap()
 
-        self.setWindowTitle(f"WLAN-QR-Code – {profile.ssid}")
+        self.setWindowTitle(
+            self.tr("WLAN-QR-Code – {ssid}").format(ssid=profile.ssid)
+        )
         self.setModal(True)
         self.resize(520, 680)
 
@@ -71,7 +73,7 @@ class QrCodeDialog(QDialog):
         )
 
         self.show_password_checkbox = QCheckBox(
-            "Passwort anzeigen",
+            self.tr("Passwort anzeigen"),
             self,
         )
         self.show_password_checkbox.toggled.connect(
@@ -79,20 +81,20 @@ class QrCodeDialog(QDialog):
         )
 
         form = QFormLayout()
-        form.addRow("SSID:", self.ssid_edit)
+        form.addRow(self.tr("SSID:"), self.ssid_edit)
         form.addRow(
-            "Authentifizierung:",
+            self.tr("Authentifizierung:"),
             self.authentication_edit,
         )
-        form.addRow("Passwort:", self.password_edit)
+        form.addRow(self.tr("Passwort:"), self.password_edit)
         form.addRow("", self.show_password_checkbox)
 
         self.save_button = QPushButton(
-            "QR-Code als PNG speichern...",
+            self.tr("QR-Code als PNG speichern..."),
             self,
         )
         self.copy_button = QPushButton(
-            "QR-Code in Zwischenablage kopieren",
+            self.tr("QR-Code in Zwischenablage kopieren"),
             self,
         )
 
@@ -106,8 +108,10 @@ class QrCodeDialog(QDialog):
         buttons.rejected.connect(self.reject)
 
         note = QLabel(
-            "Den QR-Code mit der Kamera bzw. WLAN-Funktion eines "
-            "Smartphones oder Tablets scannen.",
+            self.tr(
+                "Den QR-Code mit der Kamera bzw. WLAN-Funktion eines "
+                "Smartphones oder Tablets scannen."
+            ),
             self,
         )
         note.setWordWrap(True)
@@ -133,13 +137,13 @@ class QrCodeDialog(QDialog):
             raise
         except Exception as exc:
             raise WifiQrError(
-                f"Der QR-Code konnte nicht erzeugt werden: {exc}"
+                self.tr("Der QR-Code konnte nicht erzeugt werden: {error}").format(error=exc)
             ) from exc
 
         pixmap = QPixmap()
         if not pixmap.loadFromData(png_data, "PNG"):
             raise WifiQrError(
-                "Der erzeugte QR-Code konnte nicht als Bild geladen werden."
+                self.tr("Der erzeugte QR-Code konnte nicht als Bild geladen werden.")
             )
 
         self._pixmap = pixmap
@@ -167,9 +171,9 @@ class QrCodeDialog(QDialog):
 
         filename, _ = QFileDialog.getSaveFileName(
             self,
-            "WLAN-QR-Code speichern",
+            self.tr("WLAN-QR-Code speichern"),
             str(suggested),
-            "PNG-Bild (*.png)",
+            self.tr("PNG-Bild (*.png)"),
         )
 
         if not filename:
@@ -189,23 +193,23 @@ class QrCodeDialog(QDialog):
         except Exception as exc:
             QMessageBox.critical(
                 self,
-                "Speichern fehlgeschlagen",
+                self.tr("Speichern fehlgeschlagen"),
                 str(exc),
             )
             return
 
         QMessageBox.information(
             self,
-            "QR-Code gespeichert",
-            f"Der QR-Code wurde gespeichert:\n\n{path}",
+            self.tr("QR-Code gespeichert"),
+            self.tr("Der QR-Code wurde gespeichert:\n\n{path}").format(path=path),
         )
 
     def _copy_to_clipboard(self) -> None:
         if self._pixmap.isNull():
             QMessageBox.warning(
                 self,
-                "QR-Code nicht verfügbar",
-                "Es ist kein QR-Code zum Kopieren vorhanden.",
+                self.tr("QR-Code nicht verfügbar"),
+                self.tr("Es ist kein QR-Code zum Kopieren vorhanden."),
             )
             return
 
@@ -214,6 +218,6 @@ class QrCodeDialog(QDialog):
 
         QMessageBox.information(
             self,
-            "QR-Code kopiert",
-            "Der QR-Code wurde als Bild in die Zwischenablage kopiert.",
+            self.tr("QR-Code kopiert"),
+            self.tr("Der QR-Code wurde als Bild in die Zwischenablage kopiert."),
         )

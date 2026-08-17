@@ -35,7 +35,7 @@ class RestoreDialog(QDialog):
     ) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("WLAN-Profile wiederherstellen")
+        self.setWindowTitle(self.tr("WLAN-Profile wiederherstellen"))
         self.setModal(True)
         self.resize(820, 600)
 
@@ -67,11 +67,11 @@ class RestoreDialog(QDialog):
         )
 
         self.search_edit = QLineEdit(self)
-        self.search_edit.setPlaceholderText("XML-Dateien suchen...")
+        self.search_edit.setPlaceholderText(self.tr("XML-Dateien suchen..."))
 
         self.table = QTableWidget(0, 2, self)
         self.table.setHorizontalHeaderLabels(
-            ["Auswahl", "XML-Datei"]
+            [self.tr("Auswahl"), self.tr("XML-Datei")]
         )
         self.table.setSelectionBehavior(
             QAbstractItemView.SelectionBehavior.SelectRows
@@ -81,9 +81,9 @@ class RestoreDialog(QDialog):
         )
         self.table.horizontalHeader().setStretchLastSection(True)
 
-        self.select_all_button = QPushButton("Alle auswählen", self)
-        self.select_none_button = QPushButton("Keine auswählen", self)
-        self.invert_button = QPushButton("Invertieren", self)
+        self.select_all_button = QPushButton(self.tr("Alle auswählen"), self)
+        self.select_none_button = QPushButton(self.tr("Keine auswählen"), self)
+        self.invert_button = QPushButton(self.tr("Invertieren"), self)
         self.status_label = QLabel(self)
 
         button_row = QHBoxLayout()
@@ -99,10 +99,10 @@ class RestoreDialog(QDialog):
         )
         self.buttons.button(
             QDialogButtonBox.StandardButton.Ok
-        ).setText("Wiederherstellen")
+        ).setText(self.tr("Wiederherstellen"))
 
         layout = QVBoxLayout(self)
-        layout.addWidget(QLabel("Quellordner:", self))
+        layout.addWidget(QLabel(self.tr("Quellordner:"), self))
         layout.addWidget(self.folder_selector)
         layout.addWidget(self.search_edit)
         layout.addWidget(self.table, 1)
@@ -228,8 +228,10 @@ class RestoreDialog(QDialog):
 
     def _update_status(self) -> None:
         self.status_label.setText(
-            f"{len(self.selected_files())} von "
-            f"{self.table.rowCount()} Datei(en) ausgewählt"
+            self.tr("{selected} von {total} Datei(en) ausgewählt").format(
+                selected=len(self.selected_files()),
+                total=self.table.rowCount(),
+            )
         )
 
     def _validate_and_accept(self) -> None:
@@ -238,8 +240,10 @@ class RestoreDialog(QDialog):
         if not folder.exists() or not folder.is_dir():
             QMessageBox.warning(
                 self,
-                "Quellordner nicht gefunden",
-                f"Der Quellordner existiert nicht:\\n\\n{folder}",
+                self.tr("Quellordner nicht gefunden"),
+                self.tr(
+                    "Der Quellordner existiert nicht:\\n\\n{folder}"
+                ).format(folder=folder),
             )
             return
 
@@ -248,8 +252,8 @@ class RestoreDialog(QDialog):
         if not files:
             QMessageBox.warning(
                 self,
-                "Keine Dateien ausgewählt",
-                "Bitte mindestens eine WLAN-XML-Datei auswählen.",
+                self.tr("Keine Dateien ausgewählt"),
+                self.tr("Bitte mindestens eine WLAN-XML-Datei auswählen."),
             )
             return
 

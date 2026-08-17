@@ -22,7 +22,7 @@ class FolderSelector(QWidget):
         super().__init__(parent)
 
         self.path_edit = QLineEdit(str(initial_folder), self)
-        self.browse_button = QPushButton("Durchsuchen...", self)
+        self.browse_button = QPushButton(self.tr("Durchsuchen..."), self)
         self.browse_button.clicked.connect(self._browse)
 
         layout = QHBoxLayout(self)
@@ -33,7 +33,7 @@ class FolderSelector(QWidget):
     def _browse(self) -> None:
         selected = QFileDialog.getExistingDirectory(
             self,
-            "Ordner auswählen",
+            self.tr("Ordner auswählen"),
             self.path_edit.text().strip(),
             QFileDialog.Option.ShowDirsOnly,
         )

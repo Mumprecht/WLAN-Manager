@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import re
 
+from PySide6.QtCore import QCoreApplication
+
 from core.models import CurrentConnection, WlanProfile
 from core.netsh import (
     NetshError,
@@ -16,13 +18,14 @@ from core.wlan_native import (
 )
 
 
+
 def get_profile_names() -> list[str]:
     result = run_netsh(["wlan", "show", "profiles"])
     text = result.combined
 
     if looks_like_missing_wireless_interface(text):
         raise NetshError(
-            f"Es wurde keine verfügbare WLAN-Schnittstelle gefunden.\n\n{text}"
+            QCoreApplication.translate("Profiles", "Es wurde keine verfügbare WLAN-Schnittstelle gefunden.\n\n{details}").format(details=text)
         )
 
     profiles: list[str] = []
@@ -43,7 +46,7 @@ def get_profile_names() -> list[str]:
 
     if result.returncode != 0:
         raise NetshError(
-            f"Die WLAN-Profile konnten nicht gelesen werden.\n\n{text}"
+            QCoreApplication.translate("Profiles", "Die WLAN-Profile konnten nicht gelesen werden.\n\n{details}").format(details=text)
         )
 
     return unique
@@ -54,8 +57,9 @@ def get_profile_details(ssid: str) -> WlanProfile:
 
     if result.returncode != 0:
         raise NetshError(
-            f"Das WLAN-Profil '{ssid}' konnte nicht gelesen werden.\n\n"
-            f"{result.combined}"
+            QCoreApplication.translate("Profiles", "Das WLAN-Profil '{ssid}' konnte nicht gelesen werden.\n\n{details}").format(
+                ssid=ssid, details=result.combined
+            )
         )
 
     authentication = "-"
@@ -149,14 +153,17 @@ def get_current_connection() -> CurrentConnection:
 
     if looks_like_location_permission_error(text):
         raise PermissionError(
-            "Windows verweigert den Zugriff auf die WLAN-Informationen.\n\n"
-            "Aktiviere unter Einstellungen > Datenschutz und Sicherheit > "
-            "Standort mindestens die Standortdienste."
+            QCoreApplication.translate(
+                "Profiles",
+"Windows verweigert den Zugriff auf die WLAN-Informationen.\n\n"
+"Aktiviere unter Einstellungen > Datenschutz und Sicherheit > "
+"Standort mindestens die Standortdienste."
+            )
         )
 
     if result.returncode != 0:
         raise NetshError(
-            f"Die WLAN-Schnittstelle konnte nicht gelesen werden.\n\n{text}"
+            QCoreApplication.translate("Profiles", "Die WLAN-Schnittstelle konnte nicht gelesen werden.\n\n{details}").format(details=text)
         )
 
     properties: dict[str, str] = {}
@@ -212,7 +219,7 @@ def connect_profile(ssid: str) -> None:
     result = run_netsh(["wlan", "connect", f"name={ssid}"])
     require_success(
         result,
-        f"Die Verbindung mit dem WLAN-Profil '{ssid}' konnte nicht hergestellt werden.",
+        QCoreApplication.translate("Profiles", "Die Verbindung mit dem WLAN-Profil '{ssid}' konnte nicht hergestellt werden.").format(ssid=ssid),
     )
 
 

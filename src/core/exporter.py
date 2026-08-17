@@ -5,9 +5,12 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from PySide6.QtCore import QCoreApplication
+
 from core.netsh import NetshError
 from core.profiles import get_profile_names
 from core.wlan_native import NativeWifiError, get_profile_xml
+
 
 
 INVALID_FILENAME_CHARS = re.compile(
@@ -88,16 +91,16 @@ def export_profile(
 
     if xml_profile_name != ssid:
         raise NetshError(
-            f"Das gelesene WLAN-Profil stimmt nicht mit "
-            f"'{ssid}' überein."
+            QCoreApplication.translate("Exporter", "Das gelesene WLAN-Profil stimmt nicht mit '{ssid}' überein.").format(ssid=ssid)
         )
 
     destination = folder / _backup_filename(ssid)
 
     if destination.exists():
         raise NetshError(
-            f"Für das WLAN-Profil '{ssid}' existiert bereits "
-            f"eine Sicherungsdatei: {destination.name}"
+            QCoreApplication.translate("Exporter", "Für das WLAN-Profil '{ssid}' existiert bereits eine Sicherungsdatei: {filename}").format(
+                ssid=ssid, filename=destination.name
+            )
         )
 
     destination.write_text(

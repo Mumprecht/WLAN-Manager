@@ -2,10 +2,13 @@ from __future__ import annotations
 
 from io import BytesIO
 
+from PySide6.QtCore import QCoreApplication
+
 import segno
 from segno import helpers
 
 from core.models import WlanProfile
+
 
 
 class WifiQrError(ValueError):
@@ -36,7 +39,7 @@ def _qr_security(profile: WlanProfile) -> tuple[str | None, str | None]:
 
     if "enterprise" in authentication:
         raise WifiQrError(
-            "WLAN-QR-Codes für Enterprise-Profile werden derzeit nicht unterstützt."
+            QCoreApplication.translate("QrCode", "WLAN-QR-Codes für Enterprise-Profile werden derzeit nicht unterstützt.")
         )
 
     if (
@@ -48,7 +51,7 @@ def _qr_security(profile: WlanProfile) -> tuple[str | None, str | None]:
 
     if password in NO_PASSWORD_VALUES:
         raise WifiQrError(
-            "Für dieses geschützte WLAN ist kein auslesbares Passwort vorhanden."
+            QCoreApplication.translate("QrCode", "Für dieses geschützte WLAN ist kein auslesbares Passwort vorhanden.")
         )
 
     if "wep" in authentication:
@@ -74,7 +77,7 @@ def _qr_security(profile: WlanProfile) -> tuple[str | None, str | None]:
         return "WPA", password
 
     raise WifiQrError(
-        "Der Sicherheitstyp dieses WLAN-Profils kann nicht bestimmt werden."
+        QCoreApplication.translate("QrCode", "Der Sicherheitstyp dieses WLAN-Profils kann nicht bestimmt werden.")
     )
 
 

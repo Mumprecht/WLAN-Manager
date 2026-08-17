@@ -34,7 +34,7 @@ class OverwriteDialog(QDialog):
     ) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("Datei bereits vorhanden")
+        self.setWindowTitle(self.tr("Datei bereits vorhanden"))
         self.setModal(True)
         self.resize(560, 220)
 
@@ -44,22 +44,27 @@ class OverwriteDialog(QDialog):
         )
 
         message = QLabel(
-            f"Für das WLAN-Profil\n\n"
-            f"{profile_name}\n\n"
-            f"existiert im Zielordner bereits die Datei:\n\n"
-            f"{filename}\n\n"
-            f"Wie soll verfahren werden?",
+            self.tr(
+                "Für das WLAN-Profil\n\n"
+                "{profile_name}\n\n"
+                "existiert im Zielordner bereits die Datei:\n\n"
+                "{filename}\n\n"
+                "Wie soll verfahren werden?"
+            ).format(
+                profile_name=profile_name,
+                filename=filename,
+            ),
             self,
         )
         message.setWordWrap(True)
 
         self.apply_to_all_checkbox = QCheckBox(
-            "Diese Auswahl für alle weiteren Konflikte übernehmen",
+            self.tr("Diese Auswahl für alle weiteren Konflikte übernehmen"),
             self,
         )
 
-        self.overwrite_button = QPushButton("Überschreiben", self)
-        self.skip_button = QPushButton("Überspringen", self)
+        self.overwrite_button = QPushButton(self.tr("Überschreiben"), self)
+        self.skip_button = QPushButton(self.tr("Überspringen"), self)
 
         button_box = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Cancel,
@@ -67,7 +72,7 @@ class OverwriteDialog(QDialog):
         )
         button_box.button(
             QDialogButtonBox.StandardButton.Cancel
-        ).setText("Abbrechen")
+        ).setText(self.tr("Abbrechen"))
 
         self.overwrite_button.clicked.connect(
             lambda: self._finish(self.ACTION_OVERWRITE)

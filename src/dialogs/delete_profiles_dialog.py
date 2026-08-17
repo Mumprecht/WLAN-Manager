@@ -23,7 +23,7 @@ class DeleteProfilesDialog(QDialog):
     ) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("WLAN-Profile löschen")
+        self.setWindowTitle(self.tr("WLAN-Profile löschen"))
         self.setModal(True)
         self.resize(760, 560)
 
@@ -33,7 +33,7 @@ class DeleteProfilesDialog(QDialog):
         )
 
         warning_label = QLabel(
-            "Wähle ein oder mehrere WLAN-Profile aus, die gelöscht werden sollen.",
+            self.tr("Wähle ein oder mehrere WLAN-Profile aus, die gelöscht werden sollen."),
             self,
         )
         warning_label.setWordWrap(True)
@@ -45,7 +45,7 @@ class DeleteProfilesDialog(QDialog):
         )
         self.buttons.button(
             QDialogButtonBox.StandardButton.Ok
-        ).setText("Löschen")
+        ).setText(self.tr("Löschen"))
 
         layout = QVBoxLayout(self)
         layout.addWidget(warning_label)
@@ -59,8 +59,8 @@ class DeleteProfilesDialog(QDialog):
         if not self.profile_selector.selected_profiles():
             QMessageBox.warning(
                 self,
-                "Keine Profile ausgewählt",
-                "Bitte mindestens ein WLAN-Profil zum Löschen auswählen.",
+                self.tr("Keine Profile ausgewählt"),
+                self.tr("Bitte mindestens ein WLAN-Profil zum Löschen auswählen."),
             )
             return
 

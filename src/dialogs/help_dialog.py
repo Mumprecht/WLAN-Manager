@@ -11,21 +11,27 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from utils.language import get_language
 from utils.paths import bundled_document
 
 
 class HelpDialog(QDialog):
     """Integriertes Benutzerhandbuch."""
 
-    HELP_FILE = "docs/Benutzerhandbuch.md"
+    HELP_FILES = {
+        "de": "docs/Benutzerhandbuch.md",
+        "en": "docs/Benutzerhandbuch_en.md",
+        "fr": "docs/Benutzerhandbuch_fr.md",
+        "it": "docs/Benutzerhandbuch_it.md",
+    }
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("WLAN-Manager – Benutzerhandbuch")
+        self.setWindowTitle(self.tr("WLAN-Manager – Benutzerhandbuch"))
         self.resize(900, 700)
 
-        title = QLabel("<h2>WLAN-Manager – Benutzerhandbuch</h2>", self)
+        title = QLabel(self.tr("<h2>WLAN-Manager – Benutzerhandbuch</h2>"), self)
 
         self.browser = QTextBrowser(self)
         self.browser.setOpenExternalLinks(True)
@@ -47,12 +53,13 @@ class HelpDialog(QDialog):
         self._load_help()
 
     def _load_help(self) -> None:
-        path = bundled_document(self.HELP_FILE)
+        language = get_language()
+        relative_path = self.HELP_FILES.get(language, self.HELP_FILES["de"])
+        path = bundled_document(relative_path)
 
         if not path.exists():
             self.browser.setPlainText(
-                "Das Benutzerhandbuch wurde nicht gefunden.\n\n"
-                f"Erwarteter Pfad:\n{path}"
+                self.tr("Das Benutzerhandbuch wurde nicht gefunden.\n\nErwarteter Pfad:\n{path}").format(path=path)
             )
             return
 
@@ -61,7 +68,7 @@ class HelpDialog(QDialog):
         except Exception as exc:
             QMessageBox.critical(
                 self,
-                "Hilfe konnte nicht geladen werden",
+                self.tr("Hilfe konnte nicht geladen werden"),
                 str(exc),
             )
             return

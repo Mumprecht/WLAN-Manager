@@ -524,7 +524,7 @@ class MainWindow(QMainWindow):
                 self.table.setItem(
                     row_index,
                     2,
-                    QTableWidgetItem(passwords.get(ssid_item.text(), "<nicht auslesbar>")),
+                    QTableWidgetItem(passwords.get(ssid_item.text(), self.tr("<nicht auslesbar>"))),
                 )
 
         self.statusBar().showMessage(
@@ -603,17 +603,24 @@ class MainWindow(QMainWindow):
         )
 
         if len(names) > 15:
-            detail_lines += (
-                f"\n• ... und {len(names) - 15} weitere"
+            detail_lines += self.tr(
+                "\n• ... und {count} weitere"
+            ).format(
+                count=len(names) - 15
             )
 
         answer = QMessageBox.warning(
             self,
             self.tr("WLAN-Profile wirklich löschen?"),
-            f"Es werden {len(names)} WLAN-Profil(e) gelöscht:\n\n"
-            f"{detail_lines}\n\n"
-            "Dabei werden auch die gespeicherten WLAN-Passwörter entfernt.\n"
-            "Dieser Vorgang kann nicht rückgängig gemacht werden.",
+            self.tr(
+                "Es werden {count} WLAN-Profil(e) gelöscht:\n\n"
+                "{profiles}\n\n"
+                "Dabei werden auch die gespeicherten WLAN-Passwörter entfernt.\n"
+                "Dieser Vorgang kann nicht rückgängig gemacht werden."
+            ).format(
+                count=len(names),
+                profiles=detail_lines,
+            ),
             QMessageBox.StandardButton.Yes
             | QMessageBox.StandardButton.No,
             QMessageBox.StandardButton.No,
@@ -626,10 +633,14 @@ class MainWindow(QMainWindow):
             names
         )
 
-        message = (
-            f"Ausgewählt: {len(names)}\n"
-            f"Erfolgreich gelöscht: {len(successful)}\n"
-            f"Fehlgeschlagen: {len(failed)}"
+        message = self.tr(
+            "Ausgewählt: {selected}\n"
+            "Erfolgreich gelöscht: {successful}\n"
+            "Fehlgeschlagen: {failed}"
+        ).format(
+            selected=len(names),
+            successful=len(successful),
+            failed=len(failed),
         )
 
         if failed:
@@ -681,10 +692,14 @@ class MainWindow(QMainWindow):
             QMessageBox.warning(
                 self,
                 self.tr("Profil bereits vorhanden"),
-                f"Ein WLAN-Profil mit dem Namen '{profile.profile_name}' "
-                "ist bereits vorhanden.\n\n"
-                "Bitte verwende für dieses Profil die Funktion "
-                "'WLAN-Profil bearbeiten...'.",
+                self.tr(
+                    "Ein WLAN-Profil mit dem Namen '{profile_name}' "
+                    "ist bereits vorhanden.\n\n"
+                    "Bitte verwende für dieses Profil die Funktion "
+                    "'WLAN-Profil bearbeiten...'."
+                ).format(
+                    profile_name=profile.profile_name
+                ),
             )
             return
 
@@ -693,7 +708,11 @@ class MainWindow(QMainWindow):
             QMessageBox.information(
                 self,
                 self.tr("WLAN-Profil gespeichert"),
-                f"Das WLAN-Profil '{profile.profile_name}' wurde gespeichert.",
+                self.tr(
+                    "Das WLAN-Profil '{profile_name}' wurde gespeichert."
+                ).format(
+                    profile_name=profile.profile_name
+                ),
             )
             self.refresh_profiles()
         except Exception as exc:
@@ -737,7 +756,11 @@ class MainWindow(QMainWindow):
             QMessageBox.information(
                 self,
                 self.tr("WLAN-Profil gespeichert"),
-                f"Das WLAN-Profil '{updated.profile_name}' wurde aktualisiert.",
+                self.tr(
+                    "Das WLAN-Profil '{profile_name}' wurde aktualisiert."
+                ).format(
+                    profile_name=updated.profile_name
+                ),
             )
             self.refresh_profiles()
         except Exception as exc:
@@ -859,12 +882,18 @@ class MainWindow(QMainWindow):
                         (profile.ssid, str(exc))
                     )
 
-            message = (
-                f"Zielordner:\n{target}\n\n"
-                f"Ausgewählt: {len(profiles)}\n"
-                f"Erfolgreich: {len(successful)}\n"
-                f"Übersprungen: {len(skipped)}\n"
-                f"Fehlgeschlagen: {len(failed)}"
+            message = self.tr(
+                "Zielordner:\n{target}\n\n"
+                "Ausgewählt: {selected}\n"
+                "Erfolgreich: {successful}\n"
+                "Übersprungen: {skipped}\n"
+                "Fehlgeschlagen: {failed}"
+            ).format(
+                target=target,
+                selected=len(profiles),
+                successful=len(successful),
+                skipped=len(skipped),
+                failed=len(failed),
             )
 
             if failed:
@@ -916,10 +945,14 @@ class MainWindow(QMainWindow):
                 files
             )
 
-            message = (
-                f"Ausgewählt: {len(files)}\n"
-                f"Erfolgreich: {len(successful)}\n"
-                f"Fehlgeschlagen: {len(failed)}"
+            message = self.tr(
+                "Ausgewählt: {selected}\n"
+                "Erfolgreich: {successful}\n"
+                "Fehlgeschlagen: {failed}"
+            ).format(
+                selected=len(files),
+                successful=len(successful),
+                failed=len(failed),
             )
 
             if failed:
@@ -977,7 +1010,12 @@ class MainWindow(QMainWindow):
             QMessageBox.information(
                 self,
                 self.tr("CSV-Export erfolgreich"),
-                f"Datei:\n{path}\n\nAnzahl Profile: {count}",
+                self.tr(
+                    "Datei:\n{path}\n\nAnzahl Profile: {count}"
+                ).format(
+                    path=path,
+                    count=count,
+                ),
             )
         except Exception as exc:
             self._show_exception(self.tr("CSV-Export fehlgeschlagen"), exc)
@@ -1020,7 +1058,11 @@ class MainWindow(QMainWindow):
             answer = QMessageBox.warning(
                 self,
                 self.tr("Standortberechtigung fehlt"),
-                f"{exc}\n\nStandorteinstellungen jetzt öffnen?",
+                self.tr(
+                    "{error}\n\nStandorteinstellungen jetzt öffnen?"
+                ).format(
+                    error=exc
+                ),
                 QMessageBox.StandardButton.Yes
                 | QMessageBox.StandardButton.No,
                 QMessageBox.StandardButton.Yes,
@@ -1141,8 +1183,10 @@ class MainWindow(QMainWindow):
         QMessageBox.information(
             self,
             self.tr("Sprache"),
-            "Die neue Sprache wird nach einem Neustart "
-            "des WLAN-Managers verwendet.",
+            self.tr(
+                "Die neue Sprache wird nach einem Neustart "
+                "des WLAN-Managers verwendet."
+            ),
         )
 
     def closeEvent(self, event: QCloseEvent) -> None:

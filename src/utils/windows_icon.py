@@ -5,6 +5,8 @@ import sys
 from ctypes import wintypes
 from pathlib import Path
 
+from PySide6.QtCore import QCoreApplication
+
 
 WM_SETICON = 0x0080
 
@@ -13,6 +15,7 @@ ICON_BIG = 1
 
 IMAGE_ICON = 1
 LR_LOADFROMFILE = 0x0010
+
 
 
 def set_native_window_icon(
@@ -69,7 +72,10 @@ def set_native_window_icon(
         error = ctypes.get_last_error()
         raise OSError(
             error,
-            f"Das kleine Windows-Icon konnte nicht geladen werden: {path}",
+            QCoreApplication.translate(
+                "WindowsIcon",
+"Das kleine Windows-Icon konnte nicht geladen werden: {path}"
+            ).format(path=path),
         )
 
     big_icon = load_image(
@@ -85,7 +91,10 @@ def set_native_window_icon(
         error = ctypes.get_last_error()
         raise OSError(
             error,
-            f"Das grosse Windows-Icon konnte nicht geladen werden: {path}",
+            QCoreApplication.translate(
+                "WindowsIcon",
+"Das grosse Windows-Icon konnte nicht geladen werden: {path}"
+            ).format(path=path),
         )
 
     send_message(

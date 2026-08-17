@@ -4,6 +4,7 @@ import ctypes
 from ctypes import wintypes
 
 
+
 ERROR_SUCCESS = 0
 ERROR_ACCESS_DENIED = 5
 ERROR_NOT_FOUND = 1168
@@ -47,7 +48,7 @@ class NativeWifiError(RuntimeError):
     """Fehler der Windows Native Wi-Fi API."""
 
     def __init__(self, code: int, message: str) -> None:
-        super().__init__(f"{message} (Windows-Fehler {code})")
+        super().__init__(QCoreApplication.translate("WlanNative", "{message} (Windows-Fehler {code})").format(message=message, code=code))
         self.code = code
 
 
@@ -127,7 +128,7 @@ def _enumerate_interface_guids(
     if result != ERROR_SUCCESS:
         raise NativeWifiError(
             result,
-            "Die WLAN-Schnittstellen konnten nicht gelesen werden.",
+            QCoreApplication.translate("WlanNative", "Die WLAN-Schnittstellen konnten nicht gelesen werden."),
         )
 
     if not interface_list_ptr.value:
@@ -182,7 +183,7 @@ def get_profile_xml(
     if result != ERROR_SUCCESS:
         raise NativeWifiError(
             result,
-            "Die Windows WLAN-API konnte nicht geöffnet werden.",
+            QCoreApplication.translate("WlanNative", "Die Windows WLAN-API konnte nicht geöffnet werden."),
         )
 
     try:
@@ -193,7 +194,7 @@ def get_profile_xml(
         if not interface_guids:
             raise NativeWifiError(
                 ERROR_NOT_FOUND,
-                "Es wurde keine WLAN-Schnittstelle gefunden.",
+                QCoreApplication.translate("WlanNative", "Es wurde keine WLAN-Schnittstelle gefunden."),
             )
 
         access_denied = False
@@ -227,15 +228,17 @@ def get_profile_xml(
             if result != ERROR_SUCCESS:
                 raise NativeWifiError(
                     result,
-                    f"Das WLAN-Profil '{profile_name}' "
-                    "konnte nicht gelesen werden.",
+                    QCoreApplication.translate("WlanNative", "Das WLAN-Profil '{profile_name}' konnte nicht gelesen werden.").format(
+                        profile_name=profile_name
+                    ),
                 )
 
             if not profile_xml_ptr.value:
                 raise NativeWifiError(
                     ERROR_NOT_FOUND,
-                    f"Das WLAN-Profil '{profile_name}' "
-                    "lieferte keine XML-Daten.",
+                    QCoreApplication.translate("WlanNative", "Das WLAN-Profil '{profile_name}' lieferte keine XML-Daten.").format(
+                        profile_name=profile_name
+                    ),
                 )
 
             try:
@@ -250,14 +253,16 @@ def get_profile_xml(
         if access_denied:
             raise NativeWifiError(
                 ERROR_ACCESS_DENIED,
-                f"Auf das WLAN-Profil '{profile_name}' "
-                "konnte nicht zugegriffen werden.",
+                QCoreApplication.translate("WlanNative", "Auf das WLAN-Profil '{profile_name}' konnte nicht zugegriffen werden.").format(
+                    profile_name=profile_name
+                ),
             )
 
         raise NativeWifiError(
             ERROR_NOT_FOUND,
-            f"Das WLAN-Profil '{profile_name}' "
-            "wurde auf keiner WLAN-Schnittstelle gefunden.",
+            QCoreApplication.translate("WlanNative", "Das WLAN-Profil '{profile_name}' wurde auf keiner WLAN-Schnittstelle gefunden.").format(
+                profile_name=profile_name
+            ),
         )
 
     finally:
@@ -281,7 +286,7 @@ def delete_profile(profile_name: str) -> None:
     if result != ERROR_SUCCESS:
         raise NativeWifiError(
             result,
-            "Die Windows WLAN-API konnte nicht geöffnet werden.",
+            QCoreApplication.translate("WlanNative", "Die Windows WLAN-API konnte nicht geöffnet werden."),
         )
 
     try:
@@ -289,7 +294,7 @@ def delete_profile(profile_name: str) -> None:
         if not interface_guids:
             raise NativeWifiError(
                 ERROR_NOT_FOUND,
-                "Es wurde keine WLAN-Schnittstelle gefunden.",
+                QCoreApplication.translate("WlanNative", "Es wurde keine WLAN-Schnittstelle gefunden."),
             )
 
         deleted = False
@@ -312,7 +317,9 @@ def delete_profile(profile_name: str) -> None:
             else:
                 raise NativeWifiError(
                     result,
-                    f"Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.",
+                    QCoreApplication.translate("WlanNative", "Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.").format(
+                        profile_name=profile_name
+                    ),
                 )
 
         if deleted:
@@ -321,14 +328,18 @@ def delete_profile(profile_name: str) -> None:
         if access_denied:
             raise NativeWifiError(
                 ERROR_ACCESS_DENIED,
-                f"Das WLAN-Profil '{profile_name}' konnte wegen fehlender "
-                "Berechtigung nicht gelöscht werden.",
+                QCoreApplication.translate(
+                "WlanNative",
+"Das WLAN-Profil '{profile_name}' konnte wegen fehlender Berechtigung nicht gelöscht werden."
+            ).format(profile_name=profile_name),
             )
 
         raise NativeWifiError(
             ERROR_NOT_FOUND,
-            f"Das WLAN-Profil '{profile_name}' wurde auf keiner "
-            "WLAN-Schnittstelle gefunden.",
+            QCoreApplication.translate("WlanNative", "Das WLAN-Profil '{profile_name}' wurde auf keiner WLAN-Schnittstelle gefunden.").format(
+                profile_name=profile_name
+            ),
         )
     finally:
         _wlanapi.WlanCloseHandle(client_handle, None)
+from PySide6.QtCore import QCoreApplication

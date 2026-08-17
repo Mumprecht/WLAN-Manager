@@ -23,26 +23,26 @@ class ProjectInfoDialog(QDialog):
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("WLAN-Manager – Projektinformationen")
+        self.setWindowTitle(self.tr("WLAN-Manager – Projektinformationen"))
         self.resize(620, 420)
 
         form = QFormLayout()
-        form.addRow("Programm:", QLabel(AppInfo.NAME))
-        form.addRow("Version:", QLabel(AppInfo.VERSION))
-        form.addRow("Firma:", QLabel(AppInfo.COMPANY))
-        form.addRow("Autor:", QLabel(AppInfo.AUTHOR))
-        form.addRow("Python:", QLabel(platform.python_version()))
-        form.addRow("PySide6:", QLabel(pyside_version))
-        form.addRow("Windows:", QLabel(platform.platform()))
+        form.addRow(self.tr("Programm:"), QLabel(AppInfo.NAME))
+        form.addRow(self.tr("Version:"), QLabel(AppInfo.VERSION))
+        form.addRow(self.tr("Firma:"), QLabel(AppInfo.COMPANY))
+        form.addRow(self.tr("Autor:"), QLabel(AppInfo.AUTHOR))
+        form.addRow(self.tr("Python:"), QLabel(platform.python_version()))
+        form.addRow(self.tr("PySide6:"), QLabel(pyside_version))
+        form.addRow(self.tr("Windows:"), QLabel(platform.platform()))
         form.addRow(
-            "Betriebsart:",
+            self.tr("Betriebsart:"),
             QLabel(
-                "PyInstaller-EXE"
+                self.tr("PyInstaller-EXE")
                 if getattr(sys, "frozen", False)
-                else "Entwicklungsumgebung"
+                else self.tr("Entwicklungsumgebung")
             ),
         )
-        form.addRow("Logverzeichnis:", QLabel(str(log_dir())))
+        form.addRow(self.tr("Logverzeichnis:"), QLabel(str(log_dir())))
 
         buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Close,

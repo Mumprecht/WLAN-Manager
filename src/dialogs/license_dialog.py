@@ -22,7 +22,7 @@ class LicenseDialog(QDialog):
     ) -> None:
         super().__init__(parent)
 
-        self.setWindowTitle("Lizenz")
+        self.setWindowTitle(self.tr("Lizenz"))
         self.resize(860, 680)
 
         layout = QVBoxLayout(self)
@@ -50,8 +50,7 @@ class LicenseDialog(QDialog):
             license_text = license_path.read_text(encoding="utf-8")
         except OSError as exc:
             license_text = (
-                "Die Lizenzdatei konnte nicht gelesen werden.\n\n"
-                f"{exc}"
+                self.tr("Die Lizenzdatei konnte nicht gelesen werden.\n\n{error}").format(error=exc)
             )
 
         text_edit.setPlainText(license_text)

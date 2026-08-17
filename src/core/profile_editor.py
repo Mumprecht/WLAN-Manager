@@ -7,7 +7,10 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
+from PySide6.QtCore import QCoreApplication
+
 from core.netsh import NetshError, require_success, run_netsh
+
 
 
 PROFILE_NS = "http://www.microsoft.com/networking/WLAN/profile/v1"
@@ -45,13 +48,16 @@ def validate_personal_key(password: str) -> None:
 
     if not 8 <= len(password) <= 63:
         raise ValueError(
-            "Das WLAN-Passwort muss 8 bis 63 Zeichen lang sein "
-            "oder aus genau 64 hexadezimalen Zeichen bestehen."
+            QCoreApplication.translate(
+                "ProfileEditor",
+"Das WLAN-Passwort muss 8 bis 63 Zeichen lang sein "
+"oder aus genau 64 hexadezimalen Zeichen bestehen."
+            )
         )
 
     if any(ord(char) < 32 or ord(char) > 126 for char in password):
         raise ValueError(
-            "Die Passphrase darf nur druckbare ASCII-Zeichen enthalten."
+            QCoreApplication.translate("ProfileEditor", "Die Passphrase darf nur druckbare ASCII-Zeichen enthalten.")
         )
 
 
@@ -68,7 +74,7 @@ def _scope_from_text(text: str) -> str:
         return "current"
 
     raise NetshError(
-        "Der Gültigkeitsbereich des WLAN-Profils konnte nicht bestimmt werden."
+        QCoreApplication.translate("ProfileEditor", "Der Gültigkeitsbereich des WLAN-Profils konnte nicht bestimmt werden.")
     )
 
 
@@ -78,7 +84,7 @@ def get_profile_scope(profile_name: str) -> str:
     )
     require_success(
         result,
-        f"Das WLAN-Profil '{profile_name}' konnte nicht gelesen werden.",
+        QCoreApplication.translate("ProfileEditor", "Das WLAN-Profil '{profile_name}' konnte nicht gelesen werden.").format(profile_name=profile_name),
     )
 
     for line in result.combined.splitlines():
@@ -110,14 +116,17 @@ def _export_profile_xml_text(profile_name: str) -> str:
         )
         require_success(
             result,
-            f"Das WLAN-Profil '{profile_name}' konnte nicht für die Bearbeitung exportiert werden.",
+            QCoreApplication.translate("ProfileEditor", "Das WLAN-Profil '{profile_name}' konnte nicht für die Bearbeitung exportiert werden.").format(profile_name=profile_name),
         )
 
         files = sorted(folder.glob("*.xml"))
         if not files:
             raise NetshError(
-                "Windows meldete einen erfolgreichen Export, "
-                "aber es wurde keine WLAN-XML-Datei gefunden."
+                QCoreApplication.translate(
+                "ProfileEditor",
+"Windows meldete einen erfolgreichen Export, "
+"aber es wurde keine WLAN-XML-Datei gefunden."
+            )
             )
 
         return files[0].read_text(encoding="utf-8-sig")
@@ -133,8 +142,11 @@ def load_profile_for_edit(profile_name: str) -> EditableWifiProfile:
 
     if scope == "group":
         raise PermissionError(
-            "Dieses WLAN-Profil wird durch eine Gruppenrichtlinie verwaltet "
-            "und kann im WLAN-Manager nicht bearbeitet werden."
+            QCoreApplication.translate(
+                "ProfileEditor",
+"Dieses WLAN-Profil wird durch eine Gruppenrichtlinie verwaltet "
+"und kann im WLAN-Manager nicht bearbeitet werden."
+            )
         )
 
     xml_text = _export_profile_xml_text(profile_name)
@@ -196,7 +208,7 @@ def load_profile_for_edit(profile_name: str) -> EditableWifiProfile:
         scope=scope,
         source_xml=xml_text,
         security_description=" · ".join(description_parts)
-        or "Bestehende Windows-Konfiguration",
+        or QCoreApplication.translate("ProfileEditor", "Bestehende Windows-Konfiguration"),
         is_open=is_open,
     )
 
@@ -218,12 +230,12 @@ def _authentication_xml(profile: EditableWifiProfile) -> tuple[str, str, str]:
         encryption = "TKIP"
     else:
         raise ValueError(
-            f"Nicht unterstützter Sicherheitstyp: {profile.security}"
+            QCoreApplication.translate("ProfileEditor", "Nicht unterstützter Sicherheitstyp: {security}").format(security=profile.security)
         )
 
     if not profile.password:
         raise ValueError(
-            "Für ein neues geschütztes WLAN muss ein Passwort angegeben werden."
+            QCoreApplication.translate("ProfileEditor", "Für ein neues geschütztes WLAN muss ein Passwort angegeben werden.")
         )
 
     validate_personal_key(profile.password)
@@ -276,7 +288,7 @@ def _ssid_hex(ssid: str) -> str:
 
 def _update_existing_xml(profile: EditableWifiProfile) -> str:
     if not profile.source_xml:
-        raise ValueError("Das ursprüngliche WLAN-Profil fehlt.")
+        raise ValueError(QCoreApplication.translate("ProfileEditor", "Das ursprüngliche WLAN-Profil fehlt."))
 
     root = ET.fromstring(profile.source_xml)
 
@@ -312,8 +324,11 @@ def _update_existing_xml(profile: EditableWifiProfile) -> str:
         key_material = root.find(f".//{{{PROFILE_NS}}}keyMaterial")
         if key_material is None:
             raise ValueError(
-                "Das vorhandene Profil enthält kein bearbeitbares keyMaterial. "
-                "Das Passwort kann deshalb nicht geändert werden."
+                QCoreApplication.translate(
+                "ProfileEditor",
+"Das vorhandene Profil enthält kein bearbeitbares keyMaterial. "
+"Das Passwort kann deshalb nicht geändert werden."
+            )
             )
 
         key_material.text = profile.password
@@ -338,7 +353,7 @@ def _install_xml(
 ) -> None:
     if scope not in {"all", "current"}:
         raise ValueError(
-            f"Ungültiger Profil-Gültigkeitsbereich: {scope}"
+            QCoreApplication.translate("ProfileEditor", "Ungültiger Profil-Gültigkeitsbereich: {scope}").format(scope=scope)
         )
 
     temp_path: Path | None = None
@@ -366,7 +381,7 @@ def _install_xml(
 
         require_success(
             result,
-            f"Das WLAN-Profil '{profile_name}' konnte nicht gespeichert werden.",
+            QCoreApplication.translate("ProfileEditor", "Das WLAN-Profil '{profile_name}' konnte nicht gespeichert werden.").format(profile_name=profile_name),
         )
     finally:
         if temp_path is not None:
@@ -379,7 +394,7 @@ def _install_xml(
 def install_profile(profile: EditableWifiProfile) -> None:
     if profile.scope == "group":
         raise PermissionError(
-            "Gruppenrichtlinienprofile können nicht gespeichert werden."
+            QCoreApplication.translate("ProfileEditor", "Gruppenrichtlinienprofile können nicht gespeichert werden.")
         )
 
     xml_text = build_profile_xml(profile)
@@ -397,7 +412,7 @@ def delete_profile_by_name(profile_name: str) -> None:
     )
     require_success(
         result,
-        f"Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.",
+        QCoreApplication.translate("ProfileEditor", "Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.").format(profile_name=profile_name),
     )
 
 
@@ -407,7 +422,7 @@ def replace_profile(
 ) -> None:
     if profile.scope == "group":
         raise PermissionError(
-            "Gruppenrichtlinienprofile können nicht bearbeitet werden."
+            QCoreApplication.translate("ProfileEditor", "Gruppenrichtlinienprofile können nicht bearbeitet werden.")
         )
 
     if not profile.source_xml:
