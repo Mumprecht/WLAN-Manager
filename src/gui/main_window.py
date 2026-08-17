@@ -71,157 +71,157 @@ class MainWindow(QMainWindow):
 
 
     def _build_actions(self) -> None:
-        self.action_refresh = QAction("Aktualisieren", self)
+        self.action_refresh = QAction(self.tr("Aktualisieren"), self)
         self.action_refresh.setShortcut(QKeySequence("F5"))
         self.action_refresh.setStatusTip(
-            "Gespeicherte WLAN-Profile neu einlesen"
+            self.tr("Gespeicherte WLAN-Profile neu einlesen")
         )
         self.action_refresh.triggered.connect(self.refresh_profiles)
 
         self.action_current_connection = QAction(
-            "Aktuelle Verbindung",
+            self.tr("Aktuelle Verbindung"),
             self,
         )
         self.action_current_connection.setShortcut(
             QKeySequence("Ctrl+I")
         )
         self.action_current_connection.setStatusTip(
-            "Informationen zur aktuellen WLAN-Verbindung anzeigen"
+            self.tr("Informationen zur aktuellen WLAN-Verbindung anzeigen")
         )
         self.action_current_connection.triggered.connect(
             self.show_current_connection
         )
 
         self.action_show_passwords = QAction(
-            "Passwörter anzeigen",
+            self.tr("Passwörter anzeigen"),
             self,
         )
         self.action_show_passwords.setShortcut(
             QKeySequence("Ctrl+P")
         )
         self.action_show_passwords.setStatusTip(
-            "Gespeicherte WLAN-Passwörter im Klartext anzeigen"
+            self.tr("Gespeicherte WLAN-Passwörter im Klartext anzeigen")
         )
         self.action_show_passwords.triggered.connect(
             self.show_passwords
         )
 
-        self.action_connect = QAction("Verbinden", self)
+        self.action_connect = QAction(self.tr("Verbinden"), self)
         self.action_connect.setShortcut(QKeySequence("Ctrl+Enter"))
         self.action_connect.setStatusTip(
-            "Mit dem ausgewählten gespeicherten WLAN-Profil verbinden"
+            self.tr("Mit dem ausgewählten gespeicherten WLAN-Profil verbinden")
         )
         self.action_connect.triggered.connect(
             self.connect_selected_profile
         )
 
         self.action_backup_profiles = QAction(
-            "WLAN-Profile sichern...",
+            self.tr("WLAN-Profile sichern..."),
             self,
         )
         self.action_backup_profiles.setShortcut(
             QKeySequence("Ctrl+S")
         )
         self.action_backup_profiles.setStatusTip(
-            "Ein, mehrere oder alle WLAN-Profile sichern"
+            self.tr("Ein, mehrere oder alle WLAN-Profile sichern")
         )
         self.action_backup_profiles.triggered.connect(
             self.backup_profiles
         )
 
         self.action_restore_profiles = QAction(
-            "WLAN-Profile wiederherstellen...",
+            self.tr("WLAN-Profile wiederherstellen..."),
             self,
         )
         self.action_restore_profiles.setShortcut(
             QKeySequence("Ctrl+R")
         )
         self.action_restore_profiles.setStatusTip(
-            "WLAN-Profile aus XML-Dateien wiederherstellen"
+            self.tr("WLAN-Profile aus XML-Dateien wiederherstellen")
         )
         self.action_restore_profiles.triggered.connect(
             self.restore_profiles
         )
 
-        self.action_export_csv = QAction("CSV exportieren...", self)
+        self.action_export_csv = QAction(self.tr("CSV exportieren..."), self)
         self.action_export_csv.setShortcut(
             QKeySequence("Ctrl+Shift+S")
         )
         self.action_export_csv.setStatusTip(
-            "WLAN-Profile als CSV-Datei exportieren"
+            self.tr("WLAN-Profile als CSV-Datei exportieren")
         )
         self.action_export_csv.triggered.connect(
             self.export_profiles_csv
         )
 
         self.action_new_profile = QAction(
-            "Neues WLAN-Profil...",
+            self.tr("Neues WLAN-Profil..."),
             self,
         )
         self.action_new_profile.setStatusTip(
-            "Ein neues WLAN-Profil erstellen"
+            self.tr("Ein neues WLAN-Profil erstellen")
         )
         self.action_new_profile.triggered.connect(
             self.create_new_profile
         )
 
         self.action_edit_profile = QAction(
-            "WLAN-Profil bearbeiten...",
+            self.tr("WLAN-Profil bearbeiten..."),
             self,
         )
         self.action_edit_profile.setStatusTip(
-            "Das ausgewählte WLAN-Profil bearbeiten"
+            self.tr("Das ausgewählte WLAN-Profil bearbeiten")
         )
         self.action_edit_profile.triggered.connect(
             self.edit_selected_profile
         )
 
         self.action_delete_profiles = QAction(
-            "WLAN-Profile löschen...",
+            self.tr("WLAN-Profile löschen..."),
             self,
         )
         self.action_delete_profiles.setShortcut(
             QKeySequence("Delete")
         )
         self.action_delete_profiles.setStatusTip(
-            "Ein oder mehrere WLAN-Profile löschen"
+            self.tr("Ein oder mehrere WLAN-Profile löschen")
         )
         self.action_delete_profiles.triggered.connect(
             self.delete_profiles
         )
 
         self.action_qr_code = QAction(
-            "QR-Code anzeigen...",
+            self.tr("QR-Code anzeigen..."),
             self,
         )
         self.action_qr_code.setStatusTip(
-            "WLAN-Verbindungs-QR-Code für das ausgewählte Profil anzeigen"
+            self.tr("WLAN-Verbindungs-QR-Code für das ausgewählte Profil anzeigen")
         )
         self.action_qr_code.triggered.connect(
             self.show_selected_qr_code
         )
 
-        self.action_help = QAction("Benutzerhandbuch", self)
+        self.action_help = QAction(self.tr("Benutzerhandbuch"), self)
         self.action_help.setShortcut(QKeySequence("F1"))
         self.action_help.setStatusTip(
-            "Integriertes Benutzerhandbuch öffnen"
+            self.tr("Integriertes Benutzerhandbuch öffnen")
         )
         self.action_help.triggered.connect(self.show_help)
 
         self.action_project_info = QAction(
-            "Projektinformationen",
+            self.tr("Projektinformationen"),
             self,
         )
         self.action_project_info.setStatusTip(
-            "Technische Informationen für Support und Fehlersuche anzeigen"
+            self.tr("Technische Informationen für Support und Fehlersuche anzeigen")
         )
         self.action_project_info.triggered.connect(
             self.show_project_info
         )
 
-        self.action_about = QAction("Über WLAN-Manager", self)
+        self.action_about = QAction(self.tr("Über WLAN-Manager"), self)
         self.action_about.setStatusTip(
-            "Programminformationen anzeigen"
+            self.tr("Programminformationen anzeigen")
         )
         self.action_about.triggered.connect(self.show_about)
 
@@ -247,12 +247,12 @@ class MainWindow(QMainWindow):
                 language.code
             ] = action
 
-        self.action_exit = QAction("Beenden", self)
+        self.action_exit = QAction(self.tr("Beenden"), self)
         self.action_exit.setShortcut(QKeySequence("Ctrl+Q"))
-        self.action_exit.setStatusTip("WLAN-Manager beenden")
+        self.action_exit.setStatusTip(self.tr("WLAN-Manager beenden"))
         self.action_exit.triggered.connect(self.close)
     def _build_menu(self) -> None:
-        file_menu = self.menuBar().addMenu("&Datei")
+        file_menu = self.menuBar().addMenu(self.tr("&Datei"))
         file_menu.addAction(self.action_backup_profiles)
         file_menu.addAction(self.action_restore_profiles)
         file_menu.addSeparator()
@@ -260,12 +260,12 @@ class MainWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(self.action_exit)
 
-        wlan_menu = self.menuBar().addMenu("&WLAN")
+        wlan_menu = self.menuBar().addMenu(self.tr("&WLAN"))
         wlan_menu.addAction(self.action_refresh)
         wlan_menu.addAction(self.action_current_connection)
         wlan_menu.addAction(self.action_show_passwords)
 
-        profile_menu = self.menuBar().addMenu("&Profile")
+        profile_menu = self.menuBar().addMenu(self.tr("&Profile"))
         profile_menu.addAction(self.action_new_profile)
         profile_menu.addAction(self.action_edit_profile)
         profile_menu.addSeparator()
@@ -275,11 +275,11 @@ class MainWindow(QMainWindow):
         profile_menu.addAction(self.action_delete_profiles)
 
         settings_menu = self.menuBar().addMenu(
-            "&Einstellungen"
+            self.tr("&Einstellungen")
         )
 
         language_menu = settings_menu.addMenu(
-            "&Sprache"
+            self.tr("&Sprache")
         )
 
         for language in SUPPORTED_LANGUAGES:
@@ -289,14 +289,14 @@ class MainWindow(QMainWindow):
                 ]
             )
 
-        help_menu = self.menuBar().addMenu("&Hilfe")
+        help_menu = self.menuBar().addMenu(self.tr("&Hilfe"))
         help_menu.addAction(self.action_help)
         help_menu.addAction(self.action_project_info)
         help_menu.addSeparator()
         help_menu.addAction(self.action_about)
 
     def _build_toolbar(self) -> None:
-        toolbar = QToolBar("Hauptwerkzeuge", self)
+        toolbar = QToolBar(self.tr("Hauptwerkzeuge"), self)
         toolbar.setMovable(False)
         self.addToolBar(toolbar)
 
@@ -332,9 +332,9 @@ class MainWindow(QMainWindow):
         status = QStatusBar(self)
         self.setStatusBar(status)
 
-        self.profile_count_label = QLabel("0 WLAN-Profile", self)
+        self.profile_count_label = QLabel(self.tr("0 WLAN-Profile"), self)
         self.shortcut_hint_label = QLabel(
-            "F5 Aktualisieren · Ctrl+S Sichern · Entf Löschen",
+            self.tr("F5 Aktualisieren · Ctrl+S Sichern · Entf Löschen"),
             self,
         )
         self.version_label = QLabel(f"Version {AppInfo.VERSION}", self)
@@ -424,8 +424,8 @@ class MainWindow(QMainWindow):
         if row < 0:
             QMessageBox.information(
                 self,
-                "Kein Profil ausgewählt",
-                "Bitte zuerst ein WLAN-Profil in der Tabelle auswählen.",
+                self.tr("Kein Profil ausgewählt"),
+                self.tr("Bitte zuerst ein WLAN-Profil in der Tabelle auswählen."),
             )
             return None
 
@@ -443,11 +443,11 @@ class MainWindow(QMainWindow):
     def _show_exception(self, title: str, exception: Exception) -> None:
         self.log.exception(title)
         QMessageBox.critical(self, title, str(exception))
-        self.statusBar().showMessage(f"Fehler: {exception}", 8000)
+        self.statusBar().showMessage(self.tr("Fehler: {error}").format(error=exception), 8000)
 
     def refresh_profiles(self) -> None:
         try:
-            self.statusBar().showMessage("WLAN-Profile werden gelesen …")
+            self.statusBar().showMessage(self.tr("WLAN-Profile werden gelesen …"))
 
             profiles = self.manager.profiles()
             self._profiles = profiles
@@ -491,27 +491,27 @@ class MainWindow(QMainWindow):
                 self.table.sortItems(sort_column, sort_order)
 
             self.profile_count_label.setText(
-                f"{len(profiles)} WLAN-Profil(e)"
+                self.tr("{count} WLAN-Profil(e)").format(count=len(profiles))
             )
-            self.statusBar().showMessage("Bereit", 2500)
+            self.statusBar().showMessage(self.tr("Bereit"), 2500)
 
         except Exception as exc:
             self._profiles = []
             self.table.setRowCount(0)
-            self.profile_count_label.setText("0 WLAN-Profile")
-            self._show_exception("Profile konnten nicht gelesen werden", exc)
+            self.profile_count_label.setText(self.tr("0 WLAN-Profile"))
+            self._show_exception(self.tr("Profile konnten nicht gelesen werden"), exc)
 
     def show_passwords(self) -> None:
         if not self._profiles:
             QMessageBox.information(
-                self, "Keine Profile", "Es sind keine WLAN-Profile vorhanden."
+                self, self.tr("Keine Profile"), self.tr("Es sind keine WLAN-Profile vorhanden.")
             )
             return
 
         if not confirm(
             self,
-            "Passwörter anzeigen",
-            "Die WLAN-Passwörter werden im Klartext angezeigt.\n\nFortfahren?",
+            self.tr("Passwörter anzeigen"),
+            self.tr("Die WLAN-Passwörter werden im Klartext angezeigt.\n\nFortfahren?"),
             warning=True,
         ):
             return
@@ -528,7 +528,7 @@ class MainWindow(QMainWindow):
                 )
 
         self.statusBar().showMessage(
-            "Passwörter werden im Klartext angezeigt.", 5000
+            self.tr("Passwörter werden im Klartext angezeigt."), 5000
         )
 
     def show_selected_password(self) -> None:
@@ -538,8 +538,8 @@ class MainWindow(QMainWindow):
 
         QMessageBox.information(
             self,
-            f"Passwort – {profile.ssid}",
-            f"WLAN-Profil: {profile.ssid}\n\nPasswort: {profile.password}",
+            self.tr("Passwort – {ssid}").format(ssid=profile.ssid),
+            self.tr("WLAN-Profil: {ssid}\n\nPasswort: {password}").format(ssid=profile.ssid, password=profile.password),
         )
 
     def connect_selected_profile(self) -> None:
@@ -550,11 +550,11 @@ class MainWindow(QMainWindow):
         try:
             self.manager.connect_profile(profile.ssid)
             self.statusBar().showMessage(
-                f"Verbindungsanforderung für '{profile.ssid}' wurde gesendet.",
+                self.tr("Verbindungsanforderung für '{ssid}' wurde gesendet.").format(ssid=profile.ssid),
                 5000,
             )
         except Exception as exc:
-            self._show_exception("Verbindung fehlgeschlagen", exc)
+            self._show_exception(self.tr("Verbindung fehlgeschlagen"), exc)
 
 
     def delete_profiles(
@@ -564,8 +564,8 @@ class MainWindow(QMainWindow):
         if not self._profiles:
             QMessageBox.information(
                 self,
-                "Keine Profile",
-                "Es sind keine WLAN-Profile vorhanden.",
+                self.tr("Keine Profile"),
+                self.tr("Es sind keine WLAN-Profile vorhanden."),
             )
             return
 
@@ -609,7 +609,7 @@ class MainWindow(QMainWindow):
 
         answer = QMessageBox.warning(
             self,
-            "WLAN-Profile wirklich löschen?",
+            self.tr("WLAN-Profile wirklich löschen?"),
             f"Es werden {len(names)} WLAN-Profil(e) gelöscht:\n\n"
             f"{detail_lines}\n\n"
             "Dabei werden auch die gespeicherten WLAN-Passwörter entfernt.\n"
@@ -640,13 +640,13 @@ class MainWindow(QMainWindow):
 
             QMessageBox.warning(
                 self,
-                "Löschen abgeschlossen",
+                self.tr("Löschen abgeschlossen"),
                 message,
             )
         else:
             QMessageBox.information(
                 self,
-                "Löschen abgeschlossen",
+                self.tr("Löschen abgeschlossen"),
                 message,
             )
 
@@ -665,7 +665,7 @@ class MainWindow(QMainWindow):
 
     def create_new_profile(self) -> None:
         dialog = ProfileEditDialog(
-            title="Neues WLAN-Profil erstellen",
+            title=self.tr("Neues WLAN-Profil erstellen"),
             parent=self,
         )
 
@@ -680,7 +680,7 @@ class MainWindow(QMainWindow):
         ):
             QMessageBox.warning(
                 self,
-                "Profil bereits vorhanden",
+                self.tr("Profil bereits vorhanden"),
                 f"Ein WLAN-Profil mit dem Namen '{profile.profile_name}' "
                 "ist bereits vorhanden.\n\n"
                 "Bitte verwende für dieses Profil die Funktion "
@@ -692,13 +692,13 @@ class MainWindow(QMainWindow):
             self.manager.create_profile(profile)
             QMessageBox.information(
                 self,
-                "WLAN-Profil gespeichert",
+                self.tr("WLAN-Profil gespeichert"),
                 f"Das WLAN-Profil '{profile.profile_name}' wurde gespeichert.",
             )
             self.refresh_profiles()
         except Exception as exc:
             self._show_exception(
-                "WLAN-Profil konnte nicht gespeichert werden",
+                self.tr("WLAN-Profil konnte nicht gespeichert werden"),
                 exc,
             )
 
@@ -713,13 +713,13 @@ class MainWindow(QMainWindow):
             )
         except Exception as exc:
             self._show_exception(
-                "WLAN-Profil konnte nicht für die Bearbeitung geladen werden",
+                self.tr("WLAN-Profil konnte nicht für die Bearbeitung geladen werden"),
                 exc,
             )
             return
 
         dialog = ProfileEditDialog(
-            title=f"WLAN-Profil bearbeiten – {selected.ssid}",
+            title=self.tr("WLAN-Profil bearbeiten – {ssid}").format(ssid=selected.ssid),
             profile=editable,
             parent=self,
         )
@@ -736,13 +736,13 @@ class MainWindow(QMainWindow):
             )
             QMessageBox.information(
                 self,
-                "WLAN-Profil gespeichert",
+                self.tr("WLAN-Profil gespeichert"),
                 f"Das WLAN-Profil '{updated.profile_name}' wurde aktualisiert.",
             )
             self.refresh_profiles()
         except Exception as exc:
             self._show_exception(
-                "WLAN-Profil konnte nicht aktualisiert werden",
+                self.tr("WLAN-Profil konnte nicht aktualisiert werden"),
                 exc,
             )
 
@@ -754,8 +754,8 @@ class MainWindow(QMainWindow):
         if not self._profiles:
             QMessageBox.information(
                 self,
-                "Keine Profile",
-                "Es sind keine WLAN-Profile vorhanden.",
+                self.tr("Keine Profile"),
+                self.tr("Es sind keine WLAN-Profile vorhanden."),
             )
             return
 
@@ -876,19 +876,19 @@ class MainWindow(QMainWindow):
             if failed:
                 QMessageBox.warning(
                     self,
-                    "Sicherung abgeschlossen",
+                    self.tr("Sicherung abgeschlossen"),
                     message,
                 )
             else:
                 QMessageBox.information(
                     self,
-                    "Sicherung abgeschlossen",
+                    self.tr("Sicherung abgeschlossen"),
                     message,
                 )
 
         except Exception as exc:
             self._show_exception(
-                "Sicherung fehlgeschlagen",
+                self.tr("Sicherung fehlgeschlagen"),
                 exc,
             )
     def backup_selected_profile(self) -> None:
@@ -929,13 +929,13 @@ class MainWindow(QMainWindow):
                 )
                 QMessageBox.warning(
                     self,
-                    "Wiederherstellung abgeschlossen",
+                    self.tr("Wiederherstellung abgeschlossen"),
                     message,
                 )
             else:
                 QMessageBox.information(
                     self,
-                    "Wiederherstellung abgeschlossen",
+                    self.tr("Wiederherstellung abgeschlossen"),
                     message,
                 )
 
@@ -943,7 +943,7 @@ class MainWindow(QMainWindow):
 
         except Exception as exc:
             self._show_exception(
-                "Wiederherstellung fehlgeschlagen",
+                self.tr("Wiederherstellung fehlgeschlagen"),
                 exc,
             )
 
@@ -952,9 +952,9 @@ class MainWindow(QMainWindow):
 
         filename, _ = QFileDialog.getSaveFileName(
             self,
-            "CSV-Datei speichern",
+            self.tr("CSV-Datei speichern"),
             str(default_path),
-            "CSV-Dateien (*.csv)",
+            self.tr("CSV-Dateien (*.csv)"),
         )
 
         if not filename:
@@ -966,8 +966,8 @@ class MainWindow(QMainWindow):
 
         if not confirm(
             self,
-            "CSV-Export",
-            "Die CSV-Datei enthält vorhandene WLAN-Passwörter im Klartext.\n\nFortfahren?",
+            self.tr("CSV-Export"),
+            self.tr("Die CSV-Datei enthält vorhandene WLAN-Passwörter im Klartext.\n\nFortfahren?"),
             warning=True,
         ):
             return
@@ -976,11 +976,11 @@ class MainWindow(QMainWindow):
             count = self.manager.export_csv(path)
             QMessageBox.information(
                 self,
-                "CSV-Export erfolgreich",
+                self.tr("CSV-Export erfolgreich"),
                 f"Datei:\n{path}\n\nAnzahl Profile: {count}",
             )
         except Exception as exc:
-            self._show_exception("CSV-Export fehlgeschlagen", exc)
+            self._show_exception(self.tr("CSV-Export fehlgeschlagen"), exc)
 
     def show_current_connection(self) -> None:
         try:
@@ -989,23 +989,23 @@ class MainWindow(QMainWindow):
             if not connection.ssid:
                 QMessageBox.information(
                     self,
-                    "Aktuelle WLAN-Verbindung",
-                    "Der Computer ist aktuell mit keinem WLAN verbunden.",
+                    self.tr("Aktuelle WLAN-Verbindung"),
+                    self.tr("Der Computer ist aktuell mit keinem WLAN verbunden."),
                 )
                 return
 
             values = [
-                ("Schnittstelle", connection.interface),
-                ("Status", connection.status),
+                (self.tr("Schnittstelle"), connection.interface),
+                (self.tr("Status"), connection.status),
                 ("SSID", connection.ssid),
                 ("BSSID", connection.bssid),
-                ("Funktyp", connection.radio_type),
-                ("Authentifizierung", connection.authentication),
-                ("Verschlüsselung", connection.cipher),
-                ("Kanal", connection.channel),
-                ("Empfangsrate", connection.receive_rate),
-                ("Senderate", connection.transmit_rate),
-                ("Signal", connection.signal),
+                (self.tr("Funktyp"), connection.radio_type),
+                (self.tr("Authentifizierung"), connection.authentication),
+                (self.tr("Verschlüsselung"), connection.cipher),
+                (self.tr("Kanal"), connection.channel),
+                (self.tr("Empfangsrate"), connection.receive_rate),
+                (self.tr("Senderate"), connection.transmit_rate),
+                (self.tr("Signal"), connection.signal),
             ]
 
             text = "\n".join(
@@ -1013,13 +1013,13 @@ class MainWindow(QMainWindow):
             )
 
             QMessageBox.information(
-                self, "Aktuelle WLAN-Verbindung", text
+                self, self.tr("Aktuelle WLAN-Verbindung"), text
             )
 
         except PermissionError as exc:
             answer = QMessageBox.warning(
                 self,
-                "Standortberechtigung fehlt",
+                self.tr("Standortberechtigung fehlt"),
                 f"{exc}\n\nStandorteinstellungen jetzt öffnen?",
                 QMessageBox.StandardButton.Yes
                 | QMessageBox.StandardButton.No,
@@ -1034,7 +1034,7 @@ class MainWindow(QMainWindow):
 
         except Exception as exc:
             self._show_exception(
-                "WLAN-Verbindung konnte nicht gelesen werden", exc
+                self.tr("WLAN-Verbindung konnte nicht gelesen werden"), exc
             )
 
     def _show_profile_context_menu(self, position: QPoint) -> None:
@@ -1052,7 +1052,7 @@ class MainWindow(QMainWindow):
         menu = QMenu(self)
         menu.addAction(self.action_edit_profile)
 
-        copy_action = menu.addAction("Kopieren")
+        copy_action = menu.addAction(self.tr("Kopieren"))
         copy_action.setShortcut(QKeySequence.StandardKey.Copy)
         copy_action.setShortcutVisibleInContextMenu(True)
 
@@ -1071,18 +1071,18 @@ class MainWindow(QMainWindow):
         menu.addAction(self.action_qr_code)
         menu.addSeparator()
 
-        show_password_action = menu.addAction("Passwort anzeigen")
+        show_password_action = menu.addAction(self.tr("Passwort anzeigen"))
         show_password_action.triggered.connect(self.show_selected_password)
 
         menu.addSeparator()
 
-        backup_action = menu.addAction("Profil sichern...")
+        backup_action = menu.addAction(self.tr("Profil sichern..."))
         backup_action.triggered.connect(
             self.backup_selected_profile
         )
 
         menu.addSeparator()
-        delete_action = menu.addAction("Profil löschen...")
+        delete_action = menu.addAction(self.tr("Profil löschen..."))
         delete_action.triggered.connect(
             self.delete_selected_profile_via_dialog
         )
@@ -1109,7 +1109,7 @@ class MainWindow(QMainWindow):
             dialog.exec()
         except Exception as exc:
             self._show_exception(
-                "QR-Code konnte nicht erzeugt werden",
+                self.tr("QR-Code konnte nicht erzeugt werden"),
                 exc,
             )
 
@@ -1140,7 +1140,7 @@ class MainWindow(QMainWindow):
 
         QMessageBox.information(
             self,
-            "Sprache",
+            self.tr("Sprache"),
             "Die neue Sprache wird nach einem Neustart "
             "des WLAN-Managers verwendet.",
         )
@@ -1152,6 +1152,7 @@ class MainWindow(QMainWindow):
     def show_about(self) -> None:
         QMessageBox.about(
             self,
-            "Über WLAN-Manager",
+            self.tr("Über WLAN-Manager"),
             AppInfo.about(),
         )
+
