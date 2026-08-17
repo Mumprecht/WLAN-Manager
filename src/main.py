@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import sys
 
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QTranslator
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QMessageBox
 
 from core.permissions import ensure_elevated
 from gui.main_window import MainWindow
+from utils.language import get_language, translation_file
 from utils.paths import resource_path
 from utils.version import AppInfo
 from utils.windows_icon import set_native_window_icon
@@ -29,12 +30,21 @@ def main() -> int:
     app.setApplicationName(AppInfo.NAME)
     app.setApplicationVersion(AppInfo.VERSION)
 
+    translator = QTranslator(app)
+    language = get_language()
+
+    if language != "de":
+        qm_file = translation_file(language)
+
+        if qm_file.exists():
+            if translator.load(str(qm_file)):
+                app.installTranslator(translator)
+
     icon_path = resource_path(
         "icons/WLAN-Manager_Icon.ico"
     )
 
     icon = QIcon(str(icon_path))
-
     app.setWindowIcon(icon)
 
     try:

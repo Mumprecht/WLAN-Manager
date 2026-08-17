@@ -35,6 +35,12 @@ from gui.widgets import ProfileTable
 from utils.logger import configure_logging
 from utils.version import AppInfo
 
+from utils.language import (
+    SUPPORTED_LANGUAGES,
+    get_language,
+    set_language,
+)
+
 
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
@@ -219,6 +225,28 @@ class MainWindow(QMainWindow):
         )
         self.action_about.triggered.connect(self.show_about)
 
+        self.language_actions: dict[str, QAction] = {}
+
+        current_language = get_language()
+
+        for language in SUPPORTED_LANGUAGES:
+            action = QAction(
+                language.name,
+                self,
+            )
+            action.setCheckable(True)
+            action.setChecked(
+                language.code == current_language
+            )
+            action.triggered.connect(
+                lambda checked=False, code=language.code:
+                    self.change_language(code)
+            )
+
+            self.language_actions[
+                language.code
+            ] = action
+
         self.action_exit = QAction("Beenden", self)
         self.action_exit.setShortcut(QKeySequence("Ctrl+Q"))
         self.action_exit.setStatusTip("WLAN-Manager beenden")
@@ -245,6 +273,21 @@ class MainWindow(QMainWindow):
         profile_menu.addAction(self.action_qr_code)
         profile_menu.addSeparator()
         profile_menu.addAction(self.action_delete_profiles)
+
+        settings_menu = self.menuBar().addMenu(
+            "&Einstellungen"
+        )
+
+        language_menu = settings_menu.addMenu(
+            "&Sprache"
+        )
+
+        for language in SUPPORTED_LANGUAGES:
+            language_menu.addAction(
+                self.language_actions[
+                    language.code
+                ]
+            )
 
         help_menu = self.menuBar().addMenu("&Hilfe")
         help_menu.addAction(self.action_help)
@@ -1078,6 +1121,29 @@ class MainWindow(QMainWindow):
     def show_project_info(self) -> None:
         dialog = ProjectInfoDialog(self)
         dialog.exec()
+
+    def change_language(
+        self,
+        language_code: str,
+    ) -> None:
+        current_language = get_language()
+
+        if language_code == current_language:
+            return
+
+        set_language(language_code)
+
+        for code, action in self.language_actions.items():
+            action.setChecked(
+                code == language_code
+            )
+
+        QMessageBox.information(
+            self,
+            "Sprache",
+            "Die neue Sprache wird nach einem Neustart "
+            "des WLAN-Managers verwendet.",
+        )
 
     def closeEvent(self, event: QCloseEvent) -> None:
         self._save_window_settings()
