@@ -19,8 +19,7 @@ from PySide6.QtWidgets import (
     QTableWidgetItem,
 )
 
-from core.models import WlanProfile
-from core.profile_editor import EditableWifiProfile
+from core.models import EditableWifiProfile, WlanProfile
 from core.wlan_manager import WlanManager
 from dialogs.backup_dialog import BackupDialog
 from dialogs.restore_dialog import RestoreDialog

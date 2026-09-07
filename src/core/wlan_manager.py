@@ -17,8 +17,8 @@ from core.importer import (
     import_selected_profiles,
 )
 from core.qr_code import wifi_qr_data
+from core.models import EditableWifiProfile
 from core.profile_editor import (
-    EditableWifiProfile,
     install_profile,
     replace_profile,
     load_profile_for_edit,
