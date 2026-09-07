@@ -1,5 +1,60 @@
 # Änderungsprotokoll
 
+## [2.8.0] - 2026-09-07
+
+### Hinzugefügt
+
+- Plattformunabhängige WLAN-Backend-Abstraktion eingeführt.
+- Backend-Factory zur Auswahl des WLAN-Backends entsprechend dem Betriebssystem ergänzt.
+- Eigenes Windows-WLAN-Backend als Grundlage für die weitere plattformübergreifende Entwicklung ergänzt.
+- Gemeinsames Datenmodell für bearbeitbare WLAN-Profile in die plattformunabhängige Core-Schicht verschoben.
+- Gemeinsame Hilfsfunktionen für plattformunabhängig verwendbare Pfade und WLAN-Anzeigewerte ergänzt.
+- Windows-Unterstützung zum Auslesen des Autoconnect-Status gespeicherter WLAN-Profile ergänzt.
+- Windows-Unterstützung zum Auslesen der tatsächlichen WLAN-Profilpriorität über die Native Wi-Fi API ergänzt.
+- Windows-Unterstützung zum Ändern der WLAN-Profilpriorität ergänzt.
+- Windows-Unterstützung zum Ändern des Autoconnect-Status über die Native Wi-Fi API ergänzt.
+- Neuer Dialog „Automatische WLAN-Verbindungen verwalten“ ergänzt.
+- WLAN-Profile können im neuen Dialog mit „Nach oben“ und „Nach unten“ unmittelbar in ihrer Windows-Priorität verschoben werden.
+- Autoconnect kann für das ausgewählte WLAN-Profil direkt ein- oder ausgeschaltet werden.
+- Nach Änderungen werden Autoconnect-Status und Priorität erneut aus Windows eingelesen.
+
+### Geändert
+
+- `WlanManager` verwendet die neue Backend-Abstraktion statt einer direkten Bindung der GUI an die Windows-Implementierung.
+- Windows-spezifische WLAN-Funktionen werden schrittweise hinter dem Windows-Backend gekapselt.
+- Die Hauptoberfläche wurde um die Verwaltung automatischer WLAN-Verbindungen erweitert.
+- Authentifizierungs-, Verbindungsstatus- und Passwort-Sonderwerte werden für die Anzeige zentral lokalisiert.
+- Offene WLANs werden in der Benutzeroberfläche sprachabhängig dargestellt.
+- Die lokalisierte Darstellung wird auch in Profilauswahl, QR-Code-Dialog und CSV-Export verwendet.
+- Englische, französische und italienische Übersetzungsressourcen auf insgesamt 312 Programmtexte erweitert.
+
+### Technisch
+
+- Native Windows Wi-Fi API um das Auslesen der Profilreihenfolge erweitert.
+- Native Windows Wi-Fi API um `WlanSetProfilePosition` zur Änderung der Profilpriorität erweitert.
+- Native Windows Wi-Fi API um `WlanSetProfile` zur gezielten Änderung des Autoconnect-Status erweitert.
+- Bestehende WLAN-Profilreihenfolge bleibt bei einer reinen Autoconnect-Änderung erhalten.
+- Autoconnect-Änderungen und Prioritätsänderungen wurden mit Schreib-/Lese-Roundtrips gegen Windows geprüft.
+- Die GUI liest den von Windows tatsächlich gespeicherten Zustand nach jeder Änderung erneut ein.
+- Die bisherige sortierbare Haupttabelle bleibt von der Windows-Prioritätsreihenfolge getrennt.
+
+### Internationalisierung
+
+- Neue Texte für Autoconnect und WLAN-Priorität vollständig auf Englisch, Französisch und Italienisch übersetzt.
+- Lokalisierte Darstellung für offene WLANs ergänzt.
+- Lokalisierte Darstellung der Verbindungszustände „Verbunden“ und „Getrennt“ ergänzt.
+- Lokalisierte Darstellung besonderer Passwortzustände ergänzt.
+- Übersetzungsdateien `.ts` und `.qm` auf 312 vollständig übersetzte Meldungen aktualisiert.
+
+### Dokumentation
+
+- Deutsches Benutzerhandbuch um Autoconnect und WLAN-Prioritätsverwaltung erweitert.
+- Englisches Benutzerhandbuch entsprechend erweitert.
+- Französisches Benutzerhandbuch entsprechend erweitert.
+- Italienisches Benutzerhandbuch entsprechend erweitert.
+- Verhalten der Windows-spezifischen WLAN-Priorität und Autoconnect-Funktion dokumentiert.
+- Einschränkungen für administrativ oder durch Gruppenrichtlinien verwaltete WLAN-Profile dokumentiert.
+
 ## [2.7.0] - 2026-08-17
 
 ### Hinzugefügt
