@@ -33,9 +33,12 @@ from core.profiles import (
     delete_selected_profiles,
     get_all_profile_details,
     get_current_connection,
-    get_profile_names,
 )
 from core.wlan_backend import WlanBackend
+from core.wlan_native import (
+    get_profile_names_in_preference_order,
+    set_profile_position,
+)
 
 
 class WindowsWlanBackend(WlanBackend):
@@ -51,7 +54,7 @@ class WindowsWlanBackend(WlanBackend):
         result: list[AutoconnectProfile] = []
 
         for priority, profile_name in enumerate(
-            get_profile_names(preserve_order=True),
+            get_profile_names_in_preference_order(),
             start=1,
         ):
             editable = load_profile_for_edit(profile_name)
@@ -65,6 +68,37 @@ class WindowsWlanBackend(WlanBackend):
             )
 
         return result
+
+    def set_profile_priority(
+        self,
+        profile_name: str,
+        priority: int,
+    ) -> None:
+        if priority < 1:
+            raise ValueError(
+                "Die WLAN-Priorität muss mindestens 1 sein."
+            )
+
+        profile_names = get_profile_names_in_preference_order()
+
+        if profile_name not in profile_names:
+            raise ValueError(
+                f"Das WLAN-Profil {profile_name!r} wurde nicht gefunden."
+            )
+
+        if priority > len(profile_names):
+            raise ValueError(
+                "Die WLAN-Priorität darf nicht größer als "
+                f"{len(profile_names)} sein."
+            )
+
+        # Öffentliche API: 1 = höchste Priorität.
+        # Windows Native Wi-Fi: 0 = höchste Position.
+        set_profile_position(
+            profile_name,
+            priority - 1,
+        )
+
 
     def connect_profile(self, profile_name: str) -> None:
         connect_profile(profile_name)

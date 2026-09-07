@@ -25,6 +25,16 @@ class WlanManager:
     def autoconnect_profiles(self):
         return self.backend.autoconnect_profiles()
 
+    def set_profile_priority(
+        self,
+        profile_name: str,
+        priority: int,
+    ) -> None:
+        self.backend.set_profile_priority(
+            profile_name,
+            priority,
+        )
+
     def connect_profile(self, ssid: str) -> None:
         self.backend.connect_profile(ssid)
 

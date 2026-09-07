@@ -25,6 +25,15 @@ class WlanBackend(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def set_profile_priority(
+        self,
+        profile_name: str,
+        priority: int,
+    ) -> None:
+        """Setzt die Priorität eines WLAN-Profils; 1 ist die höchste."""
+        raise NotImplementedError
+
+    @abstractmethod
     def current_connection(self) -> CurrentConnection:
         """Liefert Informationen zur aktuellen WLAN-Verbindung."""
         raise NotImplementedError
