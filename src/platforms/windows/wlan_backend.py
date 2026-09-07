@@ -37,6 +37,7 @@ from core.profiles import (
 from core.wlan_backend import WlanBackend
 from core.wlan_native import (
     get_profile_names_in_preference_order,
+    set_profile_autoconnect as native_set_profile_autoconnect,
     set_profile_position,
 )
 
@@ -97,6 +98,17 @@ class WindowsWlanBackend(WlanBackend):
         set_profile_position(
             profile_name,
             priority - 1,
+        )
+
+
+    def set_profile_autoconnect(
+        self,
+        profile_name: str,
+        enabled: bool,
+    ) -> None:
+        native_set_profile_autoconnect(
+            profile_name,
+            enabled,
         )
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ctypes
 from ctypes import wintypes
+import xml.etree.ElementTree as ET
 
 
 
@@ -14,6 +15,10 @@ WLAN_MAX_NAME_LENGTH = 256
 
 # WlanGetProfile: Klartextschlüssel anfordern.
 WLAN_PROFILE_GET_PLAINTEXT_KEY = 0x00000004
+
+WLAN_PROFILE_NS = (
+    "http://www.microsoft.com/networking/WLAN/profile/v1"
+)
 
 
 class GUID(ctypes.Structure):
@@ -123,6 +128,18 @@ _wlanapi.WlanSetProfilePosition.argtypes = [
     ctypes.c_void_p,
 ]
 _wlanapi.WlanSetProfilePosition.restype = wintypes.DWORD
+
+_wlanapi.WlanSetProfile.argtypes = [
+    wintypes.HANDLE,
+    ctypes.POINTER(GUID),
+    wintypes.DWORD,
+    wintypes.LPCWSTR,
+    wintypes.LPCWSTR,
+    wintypes.BOOL,
+    ctypes.c_void_p,
+    ctypes.POINTER(wintypes.DWORD),
+]
+_wlanapi.WlanSetProfile.restype = wintypes.DWORD
 
 
 _wlanapi.WlanDeleteProfile.argtypes = [
@@ -474,6 +491,165 @@ def set_profile_position(
                     profile_name=profile_name
                 ),
             )
+
+        raise NativeWifiError(
+            ERROR_NOT_FOUND,
+            QCoreApplication.translate(
+                "WlanNative",
+                "Das WLAN-Profil '{profile_name}' wurde auf "
+                "keiner WLAN-Schnittstelle gefunden.",
+            ).format(
+                profile_name=profile_name
+            ),
+        )
+
+    finally:
+        _wlanapi.WlanCloseHandle(
+            client_handle,
+            None,
+        )
+
+
+def set_profile_autoconnect(
+    profile_name: str,
+    enabled: bool,
+) -> None:
+    """
+    Ändert ausschließlich connectionMode eines WLAN-Profils.
+
+    enabled=True  -> auto
+    enabled=False -> manual
+    """
+    negotiated_version = wintypes.DWORD()
+    client_handle = wintypes.HANDLE()
+
+    result = _wlanapi.WlanOpenHandle(
+        WLAN_API_VERSION_2_0,
+        None,
+        ctypes.byref(negotiated_version),
+        ctypes.byref(client_handle),
+    )
+
+    if result != ERROR_SUCCESS:
+        raise NativeWifiError(
+            result,
+            QCoreApplication.translate(
+                "WlanNative",
+                "Die Windows WLAN-API konnte nicht geöffnet werden.",
+            ),
+        )
+
+    try:
+        interface_guids = _enumerate_interface_guids(
+            client_handle
+        )
+
+        if not interface_guids:
+            raise NativeWifiError(
+                ERROR_NOT_FOUND,
+                QCoreApplication.translate(
+                    "WlanNative",
+                    "Es wurde keine WLAN-Schnittstelle gefunden.",
+                ),
+            )
+
+        for interface_guid in interface_guids:
+            profile_xml_ptr = ctypes.c_void_p()
+            profile_flags = wintypes.DWORD()
+            granted_access = wintypes.DWORD()
+
+            result = _wlanapi.WlanGetProfile(
+                client_handle,
+                ctypes.byref(interface_guid),
+                profile_name,
+                None,
+                ctypes.byref(profile_xml_ptr),
+                ctypes.byref(profile_flags),
+                ctypes.byref(granted_access),
+            )
+
+            if result == ERROR_NOT_FOUND:
+                continue
+
+            if result != ERROR_SUCCESS:
+                raise NativeWifiError(
+                    result,
+                    QCoreApplication.translate(
+                        "WlanNative",
+                        "Das WLAN-Profil '{profile_name}' "
+                        "konnte nicht gelesen werden.",
+                    ).format(
+                        profile_name=profile_name
+                    ),
+                )
+
+            if not profile_xml_ptr.value:
+                continue
+
+            try:
+                xml_text = ctypes.wstring_at(
+                    profile_xml_ptr.value
+                )
+            finally:
+                _wlanapi.WlanFreeMemory(
+                    profile_xml_ptr
+                )
+
+            root = ET.fromstring(xml_text)
+
+            connection_mode = root.find(
+                f"{{{WLAN_PROFILE_NS}}}connectionMode"
+            )
+
+            if connection_mode is None:
+                raise ValueError(
+                    QCoreApplication.translate(
+                        "WlanNative",
+                        "Das WLAN-Profil '{profile_name}' "
+                        "enthält kein connectionMode-Element.",
+                    ).format(
+                        profile_name=profile_name
+                    )
+                )
+
+            connection_mode.text = (
+                "auto"
+                if enabled
+                else "manual"
+            )
+
+            updated_xml = ET.tostring(
+                root,
+                encoding="unicode",
+                xml_declaration=False,
+            )
+
+            reason_code = wintypes.DWORD()
+
+            result = _wlanapi.WlanSetProfile(
+                client_handle,
+                ctypes.byref(interface_guid),
+                0,
+                updated_xml,
+                None,
+                True,
+                None,
+                ctypes.byref(reason_code),
+            )
+
+            if result != ERROR_SUCCESS:
+                raise NativeWifiError(
+                    result,
+                    QCoreApplication.translate(
+                        "WlanNative",
+                        "Der Autoconnect-Status des WLAN-Profils "
+                        "'{profile_name}' konnte nicht geändert werden.",
+                    ).format(
+                        profile_name=profile_name
+                    ),
+                )
+
+            return
 
         raise NativeWifiError(
             ERROR_NOT_FOUND,

@@ -34,6 +34,15 @@ class WlanBackend(ABC):
         raise NotImplementedError
 
     @abstractmethod
+    def set_profile_autoconnect(
+        self,
+        profile_name: str,
+        enabled: bool,
+    ) -> None:
+        """Aktiviert oder deaktiviert Autoconnect für ein WLAN-Profil."""
+        raise NotImplementedError
+
+    @abstractmethod
     def current_connection(self) -> CurrentConnection:
         """Liefert Informationen zur aktuellen WLAN-Verbindung."""
         raise NotImplementedError
