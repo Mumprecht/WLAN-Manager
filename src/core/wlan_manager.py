@@ -6,7 +6,7 @@ from pathlib import Path
 from core.models import EditableWifiProfile
 from core.qr_code import wifi_qr_data
 from core.wlan_backend import WlanBackend
-from core.netsh import get_downloads_folder
+from utils.paths import get_downloads_folder
 from platforms.backend_factory import create_wlan_backend
 
 

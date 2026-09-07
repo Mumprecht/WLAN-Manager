@@ -1,11 +1,9 @@
 from __future__ import annotations
 
 import locale
-import os
 import re
 import subprocess
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Iterable
 
 
@@ -83,17 +81,3 @@ def looks_like_location_permission_error(text: str) -> bool:
         r"Access is denied",
     )
     return any(re.search(pattern, text, re.IGNORECASE | re.DOTALL) for pattern in patterns)
-
-
-def get_downloads_folder() -> Path:
-    home = Path.home()
-    candidates = [
-        home / "Downloads",
-        Path(os.environ.get("USERPROFILE", str(home))) / "Downloads",
-    ]
-
-    for candidate in candidates:
-        if candidate.exists():
-            return candidate
-
-    return candidates[0]
