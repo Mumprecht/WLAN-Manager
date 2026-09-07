@@ -35,6 +35,13 @@ class CurrentConnection:
 
 
 @dataclass(slots=True)
+class AutoconnectProfile:
+    profile_name: str
+    autoconnect: bool
+    priority: int | None = None
+
+
+@dataclass(slots=True)
 class EditableWifiProfile:
     profile_name: str
     ssid: str

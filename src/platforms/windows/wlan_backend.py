@@ -15,7 +15,12 @@ from core.importer import (
     import_profile,
     import_selected_profiles,
 )
-from core.models import CurrentConnection, EditableWifiProfile, WlanProfile
+from core.models import (
+    AutoconnectProfile,
+    CurrentConnection,
+    EditableWifiProfile,
+    WlanProfile,
+)
 from core.profile_editor import (
     install_profile,
     load_profile_for_edit,
@@ -28,6 +33,7 @@ from core.profiles import (
     delete_selected_profiles,
     get_all_profile_details,
     get_current_connection,
+    get_profile_names,
 )
 from core.wlan_backend import WlanBackend
 
@@ -40,6 +46,25 @@ class WindowsWlanBackend(WlanBackend):
 
     def current_connection(self) -> CurrentConnection:
         return get_current_connection()
+
+    def autoconnect_profiles(self) -> list[AutoconnectProfile]:
+        result: list[AutoconnectProfile] = []
+
+        for priority, profile_name in enumerate(
+            get_profile_names(preserve_order=True),
+            start=1,
+        ):
+            editable = load_profile_for_edit(profile_name)
+
+            result.append(
+                AutoconnectProfile(
+                    profile_name=profile_name,
+                    autoconnect=editable.autoconnect,
+                    priority=priority,
+                )
+            )
+
+        return result
 
     def connect_profile(self, profile_name: str) -> None:
         connect_profile(profile_name)

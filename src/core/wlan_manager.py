@@ -22,6 +22,9 @@ class WlanManager:
     def current_connection(self):
         return self.backend.current_connection()
 
+    def autoconnect_profiles(self):
+        return self.backend.autoconnect_profiles()
+
     def connect_profile(self, ssid: str) -> None:
         self.backend.connect_profile(ssid)
 

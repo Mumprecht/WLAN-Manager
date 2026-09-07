@@ -3,7 +3,12 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-from core.models import CurrentConnection, EditableWifiProfile, WlanProfile
+from core.models import (
+    AutoconnectProfile,
+    CurrentConnection,
+    EditableWifiProfile,
+    WlanProfile,
+)
 
 
 class WlanBackend(ABC):
@@ -12,6 +17,11 @@ class WlanBackend(ABC):
     @abstractmethod
     def profiles(self) -> list[WlanProfile]:
         """Liefert die gespeicherten WLAN-Profile."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def autoconnect_profiles(self) -> list[AutoconnectProfile]:
+        """Liefert Autoconnect-Status und Priorität der WLAN-Profile."""
         raise NotImplementedError
 
     @abstractmethod
