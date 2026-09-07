@@ -132,6 +132,47 @@ Scorciatoia da tastiera:
 Ctrl+I
 ```
 
+## Gestire le connessioni WLAN automatiche e la priorità
+
+Menu:
+
+```text
+WLAN > Gestire le connessioni WLAN automatiche...
+```
+
+Questa funzione consente di gestire lo stato di connessione automatica e la priorità dei profili WLAN salvati.
+
+La tabella mostra:
+
+- **Priorità** – ordine con cui Windows preferisce i profili WLAN.
+- **Profilo WLAN** – nome del profilo WLAN salvato.
+- **Connessione automatica** – indica con **Sì** o **No** se Windows può connettersi automaticamente utilizzando questo profilo.
+
+### Modificare la priorità WLAN
+
+**La priorità 1 è la priorità più alta.**
+
+Con **Sposta su** e **Sposta giù** è possibile spostare un profilo nell’ordine di priorità.
+
+La modifica viene salvata immediatamente in Windows. WLAN-Manager legge quindi nuovamente l’elenco dei profili da Windows e visualizza l’ordine effettivamente memorizzato.
+
+In Windows, la priorità WLAN è associata alla relativa interfaccia WLAN.
+
+### Modificare la connessione automatica
+
+Con **Modifica connessione automatica** si commuta il profilo selezionato tra **Sì** e **No**.
+
+- **Sì** – Windows può connettersi automaticamente utilizzando questo profilo.
+- **No** – Windows non si connette automaticamente utilizzando questo profilo. È comunque possibile stabilire manualmente la connessione.
+
+La modifica viene salvata immediatamente in Windows e successivamente riletta da Windows.
+
+### Note
+
+I profili gestiti tramite criteri amministrativi o Criteri di gruppo potrebbero non essere modificabili.
+
+**Aggiorna** rilegge lo stato corrente dei profili WLAN da Windows senza apportare modifiche.
+
 ## Scorciatoie da tastiera
 
 - `F5` Aggiorna

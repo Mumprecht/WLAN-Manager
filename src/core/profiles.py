@@ -19,7 +19,9 @@ from core.wlan_native import (
 
 
 
-def get_profile_names() -> list[str]:
+def get_profile_names(
+    preserve_order: bool = False,
+) -> list[str]:
     result = run_netsh(["wlan", "show", "profiles"])
     text = result.combined
 
@@ -39,8 +41,12 @@ def get_profile_names() -> list[str]:
         if name and not re.fullmatch(r"<.*>", name):
             profiles.append(name)
 
-    unique = sorted(set(profiles), key=str.casefold)
+    unique = list(dict.fromkeys(profiles))
 
+    if preserve_order:
+        return unique
+
+    unique = sorted(unique, key=str.casefold)
     if not unique:
         return []
 

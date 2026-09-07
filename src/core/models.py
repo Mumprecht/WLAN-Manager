@@ -32,3 +32,24 @@ class CurrentConnection:
     receive_rate: str = ""
     transmit_rate: str = ""
     signal: str = ""
+
+
+@dataclass(slots=True)
+class AutoconnectProfile:
+    profile_name: str
+    autoconnect: bool
+    priority: int | None = None
+
+
+@dataclass(slots=True)
+class EditableWifiProfile:
+    profile_name: str
+    ssid: str
+    security: str
+    password: str = ""
+    autoconnect: bool = True
+    hidden: bool = False
+    scope: str = "all"
+    source_xml: str | None = None
+    security_description: str = ""
+    is_open: bool = False

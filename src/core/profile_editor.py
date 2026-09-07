@@ -4,31 +4,17 @@ import html
 import re
 import tempfile
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass
 from pathlib import Path
 
 from PySide6.QtCore import QCoreApplication
 
+from core.models import EditableWifiProfile
 from core.netsh import NetshError, require_success, run_netsh
 
 
 
 PROFILE_NS = "http://www.microsoft.com/networking/WLAN/profile/v1"
 ET.register_namespace("", PROFILE_NS)
-
-
-@dataclass(slots=True)
-class EditableWifiProfile:
-    profile_name: str
-    ssid: str
-    security: str
-    password: str = ""
-    autoconnect: bool = True
-    hidden: bool = False
-    scope: str = "all"
-    source_xml: str | None = None
-    security_description: str = ""
-    is_open: bool = False
 
 
 def _escape(value: str) -> str:

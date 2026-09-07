@@ -100,9 +100,9 @@ Dieser Testplan ist vor jeder Freigabe einer neuen Version vollständig durchzug
 - [ ] Hilfe funktioniert aus PyCharm
 - [ ] Hilfe funktioniert aus der PyInstaller-EXE
 - [ ] Projektinformationen öffnen
-- [ ] Version in Projektinformationen stimmt
+- [ ] Projektinformationen zeigen die aktuelle Version aus VERSION
 - [ ] Logverzeichnis wird korrekt angezeigt
-- [ ] Über WLAN-Manager zeigt Version 2.5.2
+- [ ] Über WLAN-Manager zeigt die aktuelle Version aus VERSION
 
 
 ## 13. Profile erstellen und bearbeiten

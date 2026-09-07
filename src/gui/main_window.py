@@ -19,8 +19,13 @@ from PySide6.QtWidgets import (
     QTableWidgetItem,
 )
 
-from core.models import WlanProfile
-from core.profile_editor import EditableWifiProfile
+from core.models import EditableWifiProfile, WlanProfile
+from core.profile_display import (
+    authentication_display_text,
+    current_connection_authentication_display_text,
+    current_connection_status_display_text,
+    password_display_text,
+)
 from core.wlan_manager import WlanManager
 from dialogs.backup_dialog import BackupDialog
 from dialogs.restore_dialog import RestoreDialog
@@ -30,6 +35,7 @@ from dialogs.qr_code_dialog import QrCodeDialog
 from dialogs.help_dialog import HelpDialog
 from dialogs.project_info_dialog import ProjectInfoDialog
 from dialogs.profile_edit_dialog import ProfileEditDialog
+from dialogs.autoconnect_dialog import AutoconnectDialog
 from gui.dialogs import confirm
 from gui.widgets import ProfileTable
 from utils.logger import configure_logging
@@ -104,6 +110,20 @@ class MainWindow(QMainWindow):
         )
         self.action_show_passwords.triggered.connect(
             self.show_passwords
+        )
+
+        self.action_manage_autoconnect = QAction(
+            self.tr("Automatische WLAN-Verbindungen verwalten..."),
+            self,
+        )
+        self.action_manage_autoconnect.setStatusTip(
+            self.tr(
+                "Autoconnect und Priorität gespeicherter "
+                "WLAN-Profile verwalten"
+            )
+        )
+        self.action_manage_autoconnect.triggered.connect(
+            self.show_autoconnect_manager
         )
 
         self.action_connect = QAction(self.tr("Verbinden"), self)
@@ -264,6 +284,8 @@ class MainWindow(QMainWindow):
         wlan_menu.addAction(self.action_refresh)
         wlan_menu.addAction(self.action_current_connection)
         wlan_menu.addAction(self.action_show_passwords)
+        wlan_menu.addSeparator()
+        wlan_menu.addAction(self.action_manage_autoconnect)
 
         profile_menu = self.menuBar().addMenu(self.tr("&Profile"))
         profile_menu.addAction(self.action_new_profile)
@@ -458,8 +480,12 @@ class MainWindow(QMainWindow):
             for row_index, profile in enumerate(profiles):
                 values = [
                     profile.ssid,
-                    profile.authentication,
-                    "••••••••" if profile.has_password else profile.password,
+                    authentication_display_text(profile),
+                    (
+                        "••••••••"
+                        if profile.has_password
+                        else password_display_text(profile)
+                    ),
                 ]
 
                 for column, value in enumerate(values):
@@ -516,7 +542,10 @@ class MainWindow(QMainWindow):
         ):
             return
 
-        passwords = {profile.ssid: profile.password for profile in self._profiles}
+        passwords = {
+            profile.ssid: password_display_text(profile)
+            for profile in self._profiles
+        }
 
         for row_index in range(self.table.rowCount()):
             ssid_item = self.table.item(row_index, 0)
@@ -539,7 +568,12 @@ class MainWindow(QMainWindow):
         QMessageBox.information(
             self,
             self.tr("Passwort – {ssid}").format(ssid=profile.ssid),
-            self.tr("WLAN-Profil: {ssid}\n\nPasswort: {password}").format(ssid=profile.ssid, password=profile.password),
+            self.tr(
+                "WLAN-Profil: {ssid}\n\nPasswort: {password}"
+            ).format(
+                ssid=profile.ssid,
+                password=password_display_text(profile),
+            ),
         )
 
     def connect_selected_profile(self) -> None:
@@ -1020,6 +1054,13 @@ class MainWindow(QMainWindow):
         except Exception as exc:
             self._show_exception(self.tr("CSV-Export fehlgeschlagen"), exc)
 
+    def show_autoconnect_manager(self) -> None:
+        dialog = AutoconnectDialog(
+            manager=self.manager,
+            parent=self,
+        )
+        dialog.exec()
+
     def show_current_connection(self) -> None:
         try:
             connection = self.manager.current_connection()
@@ -1034,11 +1075,19 @@ class MainWindow(QMainWindow):
 
             values = [
                 (self.tr("Schnittstelle"), connection.interface),
-                (self.tr("Status"), connection.status),
+                (
+                    self.tr("Status"),
+                    current_connection_status_display_text(connection),
+                ),
                 ("SSID", connection.ssid),
                 ("BSSID", connection.bssid),
                 (self.tr("Funktyp"), connection.radio_type),
-                (self.tr("Authentifizierung"), connection.authentication),
+                (
+                    self.tr("Authentifizierung"),
+                    current_connection_authentication_display_text(
+                        connection
+                    ),
+                ),
                 (self.tr("Verschlüsselung"), connection.cipher),
                 (self.tr("Kanal"), connection.channel),
                 (self.tr("Empfangsrate"), connection.receive_rate),

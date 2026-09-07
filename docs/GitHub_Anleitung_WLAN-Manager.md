@@ -99,13 +99,13 @@ Noch keinen Release-Tag setzen.
 Die zentrale Versionsdatei ist:
 
 ```text
-C:\Python-Projekte\WLAN-Manager\VERSION
+<Projektordner>\VERSION
 ```
 
 Beispiel:
 
 ```text
-Version=2.7.0
+Version=X.Y.Z
 Name=WLAN-Manager
 Author=Urs Mumprecht
 Company=Mumprecht Software
@@ -123,7 +123,7 @@ Beispiel:
 ```markdown
 # Änderungsprotokoll
 
-## 2.7.0 – TT.MM.JJJJ
+## X.Y.Z – TT.MM.JJJJ
 
 - Neue Funktion A ergänzt.
 - Bedienung von Funktion B verbessert.
@@ -241,7 +241,7 @@ Unter `Changes to be committed:` dürfen nur die gewünschten Release-Dateien st
 Beispiel:
 
 ```powershell
-git commit -m "Release v2.7.0"
+git commit -m "Release vX.Y.Z"
 ```
 
 Danach:
@@ -256,7 +256,7 @@ git log --oneline --decorate -5
 Erst nach dem vollständigen Release-Commit:
 
 ```powershell
-git tag -a v2.7.0 -m "Release WLAN-Manager v2.7.0"
+git tag -a vX.Y.Z -m "Release WLAN-Manager vX.Y.Z"
 ```
 
 Kontrolle:
@@ -268,7 +268,7 @@ git log --oneline --decorate -5
 Beispiel:
 
 ```text
-abc1234 (HEAD -> main, tag: v2.7.0) Release v2.7.0
+abc1234 (HEAD -> main, tag: vX.Y.Z) Release vX.Y.Z
 ```
 
 Ein Git-Tag markiert einen bestimmten Commit.
@@ -297,7 +297,7 @@ nothing to commit, working tree clean
 Tags werden separat gepusht:
 
 ```powershell
-git push origin v2.7.0
+git push origin vX.Y.Z
 ```
 
 ## 16. GitHub Release erstellen
@@ -315,13 +315,13 @@ Create a new release
 Den bereits hochgeladenen Tag auswählen:
 
 ```text
-v2.7.0
+vX.Y.Z
 ```
 
 ### Release-Titel
 
 ```text
-WLAN-Manager v2.7.0
+WLAN-Manager vX.Y.Z
 ```
 
 ### Release Notes
@@ -331,7 +331,7 @@ Kurz die wichtigsten Änderungen für Anwender zusammenfassen.
 Beispiel:
 
 ```markdown
-## WLAN-Manager v2.7.0
+## WLAN-Manager vX.Y.Z
 
 ### Wichtigste Änderungen
 

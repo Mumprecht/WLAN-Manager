@@ -31,6 +31,85 @@
         </message>
     </context>
     <context>
+        <name>AutoconnectDialog</name>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="37" />
+            <source>Automatische WLAN-Verbindungen verwalten</source>
+            <translation>Gérer les connexions Wi-Fi automatiques</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="44" />
+            <source>Die Reihenfolge bestimmt die WLAN-Priorität. Priorität 1 ist die höchste. Änderungen werden sofort in Windows gespeichert.</source>
+            <translation>L'ordre détermine la priorité Wi-Fi. La priorité 1 est la plus élevée. Les modifications sont immédiatement enregistrées dans Windows.</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="55" />
+            <source>Priorität</source>
+            <translation>Priorité</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="56" />
+            <source>WLAN-Profil</source>
+            <translation>Profil Wi-Fi</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="57" />
+            <source>Automatisch verbinden</source>
+            <translation>Connexion automatique</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="107" />
+            <source>Nach oben</source>
+            <translation>Monter</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="111" />
+            <source>Nach unten</source>
+            <translation>Descendre</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="115" />
+            <source>Autoconnect ändern</source>
+            <translation>Modifier la connexion automatique</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="119" />
+            <source>Aktualisieren</source>
+            <translation>Actualiser</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="137" />
+            <source>Schliessen</source>
+            <translation>Fermer</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="194" />
+            <source>WLAN-Profile konnten nicht gelesen werden</source>
+            <translation>Impossible de lire les profils Wi-Fi</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="216" />
+            <source>Ja</source>
+            <translation>Oui</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="218" />
+            <source>Nein</source>
+            <translation>Non</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="296" />
+            <location filename="../../dialogs/autoconnect_dialog.py" line="323" />
+            <source>WLAN-Priorität konnte nicht geändert werden</source>
+            <translation>Impossible de modifier la priorité Wi-Fi</translation>
+        </message>
+        <message>
+            <location filename="../../dialogs/autoconnect_dialog.py" line="346" />
+            <source>Autoconnect konnte nicht geändert werden</source>
+            <translation>Impossible de modifier la connexion automatique</translation>
+        </message>
+    </context>
+    <context>
         <name>BackupDialog</name>
         <message>
             <location filename="../../dialogs/backup_dialog.py" line="43" />
@@ -137,12 +216,12 @@
     <context>
         <name>CsvExport</name>
         <message>
-            <location filename="../../core/csv_export.py" line="25" />
+            <location filename="../../core/csv_export.py" line="29" />
             <source>Authentifizierung</source>
             <translation>Authentification</translation>
         </message>
         <message>
-            <location filename="../../core/csv_export.py" line="26" />
+            <location filename="../../core/csv_export.py" line="30" />
             <source>Passwort</source>
             <translation>Mot de passe</translation>
         </message>
@@ -299,254 +378,264 @@ Chemin attendu :
     <context>
         <name>MainWindow</name>
         <message>
-            <location filename="../../gui/main_window.py" line="74" />
+            <location filename="../../gui/main_window.py" line="80" />
             <source>Aktualisieren</source>
             <translation>Actualiser</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="77" />
+            <location filename="../../gui/main_window.py" line="83" />
             <source>Gespeicherte WLAN-Profile neu einlesen</source>
             <translation>Recharger les profils WLAN enregistrés</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="82" />
+            <location filename="../../gui/main_window.py" line="88" />
             <source>Aktuelle Verbindung</source>
             <translation>Connexion actuelle</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="89" />
+            <location filename="../../gui/main_window.py" line="95" />
             <source>Informationen zur aktuellen WLAN-Verbindung anzeigen</source>
             <translation>Afficher les informations sur la connexion WLAN actuelle</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="96" />
-            <location filename="../../gui/main_window.py" line="513" />
+            <location filename="../../gui/main_window.py" line="102" />
+            <location filename="../../gui/main_window.py" line="539" />
             <source>Passwörter anzeigen</source>
             <translation>Afficher les mots de passe</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="103" />
+            <location filename="../../gui/main_window.py" line="109" />
             <source>Gespeicherte WLAN-Passwörter im Klartext anzeigen</source>
             <translation>Afficher en clair les mots de passe WLAN enregistrés</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="109" />
+            <location filename="../../gui/main_window.py" line="116" />
+            <source>Automatische WLAN-Verbindungen verwalten...</source>
+            <translation>Gérer les connexions Wi-Fi automatiques...</translation>
+        </message>
+        <message>
+            <location filename="../../gui/main_window.py" line="121" />
+            <source>Autoconnect und Priorität gespeicherter WLAN-Profile verwalten</source>
+            <translation>Gérer la connexion automatique et la priorité des profils Wi-Fi enregistrés</translation>
+        </message>
+        <message>
+            <location filename="../../gui/main_window.py" line="129" />
             <source>Verbinden</source>
             <translation>Se connecter</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="112" />
+            <location filename="../../gui/main_window.py" line="132" />
             <source>Mit dem ausgewählten gespeicherten WLAN-Profil verbinden</source>
             <translation>Se connecter avec le profil WLAN enregistré sélectionné</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="119" />
+            <location filename="../../gui/main_window.py" line="139" />
             <source>WLAN-Profile sichern...</source>
             <translation>Sauvegarder les profils WLAN...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="126" />
+            <location filename="../../gui/main_window.py" line="146" />
             <source>Ein, mehrere oder alle WLAN-Profile sichern</source>
             <translation>Sauvegarder un, plusieurs ou tous les profils WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="133" />
+            <location filename="../../gui/main_window.py" line="153" />
             <source>WLAN-Profile wiederherstellen...</source>
             <translation>Restaurer les profils WLAN...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="140" />
+            <location filename="../../gui/main_window.py" line="160" />
             <source>WLAN-Profile aus XML-Dateien wiederherstellen</source>
             <translation>Restaurer les profils WLAN à partir de fichiers XML</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="146" />
+            <location filename="../../gui/main_window.py" line="166" />
             <source>CSV exportieren...</source>
             <translation>Exporter en CSV...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="151" />
+            <location filename="../../gui/main_window.py" line="171" />
             <source>WLAN-Profile als CSV-Datei exportieren</source>
             <translation>Exporter les profils WLAN dans un fichier CSV</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="158" />
+            <location filename="../../gui/main_window.py" line="178" />
             <source>Neues WLAN-Profil...</source>
             <translation>Nouveau profil WLAN...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="162" />
+            <location filename="../../gui/main_window.py" line="182" />
             <source>Ein neues WLAN-Profil erstellen</source>
             <translation>Créer un nouveau profil WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="169" />
+            <location filename="../../gui/main_window.py" line="189" />
             <source>WLAN-Profil bearbeiten...</source>
             <translation>Modifier le profil WLAN...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="173" />
+            <location filename="../../gui/main_window.py" line="193" />
             <source>Das ausgewählte WLAN-Profil bearbeiten</source>
             <translation>Modifier le profil WLAN sélectionné</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="180" />
+            <location filename="../../gui/main_window.py" line="200" />
             <source>WLAN-Profile löschen...</source>
             <translation>Supprimer les profils WLAN...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="187" />
+            <location filename="../../gui/main_window.py" line="207" />
             <source>Ein oder mehrere WLAN-Profile löschen</source>
             <translation>Supprimer un ou plusieurs profils WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="194" />
+            <location filename="../../gui/main_window.py" line="214" />
             <source>QR-Code anzeigen...</source>
             <translation>Afficher le code QR...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="198" />
+            <location filename="../../gui/main_window.py" line="218" />
             <source>WLAN-Verbindungs-QR-Code für das ausgewählte Profil anzeigen</source>
             <translation>Afficher le code QR de connexion WLAN pour le profil sélectionné</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="204" />
+            <location filename="../../gui/main_window.py" line="224" />
             <source>Benutzerhandbuch</source>
             <translation>Manuel utilisateur</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="207" />
+            <location filename="../../gui/main_window.py" line="227" />
             <source>Integriertes Benutzerhandbuch öffnen</source>
             <translation>Ouvrir le manuel utilisateur intégré</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="212" />
+            <location filename="../../gui/main_window.py" line="232" />
             <source>Projektinformationen</source>
             <translation>Informations sur le projet</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="216" />
+            <location filename="../../gui/main_window.py" line="236" />
             <source>Technische Informationen für Support und Fehlersuche anzeigen</source>
             <translation>Afficher les informations techniques pour l’assistance et le dépannage</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="222" />
-            <location filename="../../gui/main_window.py" line="1199" />
+            <location filename="../../gui/main_window.py" line="242" />
+            <location filename="../../gui/main_window.py" line="1248" />
             <source>Über WLAN-Manager</source>
             <translation>À propos de WLAN-Manager</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="224" />
+            <location filename="../../gui/main_window.py" line="244" />
             <source>Programminformationen anzeigen</source>
             <translation>Afficher les informations sur l’application</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="250" />
+            <location filename="../../gui/main_window.py" line="270" />
             <source>Beenden</source>
             <translation>Quitter</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="252" />
+            <location filename="../../gui/main_window.py" line="272" />
             <source>WLAN-Manager beenden</source>
             <translation>Quitter WLAN-Manager</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="255" />
+            <location filename="../../gui/main_window.py" line="275" />
             <source>&amp;Datei</source>
             <translation>&amp;Fichier</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="263" />
+            <location filename="../../gui/main_window.py" line="283" />
             <source>&amp;WLAN</source>
             <translation>&amp;WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="268" />
+            <location filename="../../gui/main_window.py" line="290" />
             <source>&amp;Profile</source>
             <translation>&amp;Profils</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="278" />
+            <location filename="../../gui/main_window.py" line="300" />
             <source>&amp;Einstellungen</source>
             <translation>&amp;Paramètres</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="282" />
+            <location filename="../../gui/main_window.py" line="304" />
             <source>&amp;Sprache</source>
             <translation>&amp;Langue</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="292" />
+            <location filename="../../gui/main_window.py" line="314" />
             <source>&amp;Hilfe</source>
             <translation>&amp;Aide</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="299" />
+            <location filename="../../gui/main_window.py" line="321" />
             <source>Hauptwerkzeuge</source>
             <translation>Outils principaux</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="335" />
-            <location filename="../../gui/main_window.py" line="501" />
+            <location filename="../../gui/main_window.py" line="357" />
+            <location filename="../../gui/main_window.py" line="527" />
             <source>0 WLAN-Profile</source>
             <translation>0 profil WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="337" />
+            <location filename="../../gui/main_window.py" line="359" />
             <source>F5 Aktualisieren · Ctrl+S Sichern · Entf Löschen</source>
             <translation>F5 Actualiser · Ctrl+S Sauvegarder · Suppr Supprimer</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="427" />
+            <location filename="../../gui/main_window.py" line="449" />
             <source>Kein Profil ausgewählt</source>
             <translation>Aucun profil sélectionné</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="428" />
+            <location filename="../../gui/main_window.py" line="450" />
             <source>Bitte zuerst ein WLAN-Profil in der Tabelle auswählen.</source>
             <translation>Veuillez d’abord sélectionner un profil WLAN dans le tableau.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="446" />
+            <location filename="../../gui/main_window.py" line="468" />
             <source>Fehler: {error}</source>
             <translation>Erreur : {error}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="450" />
+            <location filename="../../gui/main_window.py" line="472" />
             <source>WLAN-Profile werden gelesen …</source>
             <translation>Lecture des profils WLAN …</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="494" />
+            <location filename="../../gui/main_window.py" line="520" />
             <source>{count} WLAN-Profil(e)</source>
             <translation>{count} profil(s) WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="496" />
+            <location filename="../../gui/main_window.py" line="522" />
             <source>Bereit</source>
             <translation>Prêt</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="502" />
+            <location filename="../../gui/main_window.py" line="528" />
             <source>Profile konnten nicht gelesen werden</source>
             <translation>Impossible de lire les profils</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="507" />
-            <location filename="../../gui/main_window.py" line="567" />
-            <location filename="../../gui/main_window.py" line="780" />
+            <location filename="../../gui/main_window.py" line="533" />
+            <location filename="../../gui/main_window.py" line="601" />
+            <location filename="../../gui/main_window.py" line="814" />
             <source>Keine Profile</source>
             <translation>Aucun profil</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="507" />
-            <location filename="../../gui/main_window.py" line="568" />
-            <location filename="../../gui/main_window.py" line="781" />
+            <location filename="../../gui/main_window.py" line="533" />
+            <location filename="../../gui/main_window.py" line="602" />
+            <location filename="../../gui/main_window.py" line="815" />
             <source>Es sind keine WLAN-Profile vorhanden.</source>
             <translation>Aucun profil WLAN n’est disponible.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="514" />
+            <location filename="../../gui/main_window.py" line="540" />
             <source>Die WLAN-Passwörter werden im Klartext angezeigt.
 
 Fortfahren?</source>
@@ -555,22 +644,22 @@ Fortfahren?</source>
 Continuer ?</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="527" />
+            <location filename="../../gui/main_window.py" line="556" />
             <source>&lt;nicht auslesbar&gt;</source>
             <translation>&lt;illisible&gt;</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="531" />
+            <location filename="../../gui/main_window.py" line="560" />
             <source>Passwörter werden im Klartext angezeigt.</source>
             <translation>Les mots de passe sont affichés en clair.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="541" />
+            <location filename="../../gui/main_window.py" line="570" />
             <source>Passwort – {ssid}</source>
             <translation>Mot de passe – {ssid}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="542" />
+            <location filename="../../gui/main_window.py" line="572" />
             <source>WLAN-Profil: {ssid}
 
 Passwort: {password}</source>
@@ -579,29 +668,29 @@ Passwort: {password}</source>
 Mot de passe : {password}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="553" />
+            <location filename="../../gui/main_window.py" line="587" />
             <source>Verbindungsanforderung für '{ssid}' wurde gesendet.</source>
             <translation>La demande de connexion pour « {ssid} » a été envoyée.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="557" />
+            <location filename="../../gui/main_window.py" line="591" />
             <source>Verbindung fehlgeschlagen</source>
             <translation>Échec de la connexion</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="607" />
+            <location filename="../../gui/main_window.py" line="641" />
             <source>
 • ... und {count} weitere</source>
             <translation>
 • ... et {count} autre(s)</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="614" />
+            <location filename="../../gui/main_window.py" line="648" />
             <source>WLAN-Profile wirklich löschen?</source>
             <translation>Supprimer réellement les profils WLAN ?</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="616" />
+            <location filename="../../gui/main_window.py" line="650" />
             <source>Es werden {count} WLAN-Profil(e) gelöscht:
 
 {profiles}
@@ -616,7 +705,7 @@ Les mots de passe WLAN enregistrés seront également supprimés.
 Cette opération est irréversible.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="637" />
+            <location filename="../../gui/main_window.py" line="671" />
             <source>Ausgewählt: {selected}
 Erfolgreich gelöscht: {successful}
 Fehlgeschlagen: {failed}</source>
@@ -625,23 +714,23 @@ Supprimés avec succès : {successful}
 Échecs : {failed}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="654" />
-            <location filename="../../gui/main_window.py" line="660" />
+            <location filename="../../gui/main_window.py" line="688" />
+            <location filename="../../gui/main_window.py" line="694" />
             <source>Löschen abgeschlossen</source>
             <translation>Suppression terminée</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="679" />
+            <location filename="../../gui/main_window.py" line="713" />
             <source>Neues WLAN-Profil erstellen</source>
             <translation>Créer un nouveau profil WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="694" />
+            <location filename="../../gui/main_window.py" line="728" />
             <source>Profil bereits vorhanden</source>
             <translation>Le profil existe déjà</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="696" />
+            <location filename="../../gui/main_window.py" line="730" />
             <source>Ein WLAN-Profil mit dem Namen '{profile_name}' ist bereits vorhanden.
 
 Bitte verwende für dieses Profil die Funktion 'WLAN-Profil bearbeiten...'.</source>
@@ -650,43 +739,43 @@ Bitte verwende für dieses Profil die Funktion 'WLAN-Profil bearbeiten...'.</sou
 Veuillez utiliser la fonction « Modifier le profil WLAN... » pour ce profil.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="710" />
-            <location filename="../../gui/main_window.py" line="758" />
+            <location filename="../../gui/main_window.py" line="744" />
+            <location filename="../../gui/main_window.py" line="792" />
             <source>WLAN-Profil gespeichert</source>
             <translation>Profil WLAN enregistré</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="712" />
+            <location filename="../../gui/main_window.py" line="746" />
             <source>Das WLAN-Profil '{profile_name}' wurde gespeichert.</source>
             <translation>Le profil WLAN « {profile_name} » a été enregistré.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="720" />
+            <location filename="../../gui/main_window.py" line="754" />
             <source>WLAN-Profil konnte nicht gespeichert werden</source>
             <translation>Impossible d’enregistrer le profil WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="735" />
+            <location filename="../../gui/main_window.py" line="769" />
             <source>WLAN-Profil konnte nicht für die Bearbeitung geladen werden</source>
             <translation>Impossible de charger le profil WLAN pour modification</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="741" />
+            <location filename="../../gui/main_window.py" line="775" />
             <source>WLAN-Profil bearbeiten – {ssid}</source>
             <translation>Modifier le profil WLAN – {ssid}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="760" />
+            <location filename="../../gui/main_window.py" line="794" />
             <source>Das WLAN-Profil '{profile_name}' wurde aktualisiert.</source>
             <translation>Le profil WLAN « {profile_name} » a été mis à jour.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="768" />
+            <location filename="../../gui/main_window.py" line="802" />
             <source>WLAN-Profil konnte nicht aktualisiert werden</source>
             <translation>Impossible de mettre à jour le profil WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="886" />
+            <location filename="../../gui/main_window.py" line="920" />
             <source>Zielordner:
 {target}
 
@@ -703,18 +792,18 @@ Ignorés : {skipped}
 Échecs : {failed}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="908" />
-            <location filename="../../gui/main_window.py" line="914" />
+            <location filename="../../gui/main_window.py" line="942" />
+            <location filename="../../gui/main_window.py" line="948" />
             <source>Sicherung abgeschlossen</source>
             <translation>Sauvegarde terminée</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="920" />
+            <location filename="../../gui/main_window.py" line="954" />
             <source>Sicherung fehlgeschlagen</source>
             <translation>Échec de la sauvegarde</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="949" />
+            <location filename="../../gui/main_window.py" line="983" />
             <source>Ausgewählt: {selected}
 Erfolgreich: {successful}
 Fehlgeschlagen: {failed}</source>
@@ -723,33 +812,33 @@ Réussis : {successful}
 Échecs : {failed}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="965" />
-            <location filename="../../gui/main_window.py" line="971" />
+            <location filename="../../gui/main_window.py" line="999" />
+            <location filename="../../gui/main_window.py" line="1005" />
             <source>Wiederherstellung abgeschlossen</source>
             <translation>Restauration terminée</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="979" />
+            <location filename="../../gui/main_window.py" line="1013" />
             <source>Wiederherstellung fehlgeschlagen</source>
             <translation>Échec de la restauration</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="988" />
+            <location filename="../../gui/main_window.py" line="1022" />
             <source>CSV-Datei speichern</source>
             <translation>Enregistrer le fichier CSV</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="990" />
+            <location filename="../../gui/main_window.py" line="1024" />
             <source>CSV-Dateien (*.csv)</source>
             <translation>Fichiers CSV (*.csv)</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1002" />
+            <location filename="../../gui/main_window.py" line="1036" />
             <source>CSV-Export</source>
             <translation>Export CSV</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1003" />
+            <location filename="../../gui/main_window.py" line="1037" />
             <source>Die CSV-Datei enthält vorhandene WLAN-Passwörter im Klartext.
 
 Fortfahren?</source>
@@ -758,12 +847,12 @@ Fortfahren?</source>
 Continuer ?</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1012" />
+            <location filename="../../gui/main_window.py" line="1046" />
             <source>CSV-Export erfolgreich</source>
             <translation>Export CSV réussi</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1014" />
+            <location filename="../../gui/main_window.py" line="1048" />
             <source>Datei:
 {path}
 
@@ -774,73 +863,73 @@ Anzahl Profile: {count}</source>
 Nombre de profils : {count}</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1021" />
+            <location filename="../../gui/main_window.py" line="1055" />
             <source>CSV-Export fehlgeschlagen</source>
             <translation>Échec de l’export CSV</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1030" />
-            <location filename="../../gui/main_window.py" line="1054" />
+            <location filename="../../gui/main_window.py" line="1071" />
+            <location filename="../../gui/main_window.py" line="1103" />
             <source>Aktuelle WLAN-Verbindung</source>
             <translation>Connexion WLAN actuelle</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1031" />
+            <location filename="../../gui/main_window.py" line="1072" />
             <source>Der Computer ist aktuell mit keinem WLAN verbunden.</source>
             <translation>L’ordinateur n’est actuellement connecté à aucun réseau WLAN.</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1036" />
+            <location filename="../../gui/main_window.py" line="1077" />
             <source>Schnittstelle</source>
             <translation>Interface</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1037" />
+            <location filename="../../gui/main_window.py" line="1079" />
             <source>Status</source>
             <translation>État</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1040" />
+            <location filename="../../gui/main_window.py" line="1084" />
             <source>Funktyp</source>
             <translation>Type radio</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1041" />
+            <location filename="../../gui/main_window.py" line="1086" />
             <source>Authentifizierung</source>
             <translation>Authentification</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1042" />
+            <location filename="../../gui/main_window.py" line="1091" />
             <source>Verschlüsselung</source>
             <translation>Chiffrement</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1043" />
+            <location filename="../../gui/main_window.py" line="1092" />
             <source>Kanal</source>
             <translation>Canal</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1044" />
+            <location filename="../../gui/main_window.py" line="1093" />
             <source>Empfangsrate</source>
             <translation>Débit de réception</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1045" />
+            <location filename="../../gui/main_window.py" line="1094" />
             <source>Senderate</source>
             <translation>Débit d’émission</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1046" />
+            <location filename="../../gui/main_window.py" line="1095" />
             <source>Signal</source>
             <translation>Signal</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1060" />
+            <location filename="../../gui/main_window.py" line="1109" />
             <source>Standortberechtigung fehlt</source>
             <translation>Autorisation de localisation manquante</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1062" />
+            <location filename="../../gui/main_window.py" line="1111" />
             <source>{error}
 
 Standorteinstellungen jetzt öffnen?</source>
@@ -849,42 +938,42 @@ Standorteinstellungen jetzt öffnen?</source>
 Ouvrir les paramètres de localisation maintenant ?</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1079" />
+            <location filename="../../gui/main_window.py" line="1128" />
             <source>WLAN-Verbindung konnte nicht gelesen werden</source>
             <translation>Impossible de lire la connexion WLAN</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1097" />
+            <location filename="../../gui/main_window.py" line="1146" />
             <source>Kopieren</source>
             <translation>Copier</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1116" />
+            <location filename="../../gui/main_window.py" line="1165" />
             <source>Passwort anzeigen</source>
             <translation>Afficher le mot de passe</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1121" />
+            <location filename="../../gui/main_window.py" line="1170" />
             <source>Profil sichern...</source>
             <translation>Sauvegarder le profil...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1127" />
+            <location filename="../../gui/main_window.py" line="1176" />
             <source>Profil löschen...</source>
             <translation>Supprimer le profil...</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1154" />
+            <location filename="../../gui/main_window.py" line="1203" />
             <source>QR-Code konnte nicht erzeugt werden</source>
             <translation>Impossible de générer le code QR</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1185" />
+            <location filename="../../gui/main_window.py" line="1234" />
             <source>Sprache</source>
             <translation>Langue</translation>
         </message>
         <message>
-            <location filename="../../gui/main_window.py" line="1187" />
+            <location filename="../../gui/main_window.py" line="1236" />
             <source>Die neue Sprache wird nach einem Neustart des WLAN-Managers verwendet.</source>
             <translation>La nouvelle langue sera utilisée après le redémarrage de WLAN-Manager.</translation>
         </message>
@@ -936,6 +1025,40 @@ Comment souhaitez-vous procéder ?</translation>
             <location filename="../../dialogs/overwrite_dialog.py" line="75" />
             <source>Abbrechen</source>
             <translation>Annuler</translation>
+        </message>
+    </context>
+    <context>
+        <name>ProfileDisplay</name>
+        <message>
+            <location filename="../../core/profile_display.py" line="14" />
+            <location filename="../../core/profile_display.py" line="76" />
+            <source>Offen</source>
+            <translation>Ouvert</translation>
+        </message>
+        <message>
+            <location filename="../../core/profile_display.py" line="26" />
+            <source>&lt;nicht auslesbar&gt;</source>
+            <translation>&lt;illisible&gt;</translation>
+        </message>
+        <message>
+            <location filename="../../core/profile_display.py" line="32" />
+            <source>&lt;Fehler beim Auslesen&gt;</source>
+            <translation>&lt;erreur de lecture&gt;</translation>
+        </message>
+        <message>
+            <location filename="../../core/profile_display.py" line="38" />
+            <source>&lt;offenes WLAN – kein Passwort&gt;</source>
+            <translation>&lt;Wi-Fi ouvert – aucun mot de passe&gt;</translation>
+        </message>
+        <message>
+            <location filename="../../core/profile_display.py" line="54" />
+            <source>Verbunden</source>
+            <translation>Connecté</translation>
+        </message>
+        <message>
+            <location filename="../../core/profile_display.py" line="60" />
+            <source>Getrennt</source>
+            <translation>Déconnecté</translation>
         </message>
     </context>
     <context>
@@ -1085,87 +1208,87 @@ Comment souhaitez-vous procéder ?</translation>
     <context>
         <name>ProfileEditor</name>
         <message>
-            <location filename="../../core/profile_editor.py" line="51" />
+            <location filename="../../core/profile_editor.py" line="37" />
             <source>Das WLAN-Passwort muss 8 bis 63 Zeichen lang sein oder aus genau 64 hexadezimalen Zeichen bestehen.</source>
             <translation>Le mot de passe WLAN doit comporter entre 8 et 63 caractères ou exactement 64 caractères hexadécimaux.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="60" />
+            <location filename="../../core/profile_editor.py" line="46" />
             <source>Die Passphrase darf nur druckbare ASCII-Zeichen enthalten.</source>
             <translation>La phrase secrète ne doit contenir que des caractères ASCII imprimables.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="77" />
+            <location filename="../../core/profile_editor.py" line="63" />
             <source>Der Gültigkeitsbereich des WLAN-Profils konnte nicht bestimmt werden.</source>
             <translation>La portée du profil WLAN n’a pas pu être déterminée.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="87" />
+            <location filename="../../core/profile_editor.py" line="73" />
             <source>Das WLAN-Profil '{profile_name}' konnte nicht gelesen werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être lu.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="119" />
+            <location filename="../../core/profile_editor.py" line="105" />
             <source>Das WLAN-Profil '{profile_name}' konnte nicht für die Bearbeitung exportiert werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être exporté pour modification.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="125" />
+            <location filename="../../core/profile_editor.py" line="111" />
             <source>Windows meldete einen erfolgreichen Export, aber es wurde keine WLAN-XML-Datei gefunden.</source>
             <translation>Windows a signalé que l’exportation avait réussi, mais aucun fichier XML WLAN n’a été trouvé.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="145" />
+            <location filename="../../core/profile_editor.py" line="131" />
             <source>Dieses WLAN-Profil wird durch eine Gruppenrichtlinie verwaltet und kann im WLAN-Manager nicht bearbeitet werden.</source>
             <translation>Ce profil WLAN est géré par une stratégie de groupe et ne peut pas être modifié dans WLAN-Manager.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="211" />
+            <location filename="../../core/profile_editor.py" line="197" />
             <source>Bestehende Windows-Konfiguration</source>
             <translation>Configuration Windows existante</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="233" />
+            <location filename="../../core/profile_editor.py" line="219" />
             <source>Nicht unterstützter Sicherheitstyp: {security}</source>
             <translation>Type de sécurité non pris en charge : {security}</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="238" />
+            <location filename="../../core/profile_editor.py" line="224" />
             <source>Für ein neues geschütztes WLAN muss ein Passwort angegeben werden.</source>
             <translation>Un mot de passe doit être indiqué pour un nouveau WLAN sécurisé.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="291" />
+            <location filename="../../core/profile_editor.py" line="277" />
             <source>Das ursprüngliche WLAN-Profil fehlt.</source>
             <translation>Le profil WLAN d’origine est manquant.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="327" />
+            <location filename="../../core/profile_editor.py" line="313" />
             <source>Das vorhandene Profil enthält kein bearbeitbares keyMaterial. Das Passwort kann deshalb nicht geändert werden.</source>
             <translation>Le profil existant ne contient aucun keyMaterial modifiable. Le mot de passe ne peut donc pas être modifié.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="356" />
+            <location filename="../../core/profile_editor.py" line="342" />
             <source>Ungültiger Profil-Gültigkeitsbereich: {scope}</source>
             <translation>Portée de profil non valide : {scope}</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="384" />
+            <location filename="../../core/profile_editor.py" line="370" />
             <source>Das WLAN-Profil '{profile_name}' konnte nicht gespeichert werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être enregistré.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="397" />
+            <location filename="../../core/profile_editor.py" line="383" />
             <source>Gruppenrichtlinienprofile können nicht gespeichert werden.</source>
             <translation>Les profils de stratégie de groupe ne peuvent pas être enregistrés.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="415" />
+            <location filename="../../core/profile_editor.py" line="401" />
             <source>Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être supprimé.</translation>
         </message>
         <message>
-            <location filename="../../core/profile_editor.py" line="425" />
+            <location filename="../../core/profile_editor.py" line="411" />
             <source>Gruppenrichtlinienprofile können nicht bearbeitet werden.</source>
             <translation>Les profils de stratégie de groupe ne peuvent pas être modifiés.</translation>
         </message>
@@ -1173,47 +1296,47 @@ Comment souhaitez-vous procéder ?</translation>
     <context>
         <name>ProfileSelectionWidget</name>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="34" />
+            <location filename="../../widgets/profile_selection_widget.py" line="36" />
             <source>Profile suchen...</source>
             <translation>Rechercher des profils...</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="38" />
+            <location filename="../../widgets/profile_selection_widget.py" line="40" />
             <source>Auswahl</source>
             <translation>Sélection</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="38" />
+            <location filename="../../widgets/profile_selection_widget.py" line="40" />
             <source>WLAN-Profil</source>
             <translation>Profil WLAN</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="38" />
+            <location filename="../../widgets/profile_selection_widget.py" line="40" />
             <source>Authentifizierung</source>
             <translation>Authentification</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="49" />
+            <location filename="../../widgets/profile_selection_widget.py" line="51" />
             <source>Alle auswählen</source>
             <translation>Tout sélectionner</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="50" />
+            <location filename="../../widgets/profile_selection_widget.py" line="52" />
             <source>Keine auswählen</source>
             <translation>Ne rien sélectionner</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="51" />
+            <location filename="../../widgets/profile_selection_widget.py" line="53" />
             <source>Invertieren</source>
             <translation>Inverser la sélection</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="183" />
+            <location filename="../../widgets/profile_selection_widget.py" line="187" />
             <source>{selected} von {total} Profil(en) ausgewählt</source>
             <translation>{selected} profil(s) sur {total} sélectionné(s)</translation>
         </message>
         <message>
-            <location filename="../../widgets/profile_selection_widget.py" line="191" />
+            <location filename="../../widgets/profile_selection_widget.py" line="195" />
             <source>{selected} von {total} Profil(en) ausgewählt · {visible} sichtbar</source>
             <translation>{selected} profil(s) sur {total} sélectionné(s) · {visible} visible(s)</translation>
         </message>
@@ -1239,7 +1362,7 @@ Comment souhaitez-vous procéder ?</translation>
     <context>
         <name>Profiles</name>
         <message>
-            <location filename="../../core/profiles.py" line="28" />
+            <location filename="../../core/profiles.py" line="30" />
             <source>Es wurde keine verfügbare WLAN-Schnittstelle gefunden.
 
 {details}</source>
@@ -1248,7 +1371,7 @@ Comment souhaitez-vous procéder ?</translation>
 {details}</translation>
         </message>
         <message>
-            <location filename="../../core/profiles.py" line="49" />
+            <location filename="../../core/profiles.py" line="55" />
             <source>Die WLAN-Profile konnten nicht gelesen werden.
 
 {details}</source>
@@ -1257,7 +1380,7 @@ Comment souhaitez-vous procéder ?</translation>
 {details}</translation>
         </message>
         <message>
-            <location filename="../../core/profiles.py" line="60" />
+            <location filename="../../core/profiles.py" line="66" />
             <source>Das WLAN-Profil '{ssid}' konnte nicht gelesen werden.
 
 {details}</source>
@@ -1266,7 +1389,7 @@ Comment souhaitez-vous procéder ?</translation>
 {details}</translation>
         </message>
         <message>
-            <location filename="../../core/profiles.py" line="156" />
+            <location filename="../../core/profiles.py" line="162" />
             <source>Windows verweigert den Zugriff auf die WLAN-Informationen.
 
 Aktiviere unter Einstellungen &gt; Datenschutz und Sicherheit &gt; Standort mindestens die Standortdienste.</source>
@@ -1275,7 +1398,7 @@ Aktiviere unter Einstellungen &gt; Datenschutz und Sicherheit &gt; Standort mind
 Sous Paramètres &gt; Confidentialité et sécurité &gt; Localisation, activez au minimum les services de localisation.</translation>
         </message>
         <message>
-            <location filename="../../core/profiles.py" line="166" />
+            <location filename="../../core/profiles.py" line="172" />
             <source>Die WLAN-Schnittstelle konnte nicht gelesen werden.
 
 {details}</source>
@@ -1284,7 +1407,7 @@ Sous Paramètres &gt; Confidentialité et sécurité &gt; Localisation, activez 
 {details}</translation>
         </message>
         <message>
-            <location filename="../../core/profiles.py" line="222" />
+            <location filename="../../core/profiles.py" line="228" />
             <source>Die Verbindung mit dem WLAN-Profil '{ssid}' konnte nicht hergestellt werden.</source>
             <translation>La connexion avec le profil WLAN « {ssid} » n’a pas pu être établie.</translation>
         </message>
@@ -1373,77 +1496,77 @@ Sous Paramètres &gt; Confidentialité et sécurité &gt; Localisation, activez 
     <context>
         <name>QrCodeDialog</name>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="51" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="56" />
             <source>WLAN-QR-Code – {ssid}</source>
             <translation>Code QR WLAN – {ssid}</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="76" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="84" />
             <source>Passwort anzeigen</source>
             <translation>Afficher le mot de passe</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="84" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="92" />
             <source>SSID:</source>
             <translation>SSID :</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="86" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="94" />
             <source>Authentifizierung:</source>
             <translation>Authentification :</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="89" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="97" />
             <source>Passwort:</source>
             <translation>Mot de passe :</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="93" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="101" />
             <source>QR-Code als PNG speichern...</source>
             <translation>Enregistrer le code QR au format PNG...</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="97" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="105" />
             <source>QR-Code in Zwischenablage kopieren</source>
             <translation>Copier le code QR dans le presse-papiers</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="112" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="120" />
             <source>Den QR-Code mit der Kamera bzw. WLAN-Funktion eines Smartphones oder Tablets scannen.</source>
             <translation>Scannez le code QR avec l’appareil photo ou la fonction WLAN d’un smartphone ou d’une tablette.</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="140" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="148" />
             <source>Der QR-Code konnte nicht erzeugt werden: {error}</source>
             <translation>Impossible de générer le code QR : {error}</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="146" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="154" />
             <source>Der erzeugte QR-Code konnte nicht als Bild geladen werden.</source>
             <translation>Le code QR généré n’a pas pu être chargé comme image.</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="174" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="182" />
             <source>WLAN-QR-Code speichern</source>
             <translation>Enregistrer le code QR WLAN</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="176" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="184" />
             <source>PNG-Bild (*.png)</source>
             <translation>Image PNG (*.png)</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="196" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="204" />
             <source>Speichern fehlgeschlagen</source>
             <translation>Échec de l’enregistrement</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="203" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="211" />
             <source>QR-Code gespeichert</source>
             <translation>Code QR enregistré</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="204" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="212" />
             <source>Der QR-Code wurde gespeichert:
 
 {path}</source>
@@ -1452,22 +1575,22 @@ Sous Paramètres &gt; Confidentialité et sécurité &gt; Localisation, activez 
 {path}</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="211" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="219" />
             <source>QR-Code nicht verfügbar</source>
             <translation>Code QR indisponible</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="212" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="220" />
             <source>Es ist kein QR-Code zum Kopieren vorhanden.</source>
             <translation>Aucun code QR n’est disponible pour être copié.</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="221" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="229" />
             <source>QR-Code kopiert</source>
             <translation>Code QR copié</translation>
         </message>
         <message>
-            <location filename="../../dialogs/qr_code_dialog.py" line="222" />
+            <location filename="../../dialogs/qr_code_dialog.py" line="230" />
             <source>Der QR-Code wurde als Bild in die Zwischenablage kopiert.</source>
             <translation>Le code QR a été copié dans le presse-papiers sous forme d’image.</translation>
         </message>
@@ -1561,55 +1684,101 @@ Sous Paramètres &gt; Confidentialité et sécurité &gt; Localisation, activez 
     <context>
         <name>WlanNative</name>
         <message>
-            <location filename="../../core/wlan_native.py" line="51" />
+            <location filename="../../core/wlan_native.py" line="74" />
             <source>{message} (Windows-Fehler {code})</source>
             <translation>{message} (erreur Windows {code})</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="131" />
+            <location filename="../../core/wlan_native.py" line="183" />
             <source>Die WLAN-Schnittstellen konnten nicht gelesen werden.</source>
             <translation>Les interfaces WLAN n’ont pas pu être lues.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="186" />
-            <location filename="../../core/wlan_native.py" line="289" />
+            <location filename="../../core/wlan_native.py" line="234" />
+            <location filename="../../core/wlan_native.py" line="351" />
+            <location filename="../../core/wlan_native.py" line="536" />
+            <location filename="../../core/wlan_native.py" line="696" />
+            <location filename="../../core/wlan_native.py" line="799" />
             <source>Die Windows WLAN-API konnte nicht geöffnet werden.</source>
             <translation>L’API WLAN de Windows n’a pas pu être ouverte.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="197" />
-            <location filename="../../core/wlan_native.py" line="297" />
+            <location filename="../../core/wlan_native.py" line="248" />
+            <location filename="../../core/wlan_native.py" line="365" />
+            <location filename="../../core/wlan_native.py" line="550" />
+            <location filename="../../core/wlan_native.py" line="707" />
+            <location filename="../../core/wlan_native.py" line="807" />
             <source>Es wurde keine WLAN-Schnittstelle gefunden.</source>
             <translation>Aucune interface WLAN n’a été trouvée.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="231" />
+            <location filename="../../core/wlan_native.py" line="269" />
+            <location filename="../../core/wlan_native.py" line="387" />
+            <source>Die WLAN-Profilliste konnte nicht gelesen werden.</source>
+            <translation>Impossible de lire la liste des profils Wi-Fi.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="332" />
+            <source>Die WLAN-Profilposition darf nicht negativ sein.</source>
+            <translation>La position du profil Wi-Fi ne peut pas être négative.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="431" />
+            <source>Die WLAN-Profilposition {position} ist ungültig. Auf der Schnittstelle sind {count} Profile vorhanden.</source>
+            <translation>La position {position} du profil Wi-Fi n'est pas valide. L'interface contient {count} profils.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="461" />
+            <location filename="../../core/wlan_native.py" line="486" />
+            <source>Die Priorität des WLAN-Profils '{profile_name}' konnte nicht geändert werden.</source>
+            <translation>La priorité du profil Wi-Fi '{profile_name}' n’a pas pu être modifiée.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="473" />
+            <source>Die Priorität des WLAN-Profils '{profile_name}' konnte wegen fehlender Berechtigung nicht geändert werden.</source>
+            <translation>La priorité du profil Wi-Fi '{profile_name}' n’a pas pu être modifiée en raison d’autorisations insuffisantes.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="577" />
+            <location filename="../../core/wlan_native.py" line="741" />
             <source>Das WLAN-Profil '{profile_name}' konnte nicht gelesen werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être lu.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="239" />
+            <location filename="../../core/wlan_native.py" line="606" />
+            <source>Das WLAN-Profil '{profile_name}' enthält kein connectionMode-Element.</source>
+            <translation>Le profil Wi-Fi '{profile_name}' ne contient aucun élément connectionMode.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="643" />
+            <source>Der Autoconnect-Status des WLAN-Profils '{profile_name}' konnte nicht geändert werden.</source>
+            <translation>L’état de connexion automatique du profil Wi-Fi '{profile_name}' n’a pas pu être modifié.</translation>
+        </message>
+        <message>
+            <location filename="../../core/wlan_native.py" line="749" />
             <source>Das WLAN-Profil '{profile_name}' lieferte keine XML-Daten.</source>
             <translation>Le profil WLAN « {profile_name} » n’a renvoyé aucune donnée XML.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="256" />
+            <location filename="../../core/wlan_native.py" line="766" />
             <source>Auf das WLAN-Profil '{profile_name}' konnte nicht zugegriffen werden.</source>
             <translation>Impossible d’accéder au profil WLAN « {profile_name} ».</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="263" />
-            <location filename="../../core/wlan_native.py" line="339" />
+            <location filename="../../core/wlan_native.py" line="497" />
+            <location filename="../../core/wlan_native.py" line="656" />
+            <location filename="../../core/wlan_native.py" line="773" />
+            <location filename="../../core/wlan_native.py" line="849" />
             <source>Das WLAN-Profil '{profile_name}' wurde auf keiner WLAN-Schnittstelle gefunden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a été trouvé sur aucune interface WLAN.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="320" />
+            <location filename="../../core/wlan_native.py" line="830" />
             <source>Das WLAN-Profil '{profile_name}' konnte nicht gelöscht werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être supprimé.</translation>
         </message>
         <message>
-            <location filename="../../core/wlan_native.py" line="331" />
+            <location filename="../../core/wlan_native.py" line="841" />
             <source>Das WLAN-Profil '{profile_name}' konnte wegen fehlender Berechtigung nicht gelöscht werden.</source>
             <translation>Le profil WLAN « {profile_name} » n’a pas pu être supprimé en raison d’autorisations insuffisantes.</translation>
         </message>

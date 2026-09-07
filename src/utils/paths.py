@@ -44,3 +44,19 @@ def resource_path(relative_path: str) -> Path:
 
     # Entwicklungsumgebung
     return project_root() / "src" / "resources" / relative_path
+
+
+def get_downloads_folder() -> Path:
+    """Ermittelt den Download-Ordner des aktuellen Benutzers."""
+    home = Path.home()
+
+    candidates = [
+        home / "Downloads",
+        Path(os.environ.get("USERPROFILE", str(home))) / "Downloads",
+    ]
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+
+    return candidates[0]
