@@ -1,0 +1,1 @@
+"""Plattformspezifische Implementierungen."""
