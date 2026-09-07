@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
 )
 
 from core.models import WlanProfile
+from core.profile_display import authentication_display_text
 
 
 class ProfileSelectionWidget(QWidget):
@@ -87,7 +88,9 @@ class ProfileSelectionWidget(QWidget):
             )
 
             name_item = QTableWidgetItem(profile.ssid)
-            auth_item = QTableWidgetItem(profile.authentication)
+            auth_item = QTableWidgetItem(
+                authentication_display_text(profile)
+            )
 
             self.table.setItem(row, 0, check_item)
             self.table.setItem(row, 1, name_item)

@@ -5,6 +5,10 @@ from pathlib import Path
 
 from PySide6.QtCore import QCoreApplication
 
+from core.profile_display import (
+    authentication_display_text,
+    password_display_text,
+)
 from core.profiles import get_all_profile_details
 
 
@@ -29,7 +33,11 @@ def export_profiles_to_csv(csv_path: Path) -> int:
 
         for row in rows:
             writer.writerow(
-                [row.ssid, row.authentication, row.password]
+                [
+                    row.ssid,
+                    authentication_display_text(row),
+                    password_display_text(row),
+                ]
             )
 
     return len(rows)

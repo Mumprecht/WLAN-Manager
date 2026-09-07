@@ -136,6 +136,47 @@ Tastenkürzel:
 Ctrl+I
 ```
 
+## Automatische WLAN-Verbindungen und Priorität verwalten
+
+Menü:
+
+```text
+WLAN > Automatische WLAN-Verbindungen verwalten...
+```
+
+Mit dieser Funktion werden der Autoconnect-Status und die Priorität der gespeicherten WLAN-Profile verwaltet.
+
+Die Tabelle zeigt:
+
+- **Priorität** – Reihenfolge, in der Windows die WLAN-Profile bevorzugt.
+- **WLAN-Profil** – Name des gespeicherten WLAN-Profils.
+- **Automatisch verbinden** – zeigt mit **Ja** oder **Nein**, ob Windows automatisch eine Verbindung mit diesem Profil herstellen darf.
+
+### WLAN-Priorität ändern
+
+**Priorität 1 ist die höchste Priorität.**
+
+Ein Profil kann mit **Nach oben** oder **Nach unten** in der Prioritätsreihenfolge verschoben werden.
+
+Die Änderung wird sofort in Windows gespeichert. Anschliessend liest WLAN-Manager die Profilliste erneut aus Windows ein und zeigt die tatsächlich gespeicherte Reihenfolge an.
+
+Die WLAN-Priorität ist unter Windows an die jeweilige WLAN-Schnittstelle gebunden.
+
+### Autoconnect ändern
+
+Mit **Autoconnect ändern** wird die Einstellung des ausgewählten Profils zwischen **Ja** und **Nein** umgeschaltet.
+
+- **Ja** – Windows darf automatisch eine Verbindung mit diesem Profil herstellen.
+- **Nein** – Windows stellt mit diesem Profil nicht automatisch eine Verbindung her. Eine manuelle Verbindung bleibt weiterhin möglich.
+
+Die Änderung wird sofort in Windows gespeichert und danach erneut aus Windows eingelesen.
+
+### Hinweise
+
+Profile, die durch administrative Vorgaben oder Gruppenrichtlinien verwaltet werden, können möglicherweise nicht geändert werden.
+
+**Aktualisieren** liest den aktuellen Zustand der WLAN-Profile erneut aus Windows ein, ohne eine Änderung vorzunehmen.
+
 ## Tastenkürzel
 
 - `F5` Aktualisieren

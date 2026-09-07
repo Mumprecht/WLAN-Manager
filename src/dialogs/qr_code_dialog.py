@@ -20,6 +20,10 @@ from PySide6.QtWidgets import (
 )
 
 from core.models import WlanProfile
+from core.profile_display import (
+    authentication_display_text,
+    password_display_text,
+)
 from core.qr_code import (
     WifiQrError,
     save_wifi_qr_png,
@@ -61,12 +65,15 @@ class QrCodeDialog(QDialog):
         self.ssid_edit.setReadOnly(True)
 
         self.authentication_edit = QLineEdit(
-            profile.authentication,
+            authentication_display_text(profile),
             self,
         )
         self.authentication_edit.setReadOnly(True)
 
-        self.password_edit = QLineEdit(profile.password, self)
+        self.password_edit = QLineEdit(
+            password_display_text(profile),
+            self,
+        )
         self.password_edit.setReadOnly(True)
         self.password_edit.setEchoMode(
             QLineEdit.EchoMode.Password

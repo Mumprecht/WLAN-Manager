@@ -132,6 +132,47 @@ Keyboard shortcut:
 Ctrl+I
 ```
 
+## Manage automatic WLAN connections and priority
+
+Menu:
+
+```text
+WLAN > Manage automatic WLAN connections...
+```
+
+This function manages the autoconnect status and priority of saved WLAN profiles.
+
+The table shows:
+
+- **Priority** – the order in which Windows prefers the WLAN profiles.
+- **WLAN profile** – the name of the saved WLAN profile.
+- **Connect automatically** – indicates with **Yes** or **No** whether Windows may automatically connect using this profile.
+
+### Change WLAN priority
+
+**Priority 1 is the highest priority.**
+
+Use **Move up** or **Move down** to move a profile within the priority order.
+
+The change is saved immediately in Windows. WLAN-Manager then reads the profile list from Windows again and displays the order that is actually stored.
+
+On Windows, WLAN priority is associated with the respective WLAN interface.
+
+### Change autoconnect
+
+Use **Change autoconnect** to switch the selected profile between **Yes** and **No**.
+
+- **Yes** – Windows may automatically connect using this profile.
+- **No** – Windows does not automatically connect using this profile. A manual connection is still possible.
+
+The change is saved immediately in Windows and then read back from Windows.
+
+### Notes
+
+Profiles managed by administrative policies or Group Policy may not be modifiable.
+
+**Refresh** reads the current state of the WLAN profiles from Windows again without making any changes.
+
 ## Keyboard shortcuts
 
 - `F5` Refresh
