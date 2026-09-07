@@ -7,14 +7,14 @@ from core.models import EditableWifiProfile
 from core.qr_code import wifi_qr_data
 from core.wlan_backend import WlanBackend
 from core.netsh import get_downloads_folder
-from platforms.windows.wlan_backend import WindowsWlanBackend
+from platforms.backend_factory import create_wlan_backend
 
 
 class WlanManager:
     """Plattformunabhängige Fassade zwischen GUI und WLAN-Backend."""
 
     def __init__(self, backend: WlanBackend | None = None) -> None:
-        self.backend = backend or WindowsWlanBackend()
+        self.backend = backend or create_wlan_backend()
 
     def profiles(self):
         return self.backend.profiles()
